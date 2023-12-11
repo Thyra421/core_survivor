@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class EventRegistry<K, T>
 {
-    private Dictionary<K, EventListener<T>> _listeners = new Dictionary<K, EventListener<T>>();
+    private readonly Dictionary<K, EventListener<T>> _listeners = new Dictionary<K, EventListener<T>>();
 
     /// <summary>
     /// Adds a listener to the appropriate type.
@@ -20,8 +20,8 @@ public class EventRegistry<K, T>
     /// Does nothing if no events are registered for this type.
     /// </summary>
     public void Invoke(K key, T value) {
-        if (_listeners.ContainsKey(key))
-            _listeners[key].ListenerEvent?.Invoke(value);
+        if (_listeners.TryGetValue(key, out  EventListener<T> listener))
+            listener.ListenerEvent?.Invoke(value);
     }
 
     public void Clear() {
