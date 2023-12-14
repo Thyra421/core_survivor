@@ -9,12 +9,31 @@ public partial class PlayerMovement
 
     [Header("Client")] [SerializeField] private float movementSpeed;
 
+    private void HandleRotation()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
+
+        Vector3 direction = new Vector3(hit.point.x, transform.position.y, hit.point.z) - transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        transform.rotation = toRotation;
+    }
+
+    private void HandleMovement()
+    {
+        Vector3 moveDirection = new(_currentInput.x, 0, _currentInput.y);
+
+        _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
+    }
+
     private void ClientUpdate()
     {
         if (!isOwned) return;
 
-        Vector3 moveDirection = new(_currentInput.x, 0, _currentInput.y);
-        _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
+        HandleRotation();
+        HandleMovement();
     }
 
     public override void OnStartLocalPlayer()

@@ -1,6 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public static class Log
+public static class ConsoleLogger
 {
     public static void Server(object message)
     {

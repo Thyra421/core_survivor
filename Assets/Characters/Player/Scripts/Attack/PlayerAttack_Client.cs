@@ -3,9 +3,9 @@
 public partial class PlayerAttack
 {
     [ClientRpc]
-    private void Attack()
+    private void ClientAttack()
     {
-        Log.Client("Attack");
+        ConsoleLogger.Client("Attack");
     }
 
     public void OnAttack()
