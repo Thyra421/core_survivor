@@ -4,6 +4,8 @@ using UnityEngine;
 
 public partial class Enemy
 {
+    [CanBeNull] public Transform Target { get; private set; }
+
     [Server]
     private void ServerUpdate()
     {

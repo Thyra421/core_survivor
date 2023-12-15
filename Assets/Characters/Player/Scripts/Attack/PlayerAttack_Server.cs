@@ -12,11 +12,13 @@ public partial class PlayerAttack
         Gizmos.DrawWireSphere(transform.position + transform.forward * attackDistance, attackRadius);
     }
 
+    [Server]
     private void ServerAttack()
     {
         ConsoleLogger.Server("Attack");
 
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new(transform.position + transform.forward * attackDistance,
+            transform.position + transform.forward * (attackDistance + .1f));
         RaycastHit[] hits = Physics.SphereCastAll(ray, attackRadius);
 
         if (hits.Length <= 0) return;
@@ -24,12 +26,5 @@ public partial class PlayerAttack
         foreach (RaycastHit hit in hits)
             if (hit.transform.TryGetComponent(out IDamageable enemy))
                 enemy.TakeDamage(25);
-    }
-
-    [Command]
-    private void AttackCommand()
-    {
-        ClientAttack();
-        ServerAttack();
     }
 }
