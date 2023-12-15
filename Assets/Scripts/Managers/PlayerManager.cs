@@ -1,6 +1,6 @@
-using System.Collections.Generic;
-
 public class PlayerManager : Singleton<PlayerManager>
 {
-    public List<Player> Players { get; private set; } = new();
+    public Listenable<Player> LocalPlayer { get; set; } = new();
+
+    public ListenableList<Player> Players { get; private set; } = new();
 }

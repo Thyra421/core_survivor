@@ -15,7 +15,13 @@ public partial class PlayerAnimation
             _animator.SetFloat(SpeedRatioId, _playerMovement.SpeedRatio);
     }
 
-    public override void OnStartLocalPlayer()
+    [Client]
+    public void SetTrigger(string triggerName)
+    {
+        _animator.SetTrigger(triggerName);
+    }
+
+    public override void OnStartClient()
     {
         base.OnStartLocalPlayer();
         _animator = GetComponentInChildren<Animator>();

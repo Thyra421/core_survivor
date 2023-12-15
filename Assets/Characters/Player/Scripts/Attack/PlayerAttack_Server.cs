@@ -1,10 +1,12 @@
 ﻿using Mirror;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerHealth))]
 public partial class PlayerAttack
 {
     [Header("Server")] [SerializeField] private float attackRadius;
     [SerializeField] private float attackDistance;
+    private PlayerHealth _playerHealth;
 
     private void OnDrawGizmosSelected()
     {
@@ -12,11 +14,15 @@ public partial class PlayerAttack
         Gizmos.DrawWireSphere(transform.position + transform.forward * attackDistance, attackRadius);
     }
 
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        _playerHealth = GetComponent<PlayerHealth>();
+    }
+
     [Server]
     private void ServerAttack()
     {
-        ConsoleLogger.Server("Attack");
-
         Ray ray = new(transform.position + transform.forward * attackDistance,
             transform.position + transform.forward * (attackDistance + .1f));
         RaycastHit[] hits = Physics.SphereCastAll(ray, attackRadius);
@@ -24,7 +30,8 @@ public partial class PlayerAttack
         if (hits.Length <= 0) return;
 
         foreach (RaycastHit hit in hits)
-            if (hit.transform.TryGetComponent(out IDamageable enemy))
-                enemy.TakeDamage(25);
+            if (hit.transform.TryGetComponent(out IDamageable damageable) &&
+                !ReferenceEquals(damageable, _playerHealth))
+                damageable.TakeDamage(25);
     }
 }

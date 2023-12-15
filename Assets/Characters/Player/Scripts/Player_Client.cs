@@ -6,5 +6,6 @@ public partial class Player
     {
         base.OnStartLocalPlayer();
         Camera.main!.GetComponent<CameraController>().SetTarget(transform);
+        PlayerManager.Current.LocalPlayer.Value = this;
     }
 }
