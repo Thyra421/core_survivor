@@ -23,6 +23,8 @@ public partial class PlayerAttack
     [Server]
     private void ServerAttack()
     {
+        _cooldown = cooldownDuration;
+        
         Ray ray = new(transform.position + transform.forward * attackDistance,
             transform.position + transform.forward * (attackDistance + .1f));
         RaycastHit[] hits = Physics.SphereCastAll(ray, attackRadius);
@@ -30,8 +32,7 @@ public partial class PlayerAttack
         if (hits.Length <= 0) return;
 
         foreach (RaycastHit hit in hits)
-            if (hit.transform.TryGetComponent(out IDamageable damageable) &&
-                !ReferenceEquals(damageable, _playerHealth))
+            if (hit.transform.TryGetComponent(out EnemyHealth damageable))
                 damageable.TakeDamage(25);
     }
 }

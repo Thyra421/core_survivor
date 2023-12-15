@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 /// <summary>
 /// Listenable object to which you can add listeners and get informed when the value changes.

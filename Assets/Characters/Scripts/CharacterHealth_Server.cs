@@ -5,20 +5,20 @@ public abstract partial class CharacterHealth
 {
     public override void OnStartServer()
     {
-        _currentHealth = _maxHealth;
+        _currentHealthSync = _maxHealthSync;
         max.OnValueChanged += i =>
         {
             if (i < current.Value)
-                _currentHealth = i;
+                _currentHealthSync = i;
         };
     }
 
     [Server]
     public void TakeDamage(int amount)
     {
-        _currentHealth = Math.Clamp(_currentHealth - amount, 0, _maxHealth);
+        _currentHealthSync = Math.Clamp(_currentHealthSync - amount, 0, _maxHealthSync);
 
-        if (_currentHealth == 0)
+        if (_currentHealthSync == 0)
             Die();
     }
 

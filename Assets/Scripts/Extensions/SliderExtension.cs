@@ -1,11 +1,18 @@
-﻿using UnityEngine.UI;
+﻿using System;
+using UnityEngine.UI;
 
 internal static class SliderExtension
 {
-    public static void BindValue(this Slider slider, Listenable<int> listenable)
+    public static void BindValue(this Slider slider, Listenable<int> listenable, Action<int> callback = null)
     {
         slider.value = listenable.Value;
-        listenable.OnValueChanged += value => slider.value = value;
+        callback?.Invoke(listenable.Value);
+        
+        listenable.OnValueChanged += value =>
+        {
+            slider.value = value;
+            callback?.Invoke(value);
+        };
     }
 
     public static void BindMaxValue(this Slider slider, Listenable<int> listenable)

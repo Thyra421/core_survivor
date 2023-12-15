@@ -3,23 +3,28 @@ using System.Collections.Generic;
 
 public class ListenableList<T> : List<T>
 {
-    public event Action<List<T>> OnValueChanged;
-        
+    public event Action<T> OnAddedElement;
+    public event Action<T> OnRemovedElement;
+
     /// <summary>
     /// Add new value and notify listeners.
     /// </summary>
     public new void Add(T value)
     {
         base.Add(value);
-        OnValueChanged?.Invoke(this);
+
+        OnAddedElement?.Invoke(value);
     }
-    
+
     /// <summary>
     /// Remove value and notify listeners.
     /// </summary>
-    public new void Remove(T value)
+    public new bool Remove(T value)
     {
-        base.Remove(value);
-        OnValueChanged?.Invoke(this);
+        bool result = base.Remove(value);
+
+        OnRemovedElement?.Invoke(value);
+
+        return result;
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Mirror;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,17 +7,23 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public partial class PlayerMovement
 {
-    [SerializeField] private float movementSpeed;
+    [Header("Speed")] [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private float deceleration;
+
+    [Header("Dash")] [SerializeField] private float dashDistance;
+    [SerializeField] private float dashSpeed;
 
     private CharacterController _characterController;
     private Vector2 _currentInput;
     private float _currentSpeed;
     private Vector3 _momentum;
+    private bool _canMove = true;
 
-    public float SpeedRatio { get; private set; }
+    public float SpeedRatio => _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
+
+    #region Movement
 
     [Client]
     private void CalculateMomentum()
@@ -50,14 +58,53 @@ public partial class PlayerMovement
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 
-    [Client]
-    private void ClientUpdate()
-    {
-        if (!isOwned) return;
+    #endregion
 
-        HandleMovementAndRotation();
-        SpeedRatio = _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
+    #region Dash
+
+    [Client]
+    public void Dash()
+    {
+        _canMove = false;
+        _currentSpeed = dashSpeed;
+        StartCoroutine(nameof(DashCoroutine));
     }
+
+    [Client]
+    private void OnFinishDash()
+    {
+        _canMove = true;
+    }
+
+    [Client]
+    private IEnumerator DashCoroutine()
+    {
+        Vector3 originalPosition = transform.position;
+        float timeout = dashDistance / dashSpeed;
+
+        while (Vector3.Distance(transform.position, originalPosition) < dashDistance && timeout > 0)
+        {
+            _characterController.Move(transform.forward * dashSpeed * Time.deltaTime);
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        OnFinishDash();
+        yield return null;
+    }
+
+    #endregion
+
+    #region Inputs
+
+    public void OnMovement(InputValue value)
+    {
+        if (!isClient || !isOwned) return;
+
+        _currentInput = value.Get<Vector2>();
+    }
+
+    #endregion
 
     public override void OnStartLocalPlayer()
     {
@@ -65,10 +112,13 @@ public partial class PlayerMovement
         _characterController = GetComponent<CharacterController>();
     }
 
-    public void OnMovement(InputValue value)
+    [Client]
+    private void ClientUpdate()
     {
-        if (!isClient || !isOwned) return;
+        if (!isOwned) return;
 
-        _currentInput = value.Get<Vector2>();
+        if (!_canMove) return;
+
+        HandleMovementAndRotation();
     }
 }
