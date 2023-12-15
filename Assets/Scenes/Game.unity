@@ -384,6 +384,8 @@ GameObject:
   - component: {fileID: 188022648}
   - component: {fileID: 188022647}
   - component: {fileID: 188022646}
+  - component: {fileID: 188022651}
+  - component: {fileID: 188022650}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -477,6 +479,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2139596376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188022650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188022645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ceb339997c8304e9354d4ce5ddc9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emit: 1
+  _use: 1
+  _emitTime: 0
+  _material: {fileID: 2100000, guid: 5f402d1520e5fa74fa21e08f85b71370, type: 2}
+  _lifeTime: 1
+  _colors: []
+  _sizes: []
+  _minVertexDistance: 0.1
+  _maxVertexDistance: 10
+  _minVertexDistanceSqr: 0
+  _maxVertexDistanceSqr: 0
+  _maxAngle: 3
+  _autoDestruct: 0
+  subdivisions: 4
+  _base: {fileID: 188022649}
+  _tip: {fileID: 188022649}
+  _points: []
+  _smoothedPoints: []
+  _trailObject: {fileID: 0}
+  _trailMesh: {fileID: 0}
+  _lastPosition: {x: 0, y: 0, z: 0}
+--- !u!54 &188022651
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188022645}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &328304917
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3955d5dbc509c6e4fb55be58da0e3776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 10, z: -5}
+  offset: {x: 0, y: 10, z: -3}
 --- !u!1 &396463031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,7 +1811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b0b4de3bd6e976e4f8b3adc6e72377ed, type: 2}
+  - {fileID: 2100000, guid: 07dc66ae04b7f6a43b9674bf0fefb33a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -15,7 +15,7 @@ public partial class PlayerAttack
 
         if (!isOwned) return;
 
-        _playerMovement.Dash();
+        // _playerMovement.Dash();
         _cooldown = cooldownDuration;
     }
 

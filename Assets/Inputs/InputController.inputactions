@@ -1,5 +1,5 @@
 {
-    "name": "Input",
+    "name": "InputController",
     "maps": [
         {
             "name": "Player",
@@ -18,6 +18,15 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "639c22c9-cab7-4e95-b9e6-96aa76f37ea8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "30aa470f-b84b-4b8d-9199-78aa01e6e093",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -88,6 +97,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "056cbeb0-d40d-4e72-962f-e9744b8d40d1",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

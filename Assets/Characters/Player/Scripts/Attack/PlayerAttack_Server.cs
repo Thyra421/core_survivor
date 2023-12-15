@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Collections;
+using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerHealth))]
@@ -24,15 +25,22 @@ public partial class PlayerAttack
     private void ServerAttack()
     {
         _cooldown = cooldownDuration;
-        
-        Ray ray = new(transform.position + transform.forward * attackDistance,
-            transform.position + transform.forward * (attackDistance + .1f));
-        RaycastHit[] hits = Physics.SphereCastAll(ray, attackRadius);
 
-        if (hits.Length <= 0) return;
+        StartCoroutine(ServerAttackCoroutine());
+    }
 
-        foreach (RaycastHit hit in hits)
-            if (hit.transform.TryGetComponent(out EnemyHealth damageable))
+    [Server]
+    private IEnumerator ServerAttackCoroutine()
+    {
+        yield return new WaitForSeconds(attackDelay);
+
+        Vector3 attackPosition = transform.position + transform.forward * attackDistance;
+        Collider[] hits = Physics.OverlapSphere(attackPosition, attackRadius);
+
+        if (hits.Length <= 0) yield return null;
+
+        foreach (Collider c in hits)
+            if (c.transform.TryGetComponent(out EnemyHealth damageable))
                 damageable.TakeDamage(25);
     }
 }

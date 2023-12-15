@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Mirror;
 using UnityEngine;
@@ -14,12 +13,14 @@ public partial class PlayerMovement
 
     [Header("Dash")] [SerializeField] private float dashDistance;
     [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashCooldownDuration;
 
     private CharacterController _characterController;
     private Vector2 _currentInput;
     private float _currentSpeed;
     private Vector3 _momentum;
     private bool _canMove = true;
+    private float _dashCooldown;
 
     public float SpeedRatio => _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
 
@@ -63,8 +64,9 @@ public partial class PlayerMovement
     #region Dash
 
     [Client]
-    public void Dash()
+    private void Dash()
     {
+        _dashCooldown = dashCooldownDuration;
         _canMove = false;
         _currentSpeed = dashSpeed;
         StartCoroutine(nameof(DashCoroutine));
@@ -99,9 +101,16 @@ public partial class PlayerMovement
 
     public void OnMovement(InputValue value)
     {
+        _currentInput = value.Get<Vector2>();
+    }
+
+    public void OnDash()
+    {
         if (!isClient || !isOwned) return;
 
-        _currentInput = value.Get<Vector2>();
+        if (_dashCooldown > 0) return;
+        
+        Dash();
     }
 
     #endregion
@@ -120,5 +129,6 @@ public partial class PlayerMovement
         if (!_canMove) return;
 
         HandleMovementAndRotation();
+        _dashCooldown -= Time.deltaTime;
     }
 }
