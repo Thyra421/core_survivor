@@ -8,10 +8,12 @@ public partial class Enemy
     private EnemyHealth _enemyHealth;
     [CanBeNull] public Transform Target { get; private set; }
 
+    public bool IsDead => _enemyHealth.IsDead;
+
     [Server]
     private void ServerUpdate()
     {
-        if (_enemyHealth.IsDead) return;
+        if (IsDead) return;
         
         FindBestTarget();
     }

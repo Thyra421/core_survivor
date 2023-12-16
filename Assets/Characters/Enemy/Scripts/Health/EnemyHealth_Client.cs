@@ -18,7 +18,7 @@ public partial class EnemyHealth
     [ClientRpc]
     private void ClientDie()
     {
-        _enemyAnimation.SetTrigger("Die");
+        _enemyAnimation.ClientSetTrigger("Die");
         _capsuleCollider.enabled = false;
     }
 }

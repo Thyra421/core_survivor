@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 
 public class DestructibleEnvironment : CharacterHealth
@@ -11,5 +12,10 @@ public class DestructibleEnvironment : CharacterHealth
     private void Start()
     {
         EnvironmentManager.Current.Environments.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        EnvironmentManager.Current.Environments.Remove(this);
     }
 }
