@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 608206359}
   - component: {fileID: 608206360}
   m_Layer: 5
-  m_Name: PropulsorSlider
+  m_Name: StaminaSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3006,6 +3006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 711559259}
+  staminaSlider: {fileID: 608206360}
 --- !u!1 &1927661274
 GameObject:
   m_ObjectHideFlags: 0

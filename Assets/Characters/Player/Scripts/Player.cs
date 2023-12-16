@@ -5,10 +5,12 @@ using UnityEngine;
 public partial class Player : NetworkBehaviour
 {
     public PlayerHealth Health { get; private set; }
+    public PlayerMovement Movement { get; private set; }
 
     private void Awake()
     {
         Health = GetComponent<PlayerHealth>();
+        Movement = GetComponent<PlayerMovement>();
     }
 
     private void Start()

@@ -197,6 +197,8 @@ MonoBehaviour:
   dashDistance: 5
   dashSpeed: 20
   dashCooldownDuration: 2
+  dashStaminaCostPerSecond: 50
+  staminaRegenerationPerSecond: 3
 --- !u!114 &4991769375093246907
 MonoBehaviour:
   m_ObjectHideFlags: 0

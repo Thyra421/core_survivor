@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Mirror;
 using UnityEngine;
@@ -14,6 +15,8 @@ public partial class PlayerMovement
     [Header("Dash")] [SerializeField] private float dashDistance;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashCooldownDuration;
+    [SerializeField] private float dashStaminaCostPerSecond;
+    [SerializeField] private float staminaRegenerationPerSecond;
 
     private CharacterController _characterController;
     private Vector2 _currentInput;
@@ -21,6 +24,8 @@ public partial class PlayerMovement
     private Vector3 _momentum;
     private bool _canMove = true;
     private float _dashCooldown;
+
+    public readonly Listenable<float> Stamina = new(100);
 
     public float SpeedRatio => _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
 
@@ -84,9 +89,11 @@ public partial class PlayerMovement
         Vector3 originalPosition = transform.position;
         float timeout = dashDistance / dashSpeed;
 
-        while (Vector3.Distance(transform.position, originalPosition) < dashDistance && timeout > 0)
+        while (Vector3.Distance(transform.position, originalPosition) < dashDistance && timeout > 0 &&
+               Stamina.Value > 0)
         {
             _characterController.Move(transform.forward * dashSpeed * Time.deltaTime);
+            Stamina.Value = Math.Clamp(Stamina.Value - dashStaminaCostPerSecond * Time.deltaTime, 0, 100);
             timeout -= Time.deltaTime;
             yield return null;
         }
@@ -109,7 +116,7 @@ public partial class PlayerMovement
         if (!isClient || !isOwned) return;
 
         if (_dashCooldown > 0) return;
-        
+
         Dash();
     }
 
@@ -130,5 +137,6 @@ public partial class PlayerMovement
 
         HandleMovementAndRotation();
         _dashCooldown -= Time.deltaTime;
+        Stamina.Value = Math.Clamp(Stamina.Value + staminaRegenerationPerSecond * Time.deltaTime, 0, 100);
     }
 }

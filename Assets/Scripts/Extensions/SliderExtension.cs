@@ -3,6 +3,18 @@ using UnityEngine.UI;
 
 internal static class SliderExtension
 {
+    public static void BindValue(this Slider slider, Listenable<float> listenable, Action<float> callback = null)
+    {
+        slider.value = listenable.Value;
+        callback?.Invoke(listenable.Value);
+        
+        listenable.OnValueChanged += value =>
+        {
+            slider.value = value;
+            callback?.Invoke(value);
+        };
+    }
+    
     public static void BindValue(this Slider slider, Listenable<int> listenable, Action<int> callback = null)
     {
         slider.value = listenable.Value;
@@ -13,6 +25,12 @@ internal static class SliderExtension
             slider.value = value;
             callback?.Invoke(value);
         };
+    }
+
+    public static void BindMaxValue(this Slider slider, Listenable<float> listenable)
+    {
+        slider.maxValue = listenable.Value;
+        listenable.OnValueChanged += value => slider.maxValue = value;
     }
 
     public static void BindMaxValue(this Slider slider, Listenable<int> listenable)
