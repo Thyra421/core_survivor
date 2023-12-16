@@ -216,8 +216,8 @@ MonoBehaviour:
   syncInterval: 0
   attackDelay: 0.6
   cooldownDuration: 1.25
-  attackRadius: 2
-  attackDistance: 2
+  attackRadius: 1.5
+  attackDistance: 1.5
 --- !u!114 &4089465659971166272
 MonoBehaviour:
   m_ObjectHideFlags: 0

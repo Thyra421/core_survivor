@@ -2,23 +2,17 @@
 using Mirror;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerHealth))]
 public partial class PlayerAttack
 {
     [Header("Server")] [SerializeField] private float attackRadius;
     [SerializeField] private float attackDistance;
-    private PlayerHealth _playerHealth;
+
+    private Vector3 AttackPosition => transform.position + transform.up + transform.forward * attackDistance;
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + transform.forward * attackDistance, attackRadius);
-    }
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        _playerHealth = GetComponent<PlayerHealth>();
+        Gizmos.DrawWireSphere(AttackPosition, attackRadius);
     }
 
     [Server]
@@ -34,8 +28,7 @@ public partial class PlayerAttack
     {
         yield return new WaitForSeconds(attackDelay);
 
-        Vector3 attackPosition = transform.position + transform.forward * attackDistance;
-        Collider[] hits = Physics.OverlapSphere(attackPosition, attackRadius);
+        Collider[] hits = Physics.OverlapSphere(AttackPosition, attackRadius);
 
         if (hits.Length <= 0) yield return null;
 
