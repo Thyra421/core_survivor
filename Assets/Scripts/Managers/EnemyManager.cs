@@ -10,7 +10,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public ListenableList<Enemy> Enemies { get; } = new();
 
     [Server]
-    public void SpawnRandom()
+    private void SpawnRandom()
     {
         GameObject newInstance = Instantiate(enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
         NetworkServer.Spawn(newInstance);

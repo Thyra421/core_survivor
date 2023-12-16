@@ -39,6 +39,16 @@ public partial class Enemy
             shortestDistance = distance;
             target = p.transform;
         }
+        
+        foreach (DestructibleEnvironment e in EnvironmentManager.Current.Environments)
+        {
+            float distance = Vector3.Distance(transform.position, e.transform.position);
+
+            if (!(distance < shortestDistance)) continue;
+
+            shortestDistance = distance;
+            target = e.transform;
+        }
 
         Target = target;
     }
