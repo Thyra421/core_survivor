@@ -9,6 +9,7 @@ public class EnemyUI : MonoBehaviour
     {
         EnemyHealth enemyHealth = GetComponentInParent<EnemyHealth>();
         healthSlider.BindMaxValue(enemyHealth.max);
-        healthSlider.BindValue(enemyHealth.current, i => healthSlider.gameObject.SetActive(!enemyHealth.IsFullHealth));
+        healthSlider.BindValue(enemyHealth.current,
+            i => healthSlider.gameObject.SetActive(!(enemyHealth.IsFullHealth || enemyHealth.IsDead)));
     }
 }

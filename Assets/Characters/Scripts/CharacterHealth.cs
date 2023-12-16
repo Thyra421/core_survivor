@@ -4,10 +4,11 @@ public abstract partial class CharacterHealth : NetworkBehaviour, IDamageable
 {
     [SyncVar(hook = nameof(CurrentHealthHook))]
     private int _currentHealthSync;
+    
+    public bool IsFullHealth => current.Value == max.Value;
+    public bool IsDead => current.Value == 0;
 
     public readonly Listenable<int> current = new();
-
-    public bool IsFullHealth => _currentHealthSync == _maxHealthSync;
 
     private void CurrentHealthHook(int oldValue, int newValue)
     {

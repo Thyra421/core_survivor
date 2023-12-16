@@ -2,14 +2,23 @@ using JetBrains.Annotations;
 using Mirror;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyHealth))]
 public partial class Enemy
 {
+    private EnemyHealth _enemyHealth;
     [CanBeNull] public Transform Target { get; private set; }
 
     [Server]
     private void ServerUpdate()
     {
+        if (_enemyHealth.IsDead) return;
         FindBestTarget();
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        _enemyHealth = GetComponent<EnemyHealth>();
     }
 
     [Server]
