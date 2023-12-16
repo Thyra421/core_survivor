@@ -8,9 +8,10 @@ public class ResourcesHUD : MonoBehaviour
 
     public void Initialize(Player player)
     {
-        healthSlider.BindMaxValue(player.Health.max);
-        healthSlider.BindValue(player.Health.current);
-        staminaSlider.BindValue(player.Movement.Stamina);
+        healthSlider.maxValue = player.Health.Max;
+        healthSlider.BindValue(player.Health.Current);
+        
         staminaSlider.maxValue = 100;
+        staminaSlider.BindValue(player.Movement.Stamina);
     }
 }

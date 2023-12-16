@@ -12,6 +12,7 @@ public partial class Enemy
     private void ServerUpdate()
     {
         if (_enemyHealth.IsDead) return;
+        
         FindBestTarget();
     }
 
