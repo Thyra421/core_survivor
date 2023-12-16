@@ -33,7 +33,7 @@ public partial class PlayerAttack
         if (hits.Length <= 0) yield return null;
 
         foreach (Collider c in hits)
-            if (c.transform.TryGetComponent(out IDamageable damageable) && damageable is not PlayerHealth)
+            if (c.transform.TryGetComponent(out EnemyHealth damageable))
                 damageable.TakeDamage(25);
     }
 }
