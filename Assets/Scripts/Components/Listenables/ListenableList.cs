@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class ListenableList<T> : List<T>
 {
-    public event Action<T> OnAddedElement;
-    public event Action<T> OnRemovedElement;
+    public event Action<ListenableList<T>> OnChanged;
 
     /// <summary>
     /// Add new value and notify listeners.
@@ -13,7 +14,7 @@ public class ListenableList<T> : List<T>
     {
         base.Add(value);
 
-        OnAddedElement?.Invoke(value);
+        OnChanged?.Invoke(this);
     }
 
     /// <summary>
@@ -23,8 +24,19 @@ public class ListenableList<T> : List<T>
     {
         bool result = base.Remove(value);
 
-        OnRemovedElement?.Invoke(value);
+        OnChanged?.Invoke(this);
 
         return result;
+    }
+
+    /// <summary>
+    /// Remove value and notify listeners.
+    /// </summary>
+    public new void RemoveAt(int index)
+    {
+        Debug.Log("remove at");
+        base.RemoveAt(index);
+
+        OnChanged?.Invoke(this);
     }
 }
