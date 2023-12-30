@@ -8,7 +8,8 @@ public class EventRegistry<K, T>
     /// <summary>
     /// Adds a listener to the appropriate type.
     /// </summary>
-    public void AddListener(K key, Action<T> listener) {
+    public void AddListener(K key, Action<T> listener)
+    {
         if (!_listeners.ContainsKey(key))
             _listeners.Add(key, new EventListener<T>());
 
@@ -19,12 +20,14 @@ public class EventRegistry<K, T>
     /// Invokes the event associated to the given type.
     /// Does nothing if no events are registered for this type.
     /// </summary>
-    public void Invoke(K key, T value) {
-        if (_listeners.TryGetValue(key, out  EventListener<T> listener))
+    public void Invoke(K key, T value)
+    {
+        if (_listeners.TryGetValue(key, out EventListener<T> listener))
             listener.ListenerEvent?.Invoke(value);
     }
 
-    public void Clear() {
+    public void Clear()
+    {
         _listeners.Clear();
     }
 }

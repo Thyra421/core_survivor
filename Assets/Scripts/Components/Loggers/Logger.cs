@@ -11,4 +11,9 @@ public static class ConsoleLogger
     {
         Debug.Log($"<color=#ffae00>[CLIENT] {message}</color>");
     }
+    
+    public static void Master(object message)
+    {
+        Debug.Log($"<color=#5C9903>[MASTER] {message}</color>");
+    }
 }

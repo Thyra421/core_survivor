@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class ListenableList<T> : List<T>
@@ -34,7 +33,6 @@ public class ListenableList<T> : List<T>
     /// </summary>
     public new void RemoveAt(int index)
     {
-        Debug.Log("remove at");
         base.RemoveAt(index);
 
         OnChanged?.Invoke(this);

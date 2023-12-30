@@ -5,20 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(KcpTransport))]
 public partial class Network : NetworkManager
 {
-    public void Initialize(bool masterPort = false)
+    public override void Start()
     {
-        switch (InstanceModeManager.Mode)
-        {
+        base.Start();
+
+        GameInfo gameInfo = MasterServer.Current.GameInfo!;
+
+        ((KcpTransport)transport).port = gameInfo.Port;
+        networkAddress = gameInfo.NetworkAddress;
+
+        switch (gameInfo.InstanceMode) {
+            case InstanceMode.Host:
+                StartHost();
+                break;
             case InstanceMode.Client:
-                ((KcpTransport)transport).port = masterPort ? (ushort)7777 : (ushort)InstanceModeManager.ServerPort!;
                 StartClient();
-                break;
-            case InstanceMode.MasterServer:
-                StartServer();
-                break;
-            case InstanceMode.DedicatedServer:
-                ((KcpTransport)transport).port = (ushort)InstanceModeManager.ServerPort!;
-                StartServer();
                 break;
         }
     }
