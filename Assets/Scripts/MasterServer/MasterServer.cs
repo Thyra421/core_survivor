@@ -1,5 +1,4 @@
 using System;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class MasterServer : Singleton<MasterServer>
@@ -9,8 +8,6 @@ public class MasterServer : Singleton<MasterServer>
 
     private readonly MessageRegistry _messageRegistry = new();
     private TcpTransport _tcpTransport;
-
-    [CanBeNull] public GameInfo GameInfo { get; set; }
 
     public void Send(MessageBase message)
     {
@@ -28,10 +25,4 @@ public class MasterServer : Singleton<MasterServer>
         _tcpTransport = new TcpTransport(_messageRegistry);
         _tcpTransport.Connect(serverAddress, serverPort);
     }
-}
-
-public enum InstanceMode
-{
-    Host,
-    Client
 }

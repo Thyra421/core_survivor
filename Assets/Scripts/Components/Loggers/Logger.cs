@@ -16,4 +16,9 @@ public static class ConsoleLogger
     {
         Debug.Log($"<color=#5C9903>[MASTER] {message}</color>");
     }
+    
+    public static void Steamworks(object message)
+    {
+        Debug.Log($"<color=#1b2838>[STEAMWORKS] {message}</color>");
+    }
 }
