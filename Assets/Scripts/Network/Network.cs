@@ -14,14 +14,9 @@ public partial class Network : NetworkManager
 
         networkAddress = LobbyManager.Current.NetworkAddress;
 
-        switch (LobbyManager.Current.InstanceMode) {
-            case InstanceMode.Host:
-                StartHost();
-                break;
-            case InstanceMode.Client:
-                StartClient();
-                break;
-        }
+        if (LobbyManager.Current.IsHost) StartHost();
+
+        else StartClient();
 
         foreach (GameObject go in (GameObject[])FindObjectsOfType(typeof(GameObject))) {
             go.gameObject.BroadcastMessage("StartGame", null, SendMessageOptions.DontRequireReceiver);

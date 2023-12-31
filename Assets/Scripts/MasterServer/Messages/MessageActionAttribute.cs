@@ -1,7 +1,7 @@
 ﻿using System;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-class MessageActionAttribute : Attribute
+public class MessageActionAttribute : Attribute
 {
     public string Action { get; }
 

@@ -1,29 +1,31 @@
 public class LobbiesManager : Singleton<LobbiesManager>
 {
-    public ListenableList<LobbyInformations> Lobbies { get; } = new();
+    public ListenableList<LobbyInformation> Lobbies { get; } = new();
 
-    private void OnDeleteLobbyMessage(DeleteLobbyMessage message)
+    private void OnDeletedLobbyMessage(DeletedLobbyMessage message)
     {
-        int index = Lobbies.FindIndex((r) => r.name == message.name);
+        int index = Lobbies.FindIndex((r) => r.name == message.id);
 
         if (index == -1) return;
-        
+
         Lobbies.RemoveAt(index);
     }
 
-    private void OnCreateLobbyMessage(CreateLobbyMessage message)
+    private void OnCreatedLobbyMessage(CreatedLobbyMessage message)
     {
-        LobbyInformations lobbyInformations = new() {
-            name = message.name,
-            networkAddress = message.ip,
-            port = message.port
+        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetLobbyInformation(ulong.Parse(message.id));
+
+        LobbyInformation lobbyInformation = new() {
+            id = steamLobbyInformation.id,
+            name = steamLobbyInformation.name
         };
-        Lobbies.Add(lobbyInformations);
+
+        Lobbies.Add(lobbyInformation);
     }
 
     protected void Start()
     {
-        MasterServer.Current.AddListener<CreateLobbyMessage>(OnCreateLobbyMessage);
-        MasterServer.Current.AddListener<DeleteLobbyMessage>(OnDeleteLobbyMessage);
+        MasterServer.Current.AddListener<CreatedLobbyMessage>(OnCreatedLobbyMessage);
+        MasterServer.Current.AddListener<DeletedLobbyMessage>(OnDeletedLobbyMessage);
     }
 }

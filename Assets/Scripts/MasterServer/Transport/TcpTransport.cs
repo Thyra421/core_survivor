@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 
-public class TcpTransport
+internal class TcpTransport
 {
     private TcpClient _tcpClient;
     private readonly MessageRegistry _messageRegistry;
@@ -59,7 +59,7 @@ public class TcpTransport
     {
         ConsoleLogger.Master($"Received {message}");
 
-        MessageBase messageBase = JsonUtility.FromJson<MessageBase>(message);
+        ServerMessageBase messageBase = JsonUtility.FromJson<ServerMessageBase>(message);
         Type messageType = MessageHelper.GetType(messageBase.action);
 
         object obj = JsonUtility.FromJson(message, messageType);

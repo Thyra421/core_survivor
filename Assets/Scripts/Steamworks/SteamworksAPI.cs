@@ -3,20 +3,18 @@ using Steamworks;
 
 public class SteamworksAPI
 {
-    private const string HostAddressKey = "HostAddress";
-
     // Assign callbacks to local variables to avoid garbage collection.
     protected Callback<LobbyCreated_t> lobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> joinRequested;
     protected Callback<LobbyEnter_t> lobbyEnter;
 
-    private Action<SteamLobbyInformation> _onJoinedLobby;
-    private Action<SteamLobbyInformation> _onCreatedLobby;
+    private Action<ulong> _onJoinedLobby;
+    private Action<ulong> _onCreatedLobby;
 
     public SteamworksAPI()
     {
         if (!SteamManager.Initialized) throw new Exception("Steam is not open.");
-        
+
         string name = SteamFriends.GetPersonaName();
         ConsoleLogger.Steamworks($"Connected to Steam as {name}");
 
@@ -47,10 +45,12 @@ public class SteamworksAPI
 
         ulong lobbyId = callback.m_ulSteamIDLobby;
         string networkAddress = SteamUser.GetSteamID().ToString();
+        string name = $"{SteamFriends.GetPersonaName()}'s lobby";
 
-        SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), HostAddressKey, networkAddress);
+        SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), SteamworksConsts.HostAddressKey, networkAddress);
+        SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), SteamworksConsts.LobbyNameKey, name);
 
-        _onCreatedLobby.Invoke(new SteamLobbyInformation(lobbyId, networkAddress));
+        _onCreatedLobby.Invoke(lobbyId);
     }
 
     /// <summary>
@@ -66,20 +66,19 @@ public class SteamworksAPI
         ConsoleLogger.Steamworks("Lobby entered successfully");
 
         ulong lobbyId = callback.m_ulSteamIDLobby;
-        string networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(lobbyId), HostAddressKey);
 
-        _onJoinedLobby.Invoke(new SteamLobbyInformation(lobbyId, networkAddress));
+        _onJoinedLobby.Invoke(lobbyId);
     }
 
-    public void JoinLobby(ulong lobbyId, Action<SteamLobbyInformation> onJoinedLobby)
+    public void JoinLobby(ulong lobbyId, Action<ulong> onJoinedLobby)
     {
         _onJoinedLobby = onJoinedLobby;
 
         SteamMatchmaking.JoinLobby(new CSteamID(lobbyId));
     }
 
-    public void CreateAndJoinLobby(int maxConnections, Action<SteamLobbyInformation> onCreatedLobby,
-        Action<SteamLobbyInformation> onJoinedLobby)
+    public void CreateAndJoinLobby(int maxConnections, Action<ulong> onCreatedLobby,
+        Action<ulong> onJoinedLobby)
     {
         _onCreatedLobby = onCreatedLobby;
         _onJoinedLobby = onJoinedLobby;
