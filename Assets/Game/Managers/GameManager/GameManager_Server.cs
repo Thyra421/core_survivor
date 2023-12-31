@@ -11,9 +11,9 @@ public partial class GameManager
     {
         _timer -= Time.deltaTime;
 
-        if (_timer <= 0)
-        {
-            EnemyManager.Current.SpawnWave(8);
+        if (_timer <= 0) {
+            StartCoroutine(EnemyManager.Current.SpawnWave(8));
+            
             _timer = 12;
         }
 

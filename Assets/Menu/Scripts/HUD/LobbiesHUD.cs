@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,12 @@ public class LobbiesHUD : MonoBehaviour
     [SerializeField] private Button createLobbyButton;
     [SerializeField] private TMP_InputField createLobbyNameInputField;
 
-    private void OnGameInstancesChanged(ListenableList<Lobby> lobbies)
+    private void OnLobbiesChanged(ListenableList<LobbyInformations> lobbies)
     {
         for (int i = lobbiesRoot.childCount - 1; i >= 0; i--)
             Destroy(lobbiesRoot.GetChild(i).gameObject);
 
-        foreach (Lobby lobby in lobbies) {
+        foreach (LobbyInformations lobby in lobbies) {
             GameObject newEntry = Instantiate(lobbiesEntryPrefab, lobbiesRoot);
             LobbiesEntryHUD hud = newEntry.GetComponent<LobbiesEntryHUD>();
 
@@ -29,8 +30,13 @@ public class LobbiesHUD : MonoBehaviour
 
     private void Start()
     {
-        LobbiesManager.Current.Lobbies.OnChanged += OnGameInstancesChanged;
-        OnGameInstancesChanged(LobbiesManager.Current.Lobbies);
+        LobbiesManager.Current.Lobbies.OnChanged += OnLobbiesChanged;
+        OnLobbiesChanged(LobbiesManager.Current.Lobbies);
         createLobbyButton.onClick.AddListener(OnClickCreateRoom);
+    }
+
+    private void OnDestroy()
+    {
+        LobbiesManager.Current.Lobbies.OnChanged -= OnLobbiesChanged;
     }
 }

@@ -7,14 +7,14 @@ public class LobbiesEntryHUD : MonoBehaviour
     [SerializeField] private TMP_Text gameNameText;
     [SerializeField] private Button joinGameButton;
 
-    private void OnClickJoin(Lobby lobby)
+    private void OnClickJoin(LobbyInformations lobbyInformations)
     {
-        LobbyManager.Current.JoinLobby(ulong.Parse(lobby.name));
+        LobbyManager.Current.JoinLobby(ulong.Parse(lobbyInformations.name));
     }
 
-    public void Initialize(Lobby lobby)
+    public void Initialize(LobbyInformations lobbyInformations)
     {
-        joinGameButton.onClick.AddListener(() => OnClickJoin(lobby));
-        gameNameText.text = lobby.name;
+        joinGameButton.onClick.AddListener(() => OnClickJoin(lobbyInformations));
+        gameNameText.text = lobbyInformations.name;
     }
 }

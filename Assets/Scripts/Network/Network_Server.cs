@@ -1,4 +1,3 @@
-using kcp2k;
 using Mirror;
 
 public partial class Network
@@ -7,7 +6,6 @@ public partial class Network
     {
         base.OnStartServer();
         ConsoleLogger.Server("Started");
-        ConsoleLogger.Server($"Network address : {networkAddress}:{((KcpTransport)transport).port}");
     }
 
     public override void OnStopServer()

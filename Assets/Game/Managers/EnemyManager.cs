@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Collections;
+using Mirror;
 using UnityEngine;
 
 public class EnemyManager : Singleton<EnemyManager>
@@ -15,14 +16,16 @@ public class EnemyManager : Singleton<EnemyManager>
         GameObject newInstance = Instantiate(enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
         NetworkServer.Spawn(newInstance);
     }
-    
+
     [Server]
-    public void SpawnWave(int amount)
+    public IEnumerator SpawnWave(int amount)
     {
-        for (int i = 0; i < amount; i++)
-        {
+        for (int i = 0; i < amount; i++) {
             SpawnRandom();
+            yield return new WaitForSeconds(0.5f);
         }
+
+        yield return null;
     }
 
     private Vector3 GetRandomSpawnPosition()

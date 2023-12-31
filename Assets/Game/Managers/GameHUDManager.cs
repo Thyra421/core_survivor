@@ -6,7 +6,7 @@ public class GameHUDManager : Singleton<GameHUDManager>
     [SerializeField] private ResourcesHUD resourcesHUD;
     [SerializeField] private TMP_Text timerText;
 
-    private void Start()
+    private void StartGame()
     {
         PlayerManager.Current.LocalPlayer.OnValueChanged += OnLocalPlayerChanged;
         timerText.Bind(GameManager.Current.timer, value => $"Next wave in {Mathf.Floor(value)}s");

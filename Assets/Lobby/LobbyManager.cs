@@ -2,39 +2,45 @@ public class LobbyManager : Singleton<LobbyManager>
 {
     private SteamworksAPI _steamworksAPI;
 
-    void OnCreatedAndJoinedLobby(SteamLobby lobby)
+    public InstanceMode InstanceMode { get; private set; }
+    public string NetworkAddress { get; private set; }
+
+    private void OnCreatedLobby(SteamLobbyInformation lobbyInformation)
     {
         MasterServer.Current.Send(new CreateLobbyMessage {
-            name = lobby.LobbyId.ToString(),
-            ip = lobby.NetworkAddress,
+            name = lobbyInformation.LobbyId.ToString(),
+            ip = lobbyInformation.NetworkAddress,
             port = 123,
             action = "create"
         });
     }
 
-    void OnJoinedLobby(SteamLobby lobby)
+    private void OnClientJoinedLobby(SteamLobbyInformation lobbyInformation)
     {
-        MasterServer.Current.Send(new CreateLobbyMessage {
-            name = lobby.LobbyId.ToString(),
-            ip = lobby.NetworkAddress,
-            port = 123,
-            action = "create"
-        });
+        NetworkAddress = lobbyInformation.NetworkAddress;
+        InstanceMode = InstanceMode.Client;
+        SceneLoader.Current.LoadGameAsync();
+    }
+
+    private void OnHostJoinedLobby(SteamLobbyInformation lobbyInformation)
+    {
+        NetworkAddress = lobbyInformation.NetworkAddress;
+        InstanceMode = InstanceMode.Host;
+        SceneLoader.Current.LoadGameAsync();
     }
 
     public void CreateAndJoinLobby()
     {
-        _steamworksAPI.CreateAndJoinLobby(4, OnCreatedAndJoinedLobby);
+        _steamworksAPI.CreateAndJoinLobby(4, OnCreatedLobby, OnHostJoinedLobby);
     }
 
     public void JoinLobby(ulong lobbyId)
     {
-        _steamworksAPI.JoinLobby(lobbyId, OnJoinedLobby);
+        _steamworksAPI.JoinLobby(lobbyId, OnClientJoinedLobby);
     }
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
         _steamworksAPI = new SteamworksAPI();
     }
 }

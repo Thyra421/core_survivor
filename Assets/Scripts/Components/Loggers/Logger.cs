@@ -19,6 +19,6 @@ public static class ConsoleLogger
     
     public static void Steamworks(object message)
     {
-        Debug.Log($"<color=#1b2838>[STEAMWORKS] {message}</color>");
+        Debug.Log($"<color=#66c0f4>[STEAMWORKS] {message}</color>");
     }
 }

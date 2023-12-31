@@ -1,5 +1,4 @@
 using System;
-using Mirror;
 using Steamworks;
 
 public class SteamworksAPI
@@ -11,12 +10,15 @@ public class SteamworksAPI
     protected Callback<GameLobbyJoinRequested_t> joinRequested;
     protected Callback<LobbyEnter_t> lobbyEnter;
 
-    private Action<SteamLobby> _onJoinedLobby;
-    private Action<SteamLobby> _onCreatedAndJoinedLobby;
+    private Action<SteamLobbyInformation> _onJoinedLobby;
+    private Action<SteamLobbyInformation> _onCreatedLobby;
 
     public SteamworksAPI()
     {
         if (!SteamManager.Initialized) throw new Exception("Steam is not open.");
+        
+        string name = SteamFriends.GetPersonaName();
+        ConsoleLogger.Steamworks($"Connected to Steam as {name}");
 
         lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
         joinRequested = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequested);
@@ -48,7 +50,7 @@ public class SteamworksAPI
 
         SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), HostAddressKey, networkAddress);
 
-        _onCreatedAndJoinedLobby.Invoke(new SteamLobby(lobbyId, networkAddress));
+        _onCreatedLobby.Invoke(new SteamLobbyInformation(lobbyId, networkAddress));
     }
 
     /// <summary>
@@ -57,28 +59,30 @@ public class SteamworksAPI
     private void OnLobbyEnter(LobbyEnter_t callback)
     {
         if (callback.m_EChatRoomEnterResponse != (uint)EChatRoomEnterResponse.k_EChatRoomEnterResponseSuccess) {
-            ConsoleLogger.Steamworks("OnLobbyEnter failed");
+            ConsoleLogger.Steamworks("Entering lobby failed");
             return;
         }
 
-        if (NetworkServer.active) return;
+        ConsoleLogger.Steamworks("Lobby entered successfully");
 
         ulong lobbyId = callback.m_ulSteamIDLobby;
         string networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(lobbyId), HostAddressKey);
 
-        _onJoinedLobby.Invoke(new SteamLobby(lobbyId, networkAddress));
+        _onJoinedLobby.Invoke(new SteamLobbyInformation(lobbyId, networkAddress));
     }
 
-    public void JoinLobby(ulong lobbyId, Action<SteamLobby> onJoinedLobby)
+    public void JoinLobby(ulong lobbyId, Action<SteamLobbyInformation> onJoinedLobby)
     {
         _onJoinedLobby = onJoinedLobby;
 
         SteamMatchmaking.JoinLobby(new CSteamID(lobbyId));
     }
 
-    public void CreateAndJoinLobby(int maxConnections, Action<SteamLobby> onCreatedAndJoinedLobby)
+    public void CreateAndJoinLobby(int maxConnections, Action<SteamLobbyInformation> onCreatedLobby,
+        Action<SteamLobbyInformation> onJoinedLobby)
     {
-        _onCreatedAndJoinedLobby = onCreatedAndJoinedLobby;
+        _onCreatedLobby = onCreatedLobby;
+        _onJoinedLobby = onJoinedLobby;
 
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, maxConnections);
     }

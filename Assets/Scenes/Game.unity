@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41663709}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: LocalManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,8 +152,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 668668028}
-  - {fileID: 2050615856}
   - {fileID: 1138577200}
   - {fileID: 462375068}
   - {fileID: 2016581013}
@@ -1450,9 +1448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668668028}
   - component: {fileID: 668668029}
-  - component: {fileID: 668668033}
   - component: {fileID: 668668034}
-  - component: {fileID: 668668035}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1473,7 +1469,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 41663709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &668668029
 MonoBehaviour:
@@ -1489,9 +1485,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   runInBackground: 1
-  autoStartServerBuild: 1
-  autoConnectClientBuild: 0
+  headlessStartMode: 1
+  editorAutoStart: 0
   sendRate: 60
+  autoStartServerBuild: 0
+  autoConnectClientBuild: 0
   offlineScene: 
   onlineScene: 
   transport: {fileID: 668668034}
@@ -1505,7 +1503,8 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
-  - {fileID: 8540328096831955503, guid: eefd3a8e57d79bd43af30edbb06198ac, type: 3}
+  - {fileID: 8540328096831955503, guid: b77532773518a9146990f22e60d43ad9, type: 3}
+  exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
     bufferLimit: 32
@@ -1517,22 +1516,9 @@ MonoBehaviour:
     dynamicAdjustment: 1
     dynamicAdjustmentTolerance: 1
     deliveryTimeEmaDuration: 2
-  connectionQualityInterval: 3
+  evaluationMethod: 0
+  evaluationInterval: 3
   timeInterpolationGui: 0
---- !u!114 &668668033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668668027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 0
 --- !u!114 &668668034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,18 +1535,6 @@ MonoBehaviour:
   Timeout: 25
   AllowSteamRelay: 1
   UseNextGenSteamNetworking: 1
---- !u!114 &668668035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668668027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &676519418
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,7 +3206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  enemyPrefab: {fileID: 8540328096831955503, guid: eefd3a8e57d79bd43af30edbb06198ac,
+  enemyPrefab: {fileID: 8540328096831955503, guid: b77532773518a9146990f22e60d43ad9,
     type: 3}
   innerSpawnRadius: 25
   outerSpawnRadius: 35
@@ -3262,12 +3236,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050615855}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 41663709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2050615857
 MonoBehaviour:
@@ -3296,6 +3270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientStarted: 0
   sceneId: 2649553039
   _assetId: 0
   serverOnly: 0
@@ -3435,3 +3410,5 @@ SceneRoots:
   - {fileID: 1737779987}
   - {fileID: 1881738235879744924}
   - {fileID: 565722116}
+  - {fileID: 668668028}
+  - {fileID: 2050615856}
