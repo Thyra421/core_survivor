@@ -6,7 +6,8 @@ public class GameHUDManager : Singleton<GameHUDManager>
     [SerializeField] private ResourcesHUD resourcesHUD;
     [SerializeField] private TMP_Text timerText;
 
-    private void StartGame()
+    // ReSharper disable once UnusedMember.Local
+    private void GameStarted()
     {
         PlayerManager.Current.LocalPlayer.OnValueChanged += OnLocalPlayerChanged;
         timerText.Bind(GameManager.Current.timer, value => $"Next wave in {Mathf.Floor(value)}s");

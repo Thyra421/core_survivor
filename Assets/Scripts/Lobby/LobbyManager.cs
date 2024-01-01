@@ -1,9 +1,6 @@
-using Steamworks;
-using UnityEngine;
-
 public class LobbyManager : Singleton<LobbyManager>
 {
-    private SteamworksAPI _steamworksAPI;
+    private SteamworksLobbyAPI _steamworksLobbyAPI;
 
     public bool IsHost { get; private set; }
     public string NetworkAddress { get; private set; }
@@ -25,17 +22,17 @@ public class LobbyManager : Singleton<LobbyManager>
 
     public void CreateAndJoinLobby()
     {
-        _steamworksAPI.HostLobby(4);
+        _steamworksLobbyAPI.HostLobby(4);
     }
 
     public void JoinLobby(ulong lobbyId)
     {
-        _steamworksAPI.JoinLobby(lobbyId);
+        _steamworksLobbyAPI.JoinLobby(lobbyId);
     }
 
     protected override void Awake()
     {
         base.Awake();
-        _steamworksAPI = new SteamworksAPI(OnCreatedLobby, OnJoinedLobby);
+        _steamworksLobbyAPI = new SteamworksLobbyAPI(OnCreatedLobby, OnJoinedLobby);
     }
 }

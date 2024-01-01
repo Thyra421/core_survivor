@@ -26,6 +26,7 @@ public class MasterServer : Singleton<MasterServer>
         _api.Send(new CreateLobbyMessage { id = id.ToString() });
     }
 
+    // ReSharper disable once UnusedMember.Local
     private void SteamStarted()
     {
         _api = new MasterServerAPI(serverAddress, serverPort, _messageRegistry);

@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Steamworks;
 
-public class SteamworksAPI
+public class SteamworksLobbyAPI
 {
     // Assign callbacks to local variables to avoid garbage collection.
     protected readonly Callback<LobbyCreated_t> lobbyCreated;
@@ -14,7 +14,7 @@ public class SteamworksAPI
 
     private bool _isHost = false;
 
-    public SteamworksAPI(Action<ulong> onCreatedLobby, Action<ulong, bool> onJoinedLobby)
+    public SteamworksLobbyAPI(Action<ulong> onCreatedLobby, Action<ulong, bool> onJoinedLobby)
     {
         if (!SteamManager.Initialized) throw new Exception("Steam is not open.");
 

@@ -4,18 +4,32 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : Singleton<SceneLoader>
 {
-    private static IEnumerator LoadSceneAsync(string sceneName) {
+    [SerializeField] private GameObject loadingScreenPrefab;
+
+    private IEnumerator LoadSceneAsync(string sceneName)
+    {
+        LoadingScreenHUD loadingScreen = Instantiate(loadingScreenPrefab).GetComponent<LoadingScreenHUD>();
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
-        while (!asyncLoad.isDone)
+        while (!asyncLoad.isDone) {
+            loadingScreen.SetProgress(asyncLoad.progress);
             yield return null;
+        }
     }
 
-    public void LoadMenuAsync() {
+    public void LoadMenuAsync()
+    {
         StartCoroutine(LoadSceneAsync("Menu"));
     }
 
-    public void LoadGameAsync() {
+    public void LoadGameAsync()
+    {
         StartCoroutine(LoadSceneAsync("Game"));
+    }
+
+    public void LoadLobbyAsync()
+    {
+        StartCoroutine(LoadSceneAsync("Lobby"));
     }
 }

@@ -18,6 +18,6 @@ public partial class Network : NetworkManager
 
         else StartClient();
 
-        MessageBroadcaster.Broadcast("StartGame");
+        MessageBroadcaster.Broadcast("GameStarted");
     }
 }
