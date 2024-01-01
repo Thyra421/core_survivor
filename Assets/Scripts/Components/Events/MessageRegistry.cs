@@ -3,19 +3,40 @@ using System.Collections.Generic;
 
 public class MessageRegistry
 {
-    private Dictionary<Type, MessageListener> _listeners = new();
+    private readonly Dictionary<Type, MessageListenerBase> _listeners = new();
 
     /// <summary>
     /// Adds a listener to the appropriate type.
     /// </summary>
-    public void AddListener<T>(Action<T> onMessage)
+    public void AddListener<T>(Action<T> onMessage) where T : MessageBase
     {
         Type type = typeof(T);
 
         if (!_listeners.ContainsKey(type))
-            _listeners.Add(type, new MessageListener());
+            _listeners.Add(type, new MessageListener<T>());
 
-        _listeners[type].OnMessage += (obj) => onMessage((T)obj);
+        MessageListener<T> messageListener = _listeners[type] as MessageListener<T>;
+
+        messageListener!.OnMessage += onMessage;
+    }
+
+    /// <summary>
+    /// Removes a listener to the appropriate type.
+    /// </summary>
+    public void RemoveListener<T>(Action<T> onMessage) where T : MessageBase
+    {
+        Type type = typeof(T);
+
+        if (!_listeners.ContainsKey(type)) return;
+
+        MessageListener<T> messageListener = _listeners[type] as MessageListener<T>;
+
+        messageListener!.OnMessage -= onMessage;
+
+        // Optionally, remove the listener if there are no more subscribers.
+        if (messageListener!.IsEmpty) {
+            _listeners.Remove(type);
+        }
     }
 
     /// <summary>
@@ -24,8 +45,9 @@ public class MessageRegistry
     /// </summary>
     public void Invoke(object message, Type type)
     {
-        if (_listeners.ContainsKey(type))
-            _listeners[type].OnMessageEvent?.Invoke(message);
+        if (!_listeners.ContainsKey(type)) return;
+
+        _listeners[type].Invoke(message);
     }
 
     public void Clear()

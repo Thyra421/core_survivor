@@ -1,8 +1,20 @@
-﻿public class MessageListener
+﻿using System;
+
+public abstract class MessageListenerBase
 {
-    public delegate void OnMessageHandler(object message);
+    public abstract void Invoke(object messageBase);
+}
 
-    public event OnMessageHandler OnMessage;
+public class MessageListener<T> : MessageListenerBase where T : MessageBase
+{
+    public event Action<T> OnMessage;
 
-    public OnMessageHandler OnMessageEvent => OnMessage;
+    public bool IsEmpty => OnMessage == null || OnMessage.GetInvocationList().Length == 0;
+
+    public override void Invoke(object messageBase)
+    {
+        T message = messageBase as T;
+
+        OnMessage?.Invoke(message);
+    }
 }

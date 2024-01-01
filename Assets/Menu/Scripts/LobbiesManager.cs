@@ -29,4 +29,10 @@ public class LobbiesManager : Singleton<LobbiesManager>
         MasterServer.Current.AddListener<CreatedLobbyMessage>(OnCreatedLobbyMessage);
         MasterServer.Current.AddListener<DeletedLobbyMessage>(OnDeletedLobbyMessage);
     }
+
+    private void OnDestroy()
+    {
+        MasterServer.Current.RemoveListener<CreatedLobbyMessage>(OnCreatedLobbyMessage);
+        MasterServer.Current.RemoveListener<DeletedLobbyMessage>(OnDeletedLobbyMessage);
+    }
 }

@@ -13,6 +13,11 @@ public class MasterServer : Singleton<MasterServer>
     {
         _messageRegistry.AddListener(listener);
     }
+    
+    public void RemoveListener<T>(Action<T> listener) where T : MessageBase
+    {
+        _messageRegistry.RemoveListener(listener);
+    }
 
     public void CreateLobby(ulong id)
     {
