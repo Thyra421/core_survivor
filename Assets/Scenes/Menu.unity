@@ -1827,7 +1827,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
-  m_AspectRatio: 1
+  m_AspectRatio: 3
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
@@ -4449,8 +4449,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1729872882}
   m_HandleRect: {fileID: 1729872881}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.89799047
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

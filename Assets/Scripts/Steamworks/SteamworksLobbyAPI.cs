@@ -8,21 +8,42 @@ public class SteamworksLobbyAPI
     protected readonly Callback<LobbyCreated_t> lobbyCreated;
     protected readonly Callback<GameLobbyJoinRequested_t> joinRequested;
     protected readonly Callback<LobbyEnter_t> lobbyEnter;
+    protected readonly Callback<LobbyChatUpdate_t> lobbyChatUpdate;
 
     private readonly Action<ulong, bool> _onJoinedLobby;
     private readonly Action<ulong> _onCreatedLobby;
+    private readonly Action<ulong> _onUserJoinedLobby;
+    private readonly Action<ulong> _onUserLeftLobby;
 
     private bool _isHost = false;
 
-    public SteamworksLobbyAPI(Action<ulong> onCreatedLobby, Action<ulong, bool> onJoinedLobby)
+    public SteamworksLobbyAPI(Action<ulong> onCreatedLobby, Action<ulong, bool> onJoinedLobby,
+        Action<ulong> onUserJoinedLobby, Action<ulong> onUserLeftLobby)
     {
         if (!SteamManager.Initialized) throw new Exception("Steam is not open.");
 
         _onCreatedLobby = onCreatedLobby;
         _onJoinedLobby = onJoinedLobby;
+        _onUserJoinedLobby = onUserJoinedLobby;
+        _onUserLeftLobby = onUserLeftLobby;
         lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
         joinRequested = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequested);
         lobbyEnter = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
+        lobbyChatUpdate = Callback<LobbyChatUpdate_t>.Create(OnLobbyChatUpdate);
+    }
+
+    private void OnLobbyChatUpdate(LobbyChatUpdate_t callback)
+    {
+        switch ((EChatMemberStateChange)callback.m_rgfChatMemberStateChange) {
+            case EChatMemberStateChange.k_EChatMemberStateChangeEntered:
+                _onUserJoinedLobby(callback.m_ulSteamIDUserChanged);
+                ConsoleLogger.Steamworks($"{callback.m_ulSteamIDUserChanged} joined lobby");
+                break;
+            case EChatMemberStateChange.k_EChatMemberStateChangeLeft:
+                ConsoleLogger.Steamworks($"{callback.m_ulSteamIDUserChanged} left lobby");
+                _onUserLeftLobby(callback.m_ulSteamIDUserChanged);
+                break;
+        }
     }
 
     /// <summary>
