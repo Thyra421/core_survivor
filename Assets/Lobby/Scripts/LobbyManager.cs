@@ -1,3 +1,6 @@
+using Steamworks;
+using UnityEngine;
+
 public class LobbyManager : Singleton<LobbyManager>
 {
     private SteamworksAPI _steamworksAPI;
@@ -10,39 +13,29 @@ public class LobbyManager : Singleton<LobbyManager>
         MasterServer.Current.CreateLobby(id);
     }
 
-    private void OnClientJoinedLobby(ulong id)
+    private void OnJoinedLobby(ulong id, bool isHost)
     {
-        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetLobbyInformation(id);
+        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetCurrentLobbyInformation(id);
 
         NetworkAddress = steamLobbyInformation.networkAddress;
-        IsHost = false;
-
-        SceneLoader.Current.LoadGameAsync();
-    }
-
-    private void OnHostJoinedLobby(ulong id)
-    {
-        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetLobbyInformation(id);
-
-        NetworkAddress = steamLobbyInformation.networkAddress;
-        IsHost = true;
+        IsHost = isHost;
 
         SceneLoader.Current.LoadGameAsync();
     }
 
     public void CreateAndJoinLobby()
     {
-        _steamworksAPI.CreateAndJoinLobby(4, OnCreatedLobby, OnHostJoinedLobby);
+        _steamworksAPI.HostLobby(4);
     }
 
     public void JoinLobby(ulong lobbyId)
     {
-        _steamworksAPI.JoinLobby(lobbyId, OnClientJoinedLobby);
+        _steamworksAPI.JoinLobby(lobbyId);
     }
 
     protected override void Awake()
     {
         base.Awake();
-        _steamworksAPI = new SteamworksAPI();
+        _steamworksAPI = new SteamworksAPI(OnCreatedLobby, OnJoinedLobby);
     }
 }

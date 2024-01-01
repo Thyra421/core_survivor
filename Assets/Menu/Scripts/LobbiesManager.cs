@@ -13,7 +13,8 @@ public class LobbiesManager : Singleton<LobbiesManager>
 
     private void OnCreatedLobbyMessage(CreatedLobbyMessage message)
     {
-        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetLobbyInformation(ulong.Parse(message.id));
+        SteamLobbyInformation steamLobbyInformation =
+            SteamworksHelper.GetOtherLobbyInformation(ulong.Parse(message.id));
 
         LobbyInformation lobbyInformation = new() {
             id = steamLobbyInformation.id,

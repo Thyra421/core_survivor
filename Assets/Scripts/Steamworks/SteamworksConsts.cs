@@ -2,5 +2,5 @@
 {
     public const string HostAddressKey = "HostAddress";
 
-    public const string LobbyNameKey = "Name";
+    public const string LobbyNameKey = "name";
 }
