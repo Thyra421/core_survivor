@@ -23,13 +23,13 @@ public class SceneLoader : Singleton<SceneLoader>
         StartCoroutine(LoadSceneAsync("Menu"));
     }
 
+    public void LoadDraftAsync()
+    {
+        StartCoroutine(LoadSceneAsync("Draft"));
+    }
+
     public void LoadGameAsync()
     {
         StartCoroutine(LoadSceneAsync("Game"));
-    }
-
-    public void LoadLobbyAsync()
-    {
-        StartCoroutine(LoadSceneAsync("Lobby"));
     }
 }

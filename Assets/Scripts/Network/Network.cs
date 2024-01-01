@@ -20,4 +20,11 @@ public partial class Network : NetworkManager
 
         MessageBroadcaster.Broadcast("GameStarted");
     }
+
+    public void Stop()
+    {
+        if (LobbyManager.Current.IsHost) StopHost();
+
+        else StopClient();
+    }
 }

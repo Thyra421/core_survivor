@@ -22,8 +22,15 @@ public class MasterServer : Singleton<MasterServer>
     public void CreateLobby(ulong id)
     {
         if (_api == null) throw new Exception("Steam API is not initialized");
-        
+
         _api.Send(new CreateLobbyMessage { id = id.ToString() });
+    }
+
+    public void DeleteLobby()
+    {
+        if (_api == null) throw new Exception("Steam API is not initialized");
+
+        _api.Send(new DeleteLobbyMessage());
     }
 
     // ReSharper disable once UnusedMember.Local

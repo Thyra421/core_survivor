@@ -2,6 +2,7 @@ public class LobbyManager : Singleton<LobbyManager>
 {
     private SteamworksLobbyAPI _steamworksLobbyAPI;
 
+    public ulong LobbyId { get; private set; }
     public bool IsHost { get; private set; }
     public string NetworkAddress { get; private set; }
 
@@ -14,13 +15,14 @@ public class LobbyManager : Singleton<LobbyManager>
     {
         SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetCurrentLobbyInformation(id);
 
+        LobbyId = id;
         NetworkAddress = steamLobbyInformation.networkAddress;
         IsHost = isHost;
 
-        SceneLoader.Current.LoadGameAsync();
+        SceneLoader.Current.LoadDraftAsync();
     }
 
-    public void CreateAndJoinLobby()
+    public void HostLobby()
     {
         _steamworksLobbyAPI.HostLobby(4);
     }
@@ -30,9 +32,15 @@ public class LobbyManager : Singleton<LobbyManager>
         _steamworksLobbyAPI.JoinLobby(lobbyId);
     }
 
-    protected override void Awake()
+    public void LeaveLobby()
     {
-        base.Awake();
+        _steamworksLobbyAPI.LeaveLobby(LobbyId);
+        MasterServer.Current.DeleteLobby();
+    }
+
+    // ReSharper disable once UnusedMember.Local
+    private void SteamStarted()
+    {
         _steamworksLobbyAPI = new SteamworksLobbyAPI(OnCreatedLobby, OnJoinedLobby);
     }
 }

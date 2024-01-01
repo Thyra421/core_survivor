@@ -18,9 +18,6 @@ public class SteamworksLobbyAPI
     {
         if (!SteamManager.Initialized) throw new Exception("Steam is not open.");
 
-        string name = SteamFriends.GetPersonaName();
-        ConsoleLogger.Steamworks($"Connected to Steam as {name}");
-
         _onCreatedLobby = onCreatedLobby;
         _onJoinedLobby = onJoinedLobby;
         lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
@@ -57,7 +54,7 @@ public class SteamworksLobbyAPI
 
         // delay because SetLobbyData takes some time.
         // it's a quick fix so the other clients that are not in the lobby get the values set here
-        await Task.Delay(2000);
+        await Task.Delay(500);
 
         _onCreatedLobby.Invoke(lobbyId);
     }
@@ -77,6 +74,11 @@ public class SteamworksLobbyAPI
         ulong lobbyId = callback.m_ulSteamIDLobby;
 
         _onJoinedLobby.Invoke(lobbyId, _isHost);
+    }
+
+    public void LeaveLobby(ulong id)
+    {
+        SteamMatchmaking.LeaveLobby(new CSteamID(id));
     }
 
     public void JoinLobby(ulong lobbyId)

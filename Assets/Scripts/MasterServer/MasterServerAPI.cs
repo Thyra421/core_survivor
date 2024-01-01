@@ -9,7 +9,7 @@
         _tcpTransport.Connect(address, port);
     }
 
-    public void Send(MessageBase message)
+    public void Send(ClientMessageBase message)
     {
         _tcpTransport.Send(message);
     }

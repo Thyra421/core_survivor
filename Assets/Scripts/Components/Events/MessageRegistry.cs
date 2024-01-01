@@ -33,7 +33,6 @@ public class MessageRegistry
 
         messageListener!.OnMessage -= onMessage;
 
-        // Optionally, remove the listener if there are no more subscribers.
         if (messageListener!.IsEmpty) {
             _listeners.Remove(type);
         }

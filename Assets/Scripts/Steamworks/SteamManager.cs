@@ -141,6 +141,9 @@ public class SteamManager : MonoBehaviour
         }
 
         s_EverInitialized = true;
+        string name = SteamFriends.GetPersonaName();
+
+        ConsoleLogger.Steamworks($"Connected to Steam as {name}");
         MessageBroadcaster.Broadcast("SteamStarted");
     }
 

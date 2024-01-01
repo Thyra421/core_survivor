@@ -26,7 +26,7 @@ namespace CoreSurvivor
 
         private void OnClickCreateRoom()
         {
-            LobbyManager.Current.CreateAndJoinLobby();
+            LobbyManager.Current.HostLobby();
         }
 
         private void Start()
