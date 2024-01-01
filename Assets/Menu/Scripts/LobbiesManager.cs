@@ -11,10 +11,10 @@ public class LobbiesManager : Singleton<LobbiesManager>
         Lobbies.RemoveAt(index);
     }
 
-    private void OnCreatedLobbyMessage(CreatedLobbyMessage message)
+    private async void OnCreatedLobbyMessage(CreatedLobbyMessage message)
     {
-        SteamLobbyInformation steamLobbyInformation =
-            SteamworksHelper.GetOtherLobbyInformation(ulong.Parse(message.id));
+        SteamLobbyInformation steamLobbyInformation = await
+            new SteamworksHelper().GetOtherLobbyInformation(ulong.Parse(message.id));
 
         LobbyInformation lobbyInformation = new() {
             id = steamLobbyInformation.id,

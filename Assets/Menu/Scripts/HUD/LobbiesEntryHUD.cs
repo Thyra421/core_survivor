@@ -9,7 +9,7 @@ public class LobbiesEntryHUD : MonoBehaviour
 
     private void OnClickJoin(LobbyInformation lobbyInformation)
     {
-        LobbyManager.Current.JoinLobby(ulong.Parse(lobbyInformation.name));
+        LobbyManager.Current.JoinLobby(lobbyInformation.id);
     }
 
     public void Initialize(LobbyInformation lobbyInformation)
