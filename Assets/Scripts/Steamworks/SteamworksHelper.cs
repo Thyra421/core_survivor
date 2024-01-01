@@ -15,16 +15,33 @@ public class SteamworksHelper
         return new SteamLobbyInformation(id, networkAddress, name);
     }
 
+    private class DisposableRequestLobbyData
+    {
+        private readonly TaskCompletionSource<bool> _taskCompletionSource = new();
+        private Callback<LobbyDataUpdate_t> _lobbyDataUpdateCallback;
+
+        public DisposableRequestLobbyData()
+        {
+            _lobbyDataUpdateCallback = Callback<LobbyDataUpdate_t>.Create(OnLobbyDataUpdate);
+        }
+
+        private void OnLobbyDataUpdate(LobbyDataUpdate_t callback)
+        {
+            if (_taskCompletionSource != null && !_taskCompletionSource.Task.IsCompleted)
+                _taskCompletionSource.SetResult(callback.m_bSuccess == 1);
+        }
+
+        public Task<bool> RequestLobbyData(ulong id)
+        {
+            SteamMatchmaking.RequestLobbyData(new CSteamID(id));
+
+            return _taskCompletionSource.Task;
+        }
+    }
+
     public async Task<SteamLobbyInformation> GetOtherLobbyInformation(ulong id)
     {
-        TaskCompletionSource<bool> taskCompletionSource = new();
-
-        Callback<LobbyDataUpdate_t>.Create(callback =>
-            taskCompletionSource.SetResult(callback.m_bSuccess == 1));
-
-        SteamMatchmaking.RequestLobbyData(new CSteamID(id));
-
-        bool result = await taskCompletionSource.Task;
+        bool result = await new DisposableRequestLobbyData().RequestLobbyData(id);
 
         if (!result) throw new Exception("RequestLobbyData failed");
 
