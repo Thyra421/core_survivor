@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Steamworks;
 
 public class SteamworksAPI
@@ -38,7 +39,7 @@ public class SteamworksAPI
     /// <summary>
     /// Called by host when created a lobby.
     /// </summary>
-    private void OnLobbyCreated(LobbyCreated_t callback)
+    private async void OnLobbyCreated(LobbyCreated_t callback)
     {
         if (callback.m_eResult != EResult.k_EResultOK) {
             ConsoleLogger.Steamworks("Creating lobby failed");
@@ -53,6 +54,10 @@ public class SteamworksAPI
 
         SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), SteamworksConsts.HostAddressKey, networkAddress);
         SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), SteamworksConsts.LobbyNameKey, name);
+
+        // delay because SetLobbyData takes some time.
+        // it's a quick fix so the other clients that are not in the lobby get the values set here
+        await Task.Delay(2000);
 
         _onCreatedLobby.Invoke(lobbyId);
     }

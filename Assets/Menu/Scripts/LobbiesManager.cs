@@ -4,7 +4,7 @@ public class LobbiesManager : Singleton<LobbiesManager>
 
     private void OnDeletedLobbyMessage(DeletedLobbyMessage message)
     {
-        int index = Lobbies.FindIndex((r) => r.name == message.id);
+        int index = Lobbies.FindIndex((r) => r.id == ulong.Parse(message.id));
 
         if (index == -1) return;
 
@@ -14,7 +14,7 @@ public class LobbiesManager : Singleton<LobbiesManager>
     private async void OnCreatedLobbyMessage(CreatedLobbyMessage message)
     {
         SteamLobbyInformation steamLobbyInformation = await
-            new SteamworksHelper().GetOtherLobbyInformation(ulong.Parse(message.id));
+            SteamworksHelper.GetOtherLobbyInformation(ulong.Parse(message.id));
 
         LobbyInformation lobbyInformation = new() {
             id = steamLobbyInformation.id,

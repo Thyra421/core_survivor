@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Steamworks;
 
-public class SteamworksHelper
+public static class SteamworksHelper
 {
     /// <summary>
     /// Get the information of a lobby the client is currently in.
@@ -39,7 +39,7 @@ public class SteamworksHelper
         }
     }
 
-    public async Task<SteamLobbyInformation> GetOtherLobbyInformation(ulong id)
+    public static async Task<SteamLobbyInformation> GetOtherLobbyInformation(ulong id)
     {
         bool result = await new DisposableRequestLobbyData().RequestLobbyData(id);
 
