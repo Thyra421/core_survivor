@@ -13,7 +13,7 @@ public class MasterServer : Singleton<MasterServer>
     {
         _messageRegistry.AddListener(listener);
     }
-    
+
     public void RemoveListener<T>(Action<T> listener) where T : MessageBase
     {
         _messageRegistry.RemoveListener(listener);
@@ -21,12 +21,13 @@ public class MasterServer : Singleton<MasterServer>
 
     public void CreateLobby(ulong id)
     {
+        if (_api == null) throw new Exception("Steam API is not initialized");
+        
         _api.Send(new CreateLobbyMessage { id = id.ToString() });
     }
 
-    protected override void Awake()
+    private void SteamStarted()
     {
-        base.Awake();
         _api = new MasterServerAPI(serverAddress, serverPort, _messageRegistry);
     }
 }

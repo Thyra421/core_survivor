@@ -18,8 +18,6 @@ public partial class Network : NetworkManager
 
         else StartClient();
 
-        foreach (GameObject go in (GameObject[])FindObjectsOfType(typeof(GameObject))) {
-            go.gameObject.BroadcastMessage("StartGame", null, SendMessageOptions.DontRequireReceiver);
-        }
+        MessageBroadcaster.Broadcast("StartGame");
     }
 }

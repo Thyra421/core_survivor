@@ -11,28 +11,48 @@ public class LobbiesManager : Singleton<LobbiesManager>
         Lobbies.RemoveAt(index);
     }
 
-    private async void OnCreatedLobbyMessage(CreatedLobbyMessage message)
+    private void OnCreatedLobbyMessage(CreatedLobbyMessage message)
     {
-        SteamLobbyInformation steamLobbyInformation = await
-            SteamworksHelper.GetOtherLobbyInformation(ulong.Parse(message.id));
-
-        LobbyInformation lobbyInformation = new() {
-            id = steamLobbyInformation.id,
-            name = steamLobbyInformation.name
-        };
-
-        Lobbies.Add(lobbyInformation);
+        AddLobby(ulong.Parse(message.id));
     }
 
-    protected void Start()
+    private void OnLobbiesMessage(LobbiesMessage message)
     {
+        foreach (string id in message.id) {
+            AddLobby(ulong.Parse(id));
+        }
+    }
+
+    private async void AddLobby(ulong id)
+    {
+        try {
+            SteamLobbyInformation steamLobbyInformation = await
+                SteamworksHelper.GetOtherLobbyInformation(id);
+
+            LobbyInformation lobbyInformation = new() {
+                id = steamLobbyInformation.id,
+                name = steamLobbyInformation.name
+            };
+
+            Lobbies.Add(lobbyInformation);
+        }
+        catch {
+            // ignored
+        }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
         MasterServer.Current.AddListener<CreatedLobbyMessage>(OnCreatedLobbyMessage);
         MasterServer.Current.AddListener<DeletedLobbyMessage>(OnDeletedLobbyMessage);
+        MasterServer.Current.AddListener<LobbiesMessage>(OnLobbiesMessage);
     }
 
     private void OnDestroy()
     {
         MasterServer.Current.RemoveListener<CreatedLobbyMessage>(OnCreatedLobbyMessage);
         MasterServer.Current.RemoveListener<DeletedLobbyMessage>(OnDeletedLobbyMessage);
+        MasterServer.Current.RemoveListener<LobbiesMessage>(OnLobbiesMessage);
     }
 }
