@@ -13,7 +13,7 @@ public partial class Network
         base.OnStopClient();
         ConsoleLogger.Client("Stopped");
     }
-    
+
     public override void OnClientConnect()
     {
         base.OnClientConnect();
@@ -23,7 +23,8 @@ public partial class Network
     public override void OnClientDisconnect()
     {
         base.OnClientDisconnect();
-        ConsoleLogger.Client("Disconnected to server");
+        ConsoleLogger.Client("Disconnected from server");
+        SceneLoader.Current.LoadMenuAsync();
     }
 
     public override void OnClientError(TransportError error, string reason)

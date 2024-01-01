@@ -35,7 +35,8 @@ public class LobbyManager : Singleton<LobbyManager>
     public void LeaveLobby()
     {
         _steamworksLobbyAPI.LeaveLobby(LobbyId);
-        MasterServer.Current.DeleteLobby();
+        if (IsHost)
+            MasterServer.Current.DeleteLobby();
     }
 
     // ReSharper disable once UnusedMember.Local
