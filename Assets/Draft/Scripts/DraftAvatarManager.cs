@@ -8,6 +8,8 @@ public class DraftAvatarManager : Singleton<DraftAvatarManager>
     protected override void Awake()
     {
         base.Awake();
+        // Initialize with current data
+        OnPlayersChanged(LobbyManager.Current.Players);
         LobbyManager.Current.Players.OnChanged += OnPlayersChanged;
     }
 

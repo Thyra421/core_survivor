@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Steamworks;
 
 public class LobbyManager : Singleton<LobbyManager>
@@ -17,6 +18,9 @@ public class LobbyManager : Singleton<LobbyManager>
     private void OnJoinedLobby(ulong id, bool isHost)
     {
         SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetCurrentLobbyInformation(id);
+        List<LobbyPlayerInfo> playersInLobby = SteamworksHelper.GetPlayersInLobby(id);
+        
+        Players.AddRange(playersInLobby);
 
         LobbyId = id;
         NetworkAddress = steamLobbyInformation.networkAddress;
@@ -27,9 +31,9 @@ public class LobbyManager : Singleton<LobbyManager>
 
     private void OnUserJoinedLobby(ulong id)
     {
-        string username = SteamFriends.GetFriendPersonaName(new CSteamID(id));
+        LobbyPlayerInfo lobbyPlayerInfo = SteamworksHelper.GetPlayerInfo(id);
 
-        Players.Add(new LobbyPlayerInfo(id, username));
+        Players.Add(lobbyPlayerInfo);
     }
 
     private void OnUserLeftLobby(ulong id)
