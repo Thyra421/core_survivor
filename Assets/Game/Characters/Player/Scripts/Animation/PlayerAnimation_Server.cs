@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public partial class PlayerAnimation
 {
-    private Animator _animator;
     private PlayerMovement _playerMovement;
     private static readonly int SpeedRatioId = Animator.StringToHash("SpeedRatio");
 
@@ -14,16 +13,11 @@ public partial class PlayerAnimation
         _animator.SetFloat(SpeedRatioId, _playerMovement.SpeedRatio);
     }
 
-    [Server]
-    public void SetTrigger(string triggerName)
-    {
-        _animator.SetTrigger(triggerName);
-    }
-
     public override void OnStartServer()
     {
-        base.OnStartLocalPlayer();
-        _animator = GetComponentInChildren<Animator>();
+        base.OnStartServer();
         _playerMovement = GetComponent<PlayerMovement>();
     }
+
+    
 }

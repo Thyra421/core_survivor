@@ -109,7 +109,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  clientAuthority: 1
+  clientAuthority: 0
   animator: {fileID: 6861761893752753301}
 --- !u!143 &7195981715845733904
 CharacterController:
