@@ -22,12 +22,18 @@ public partial class PlayerMovement
     private Vector2 _currentInput;
     private float _currentSpeed;
     private Vector3 _momentum;
+    private Vector3 _moveDirection;
     private bool _canMove = true;
     private float _dashCooldown;
 
     public readonly Listenable<float> stamina = new(100);
 
     public float SpeedRatio => _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
+
+    public Vector3 MoveDirection => _moveDirection;
+
+    public Vector3 LookDirection =>
+        _playerAttack.IsAttacking ? _playerAttack.AttackPoint - transform.position : MoveDirection;
 
     #region Movement
 
@@ -40,14 +46,17 @@ public partial class PlayerMovement
     [Server]
     private void CalculateMomentum()
     {
-        Vector3 moveDirection = new(_currentInput.x, 0, _currentInput.y);
+        _moveDirection = new Vector3(_currentInput.x, 0, _currentInput.y);
 
-        if (moveDirection.magnitude > 0) {
-            if (Vector3.Dot(_momentum, moveDirection) < 0)
+        // if the player is currently pressing movement keys
+        if (_moveDirection.magnitude > 0) {
+            // if the player is going to the opposite side they were going
+            if (Vector3.Dot(_momentum, _moveDirection) < 0)
                 _currentSpeed = 0;
             _currentSpeed = Mathf.Clamp(_currentSpeed + acceleration * Time.deltaTime, 0, movementSpeed);
-            _momentum = moveDirection * (_currentSpeed * Time.deltaTime);
+            _momentum = _moveDirection * (_currentSpeed * Time.deltaTime);
         }
+        // player is not pressing movement keys. decrease movement progressivly
         else {
             _currentSpeed = Mathf.Clamp(_currentSpeed - deceleration * Time.deltaTime, 0, movementSpeed);
             _momentum = _momentum.normalized * (_currentSpeed * Time.deltaTime);
@@ -60,17 +69,15 @@ public partial class PlayerMovement
     {
         CalculateMomentum();
 
-        if (_momentum.magnitude == 0) return;
+        if (_momentum.magnitude > 0) {
+            _characterController.Move(_momentum);
+        }
 
-        Quaternion lookRotation = Quaternion.LookRotation(_momentum);
+        if (LookDirection.magnitude <= 0) return;
 
-        _characterController.Move(_momentum);
+        Quaternion lookRotation = Quaternion.LookRotation(LookDirection);
 
-        if (_playerAttack.IsAttacking)
-            transform.rotation =
-                Quaternion.LookRotation(_playerAttack.AttackDirection - transform.position, Vector3.up);
-        else
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 
     #endregion
@@ -88,17 +95,15 @@ public partial class PlayerMovement
     [Server]
     private void Dash()
     {
-        Vector3 mousePosition = Input.mousePosition;
-
-        Ray ray = Camera.main!.ScreenPointToRay(mousePosition);
+        Ray ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
 
         if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-        
+
         Vector3 targetPosition = hit.point;
         targetPosition.y = 0;
-        
+
         transform.rotation = Quaternion.LookRotation(targetPosition - transform.position);
-        
+
         _dashCooldown = dashCooldownDuration;
         _canMove = false;
         _currentSpeed = dashSpeed;

@@ -191,7 +191,7 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
-  movementSpeed: 7
+  movementSpeed: 6
   rotationSpeed: 20
   acceleration: 30
   deceleration: 70
@@ -217,6 +217,9 @@ MonoBehaviour:
   syncInterval: 0
   attackDelay: 0.6
   cooldownDuration: 1.25
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
   attackRadius: 1.5
   attackDistance: 1.5
   attackDuration: 1

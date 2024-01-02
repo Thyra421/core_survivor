@@ -1,10 +1,10 @@
-﻿using System;
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAnimation))]
 public partial class PlayerAttack
 {
+    [SerializeField] private LayerMask whatIsGround;
     private PlayerAnimation _playerAnimation;
 
     [ClientRpc]
@@ -33,8 +33,8 @@ public partial class PlayerAttack
 
         Ray ray = Camera.main!.ScreenPointToRay(mousePosition);
 
-        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-        
+        if (!Physics.Raycast(ray, out RaycastHit hit, 100, whatIsGround)) return;
+
         Vector3 targetPosition = hit.point;
         targetPosition.y = 0;
 

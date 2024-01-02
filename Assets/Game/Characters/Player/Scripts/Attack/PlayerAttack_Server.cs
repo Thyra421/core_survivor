@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Mirror;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ public partial class PlayerAttack
     private Vector3 AttackPosition => transform.position + transform.up + transform.forward * attackDistance;
 
     public bool IsAttacking { get; private set; }
-    public Vector3 AttackDirection { get; private set; }
+    public Vector3 AttackPoint { get; private set; }
 
     private void OnDrawGizmosSelected()
     {
@@ -25,7 +24,7 @@ public partial class PlayerAttack
     {
         if (_cooldown > 0) return;
 
-        AttackDirection = direction;
+        AttackPoint = direction;
 
         ClientAttack();
         ServerAttack();
