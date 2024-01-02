@@ -4,7 +4,7 @@ using UnityEngine;
 public class DraftAvatar : MonoBehaviour
 {
     [SerializeField] private TMP_Text nameText;
-    [SerializeField] private Renderer renderer;
+    [SerializeField] private new Renderer renderer;
 
     public void Initialize(string username, Material material)
     {

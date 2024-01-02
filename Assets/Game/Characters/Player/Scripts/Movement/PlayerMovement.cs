@@ -4,7 +4,7 @@ public partial class PlayerMovement : NetworkBehaviour
 {
     private void Update()
     {
-        if (isClient)
-            ClientUpdate();
+        if (isServer)
+            ServerUpdate();
     }
 }

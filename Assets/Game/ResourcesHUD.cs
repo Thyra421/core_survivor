@@ -12,6 +12,6 @@ public class ResourcesHUD : MonoBehaviour
         healthSlider.BindValue(player.Health.Current);
         
         staminaSlider.maxValue = 100;
-        staminaSlider.BindValue(player.Movement.Stamina);
+        staminaSlider.BindValue(player.Movement.stamina);
     }
 }
