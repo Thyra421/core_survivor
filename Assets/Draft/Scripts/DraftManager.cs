@@ -5,6 +5,7 @@ public class DraftManager : Singleton<DraftManager>
 
     public void StartGame()
     {
+        MasterServer.Current.DeleteLobby();
         _steamworksMessaging.Send(new MessageStartGame());
     }
 

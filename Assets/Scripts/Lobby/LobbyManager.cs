@@ -73,7 +73,6 @@ public class LobbyManager : Singleton<LobbyManager>
         _steamworksLobbyAPI.JoinLobby(lobbyId);
     }
 
-
     public void LeaveLobby()
     {
         _steamworksLobbyAPI.LeaveLobby(LobbyId);
