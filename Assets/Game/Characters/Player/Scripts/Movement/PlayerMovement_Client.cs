@@ -9,6 +9,8 @@ public partial class PlayerMovement
     [Client]
     public void OnMovement(InputValue value)
     {
+        if (!isClient || !isOwned) return;
+
         Vector2 input = value.Get<Vector2>();
         MoveCommand(input);
     }
@@ -17,6 +19,7 @@ public partial class PlayerMovement
     public void OnDash()
     {
         if (!isClient || !isOwned) return;
+
         DashCommand();
     }
 
