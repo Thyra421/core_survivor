@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAnimation))]
@@ -28,6 +29,15 @@ public partial class PlayerAttack
 
         if (_cooldown > 0) return;
 
-        AttackCommand();
+        Vector3 mousePosition = Input.mousePosition;
+
+        Ray ray = Camera.main!.ScreenPointToRay(mousePosition);
+
+        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
+        
+        Vector3 targetPosition = hit.point;
+        targetPosition.y = 0;
+
+        AttackCommand(targetPosition);
     }
 }

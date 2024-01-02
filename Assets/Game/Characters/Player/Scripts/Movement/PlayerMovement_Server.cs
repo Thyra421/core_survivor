@@ -3,6 +3,7 @@ using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PlayerAttack))]
 public partial class PlayerMovement
 {
     [Header("Speed")] [SerializeField] private float movementSpeed;
@@ -17,6 +18,7 @@ public partial class PlayerMovement
     [SerializeField] private float staminaRegenerationPerSecond;
 
     private CharacterController _characterController;
+    private PlayerAttack _playerAttack;
     private Vector2 _currentInput;
     private float _currentSpeed;
     private Vector3 _momentum;
@@ -63,7 +65,12 @@ public partial class PlayerMovement
         Quaternion lookRotation = Quaternion.LookRotation(_momentum);
 
         _characterController.Move(_momentum);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+
+        if (_playerAttack.IsAttacking)
+            transform.rotation =
+                Quaternion.LookRotation(_playerAttack.AttackDirection - transform.position, Vector3.up);
+        else
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 
     #endregion
@@ -127,5 +134,6 @@ public partial class PlayerMovement
     {
         base.OnStartServer();
         _characterController = GetComponent<CharacterController>();
+        _playerAttack = GetComponent<PlayerAttack>();
     }
 }
