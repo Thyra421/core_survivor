@@ -1,7 +1,10 @@
 using Mirror;
+using UnityEngine;
 
 public partial class Network
 {
+    [SerializeField] private GameObject disconnectedFromServerPrefab;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -23,8 +26,11 @@ public partial class Network
     public override void OnClientDisconnect()
     {
         base.OnClientDisconnect();
+
         ConsoleLogger.Client("Disconnected from server");
-        SceneLoader.Current.LoadMenuAsync();
+        
+        LobbyManager.Current.LeaveLobby();
+        Instantiate(disconnectedFromServerPrefab);
     }
 
     public override void OnClientError(TransportError error, string reason)

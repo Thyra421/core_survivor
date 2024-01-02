@@ -37,10 +37,9 @@ public class SteamworksLobbyAPI
         switch ((EChatMemberStateChange)callback.m_rgfChatMemberStateChange) {
             case EChatMemberStateChange.k_EChatMemberStateChangeEntered:
                 _onUserJoinedLobby(callback.m_ulSteamIDUserChanged);
-                ConsoleLogger.Steamworks($"{callback.m_ulSteamIDUserChanged} joined lobby");
                 break;
+
             case EChatMemberStateChange.k_EChatMemberStateChangeLeft:
-                ConsoleLogger.Steamworks($"{callback.m_ulSteamIDUserChanged} left lobby");
                 _onUserLeftLobby(callback.m_ulSteamIDUserChanged);
                 break;
         }
@@ -60,11 +59,8 @@ public class SteamworksLobbyAPI
     private async void OnLobbyCreated(LobbyCreated_t callback)
     {
         if (callback.m_eResult != EResult.k_EResultOK) {
-            ConsoleLogger.Steamworks("Creating lobby failed");
             return;
         }
-
-        ConsoleLogger.Steamworks("Lobby created successfully");
 
         ulong lobbyId = callback.m_ulSteamIDLobby;
         string networkAddress = SteamUser.GetSteamID().ToString();
@@ -86,11 +82,8 @@ public class SteamworksLobbyAPI
     private void OnLobbyEnter(LobbyEnter_t callback)
     {
         if (callback.m_EChatRoomEnterResponse != (uint)EChatRoomEnterResponse.k_EChatRoomEnterResponseSuccess) {
-            ConsoleLogger.Steamworks("Entering lobby failed");
             return;
         }
-
-        ConsoleLogger.Steamworks("Lobby entered successfully");
 
         ulong lobbyId = callback.m_ulSteamIDLobby;
 

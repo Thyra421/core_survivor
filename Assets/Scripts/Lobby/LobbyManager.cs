@@ -5,44 +5,57 @@ public class LobbyManager : Singleton<LobbyManager>
 {
     private SteamworksLobbyAPI _steamworksLobbyAPI;
 
-    public ListenableList<LobbyPlayerInfo> Players = new();
-    public ulong LobbyId { get; private set; }
+    public ListenableList<LobbyPlayerInfo> Players { get; } = new();
     public bool IsHost { get; private set; }
     public string NetworkAddress { get; private set; }
 
-    private void OnCreatedLobby(ulong id)
+    private ulong _lobbyId;
+    private ulong _lobbyOwnerId;
+
+    private void OnCreatedLobby(ulong lobbyId)
     {
-        MasterServer.Current.CreateLobby(id);
+        MasterServer.Current.CreateLobby(lobbyId);
+
+        ConsoleLogger.Steamworks($"Created lobby");
     }
 
-    private void OnJoinedLobby(ulong id, bool isHost)
+    private void OnJoinedLobby(ulong lobbyId, bool isHost)
     {
-        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetCurrentLobbyInformation(id);
-        List<LobbyPlayerInfo> playersInLobby = SteamworksHelper.GetPlayersInLobby(id);
-        
-        Players.AddRange(playersInLobby);
+        SteamLobbyInformation steamLobbyInformation = SteamworksHelper.GetCurrentLobbyInformation(lobbyId);
+        List<LobbyPlayerInfo> playersInLobby = SteamworksHelper.GetPlayersInLobby(lobbyId);
+        CSteamID ownerId = SteamMatchmaking.GetLobbyOwner(new CSteamID(lobbyId));
 
-        LobbyId = id;
+        Players.AddRange(playersInLobby);
+        _lobbyOwnerId = ownerId.m_SteamID;
+        _lobbyId = lobbyId;
         NetworkAddress = steamLobbyInformation.networkAddress;
         IsHost = isHost;
+
+        ConsoleLogger.Steamworks($"Joined lobby {steamLobbyInformation.name}");
 
         SceneLoader.Current.LoadDraftAsync();
     }
 
-    private void OnUserJoinedLobby(ulong id)
+    private void OnUserJoinedLobby(ulong userId)
     {
-        LobbyPlayerInfo lobbyPlayerInfo = SteamworksHelper.GetPlayerInfo(id);
+        LobbyPlayerInfo lobbyPlayerInfo = SteamworksHelper.GetPlayerInfo(userId);
 
         Players.Add(lobbyPlayerInfo);
+
+        ConsoleLogger.Steamworks($"Player {lobbyPlayerInfo.Name} joined lobby");
     }
 
-    private void OnUserLeftLobby(ulong id)
+    private void OnUserLeftLobby(ulong userId)
     {
-        int index = Players.FindIndex(p => p.Id == id);
+        int index = Players.FindIndex(p => p.Id == userId);
 
         if (index == -1) return;
 
         Players.RemoveAt(index);
+
+        if (userId == _lobbyOwnerId) LeaveLobby();
+
+        ConsoleLogger.Steamworks($"Player left lobby");
     }
 
     public void HostLobby()
@@ -57,7 +70,8 @@ public class LobbyManager : Singleton<LobbyManager>
 
     public void LeaveLobby()
     {
-        _steamworksLobbyAPI.LeaveLobby(LobbyId);
+        _steamworksLobbyAPI.LeaveLobby(_lobbyId);
+        Players.Clear();
         if (IsHost)
             MasterServer.Current.DeleteLobby();
     }

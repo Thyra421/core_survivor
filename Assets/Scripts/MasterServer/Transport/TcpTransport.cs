@@ -60,10 +60,10 @@ internal class TcpTransport
         ConsoleLogger.Master($"Received {message}");
 
         ServerMessageBase messageBase = JsonUtility.FromJson<ServerMessageBase>(message);
+        if (messageBase?.action == null) return;
+        
         Type messageType = MessageHelper.GetType(messageBase.action);
-
         object obj = JsonUtility.FromJson(message, messageType);
-
         _messageRegistry.Invoke(obj, messageType);
     }
 
