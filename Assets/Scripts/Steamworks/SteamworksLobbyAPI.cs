@@ -15,7 +15,7 @@ public class SteamworksLobbyAPI
     private readonly Action<ulong> _onUserJoinedLobby;
     private readonly Action<ulong> _onUserLeftLobby;
 
-    private bool _isHost = false;
+    private bool _isHost;
 
     public SteamworksLobbyAPI(Action<ulong> onCreatedLobby, Action<ulong, bool> onJoinedLobby,
         Action<ulong> onUserJoinedLobby, Action<ulong> onUserLeftLobby)

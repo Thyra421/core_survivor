@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DraftAvatarManager : Singleton<DraftAvatarManager>
@@ -9,8 +8,6 @@ public class DraftAvatarManager : Singleton<DraftAvatarManager>
     protected override void Awake()
     {
         base.Awake();
-
-        if (LobbyManager.Current == null) throw new Exception("Not in a lobby");
 
         // Initialize with current data
         OnPlayersChanged(LobbyManager.Current.Players);

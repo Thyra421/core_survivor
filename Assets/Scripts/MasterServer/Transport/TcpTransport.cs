@@ -22,7 +22,7 @@ internal class TcpTransport
         OnListen();
         NetworkStream stream = _tcpClient!.GetStream();
 
-        byte[] bytes = new byte[Config.Current.TCPChunkSize];
+        byte[] bytes = new byte[Config.Current.MessageChunkSize];
 
         try {
             int i;

@@ -10,8 +10,8 @@ public class LobbyManager : Singleton<LobbyManager>
     public ListenableList<LobbyPlayerInfo> Players { get; } = new();
     public bool IsHost { get; private set; }
     public string NetworkAddress { get; private set; }
+    public ulong LobbyId { get; private set; }
 
-    private ulong _lobbyId;
     private ulong _lobbyOwnerId;
 
     private void OnCreatedLobby(ulong lobbyId)
@@ -29,7 +29,7 @@ public class LobbyManager : Singleton<LobbyManager>
 
         Players.AddRange(playersInLobby);
         _lobbyOwnerId = ownerId.m_SteamID;
-        _lobbyId = lobbyId;
+        LobbyId = lobbyId;
         NetworkAddress = steamLobbyInformation.networkAddress;
         IsHost = isHost;
 
@@ -76,7 +76,7 @@ public class LobbyManager : Singleton<LobbyManager>
 
     public void LeaveLobby()
     {
-        _steamworksLobbyAPI.LeaveLobby(_lobbyId);
+        _steamworksLobbyAPI.LeaveLobby(LobbyId);
         Players.Clear();
         if (IsHost)
             MasterServer.Current.DeleteLobby();

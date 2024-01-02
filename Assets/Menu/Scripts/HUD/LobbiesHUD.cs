@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,6 @@ namespace CoreSurvivor
         [SerializeField] private RectTransform lobbiesRoot;
         [SerializeField] private GameObject lobbiesEntryPrefab;
         [SerializeField] private Button createLobbyButton;
-        [SerializeField] private TMP_InputField createLobbyNameInputField;
 
         private void OnLobbiesChanged(ListenableList<LobbyInformation> lobbies)
         {
@@ -31,8 +31,12 @@ namespace CoreSurvivor
 
         private void Start()
         {
-            LobbiesManager.Current.Lobbies.OnChanged += OnLobbiesChanged;
             OnLobbiesChanged(LobbiesManager.Current.Lobbies);
+            LobbiesManager.Current.Lobbies.OnChanged += OnLobbiesChanged;
+        }
+
+        private void Awake()
+        {
             createLobbyButton.onClick.AddListener(OnClickCreateRoom);
         }
 
