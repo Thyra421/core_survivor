@@ -19,7 +19,7 @@ public partial class PlayerMovement
     public void OnDash()
     {
         if (!isClient || !isOwned) return;
-
+        
         DashCommand();
     }
 

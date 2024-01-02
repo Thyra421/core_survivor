@@ -88,6 +88,17 @@ public partial class PlayerMovement
     [Server]
     private void Dash()
     {
+        Vector3 mousePosition = Input.mousePosition;
+
+        Ray ray = Camera.main!.ScreenPointToRay(mousePosition);
+
+        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
+        
+        Vector3 targetPosition = hit.point;
+        targetPosition.y = 0;
+        
+        transform.rotation = Quaternion.LookRotation(targetPosition - transform.position);
+        
         _dashCooldown = dashCooldownDuration;
         _canMove = false;
         _currentSpeed = dashSpeed;
