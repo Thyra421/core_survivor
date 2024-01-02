@@ -11,6 +11,7 @@ public class DraftHUD : MonoBehaviour
     {
         leaveButton.onClick.AddListener(DraftManager.Current.LeaveDraft);
         startButton.onClick.AddListener(DraftManager.Current.StartGame);
+        startButton.gameObject.SetActive(LobbyManager.Current.IsHost);
     }
 
     private void OnDestroy()

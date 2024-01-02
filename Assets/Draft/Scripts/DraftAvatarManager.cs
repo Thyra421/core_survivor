@@ -4,6 +4,7 @@ public class DraftAvatarManager : Singleton<DraftAvatarManager>
 {
     [SerializeField] private Transform[] spots;
     [SerializeField] private GameObject draftAvatarPrefab;
+    [SerializeField] private Material[] materials;
 
     protected override void Awake()
     {
@@ -29,7 +30,7 @@ public class DraftAvatarManager : Singleton<DraftAvatarManager>
 
             DraftAvatar avatar = Instantiate(draftAvatarPrefab, spots[i]).GetComponent<DraftAvatar>();
 
-            avatar.Initialize(players[i].Name);
+            avatar.Initialize(players[i].Name, materials[i]);
         }
     }
 }

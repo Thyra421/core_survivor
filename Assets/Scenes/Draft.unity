@@ -1033,6 +1033,11 @@ MonoBehaviour:
   - {fileID: 426469358}
   draftAvatarPrefab: {fileID: 5602001710478202444, guid: 2c1041fa6bd525c4b9c34ddce4aa8fa4,
     type: 3}
+  materials:
+  - {fileID: 2100000, guid: edba63ef3e4d143459dc69cdeae3bc57, type: 2}
+  - {fileID: 2100000, guid: 06acb4b24d930404f9f01bc1dc8a0a2c, type: 2}
+  - {fileID: 2100000, guid: 6e7ebc9a655c42946b95ab091b476d85, type: 2}
+  - {fileID: 2100000, guid: 7a867e14ed7fa7b40a888e36af4f9293, type: 2}
 --- !u!1 &1584875886
 GameObject:
   m_ObjectHideFlags: 0
