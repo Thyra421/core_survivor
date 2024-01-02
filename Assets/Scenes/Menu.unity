@@ -4119,7 +4119,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1729872881}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.89795923
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4198,7 +4198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -301.30005, y: -100}
+  m_AnchoredPosition: {x: -300, y: -100}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1607216516
@@ -4642,6 +4642,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
+  disconnectedFromLobbyPrefab: {fileID: 5964152520798055371, guid: ea8c2291c41b7dd4ca1c2dba45eda550,
+    type: 3}
 --- !u!1 &1889735332
 GameObject:
   m_ObjectHideFlags: 0

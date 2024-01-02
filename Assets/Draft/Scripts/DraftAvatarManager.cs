@@ -19,8 +19,6 @@ public class DraftAvatarManager : Singleton<DraftAvatarManager>
 
     private void OnDestroy()
     {
-        if (LobbyManager.Current == null) throw new Exception("Not in a lobby");
-
         LobbyManager.Current.Players.OnChanged -= OnPlayersChanged;
     }
 

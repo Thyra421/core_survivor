@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using Steamworks;
+using UnityEngine;
 
 public class LobbyManager : Singleton<LobbyManager>
 {
+    [SerializeField] private GameObject disconnectedFromLobbyPrefab;
     private SteamworksLobbyAPI _steamworksLobbyAPI;
 
     public ListenableList<LobbyPlayerInfo> Players { get; } = new();
@@ -53,7 +55,10 @@ public class LobbyManager : Singleton<LobbyManager>
 
         Players.RemoveAt(index);
 
-        if (userId == _lobbyOwnerId) LeaveLobby();
+        if (userId == _lobbyOwnerId) {
+            LeaveLobby();
+            Instantiate(disconnectedFromLobbyPrefab);
+        }
 
         ConsoleLogger.Steamworks($"Player left lobby");
     }
@@ -67,6 +72,7 @@ public class LobbyManager : Singleton<LobbyManager>
     {
         _steamworksLobbyAPI.JoinLobby(lobbyId);
     }
+
 
     public void LeaveLobby()
     {
