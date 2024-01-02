@@ -5,10 +5,10 @@ using Steamworks;
 public class SteamworksLobbyAPI
 {
     // Assign callbacks to local variables to avoid garbage collection.
-    protected readonly Callback<LobbyCreated_t> lobbyCreated;
-    protected readonly Callback<GameLobbyJoinRequested_t> joinRequested;
-    protected readonly Callback<LobbyEnter_t> lobbyEnter;
-    protected readonly Callback<LobbyChatUpdate_t> lobbyChatUpdate;
+    private readonly Callback<LobbyCreated_t> _lobbyCreated;
+    private readonly Callback<GameLobbyJoinRequested_t> _joinRequested;
+    private readonly Callback<LobbyEnter_t> _lobbyEnter;
+    private readonly Callback<LobbyChatUpdate_t> _lobbyChatUpdate;
 
     private readonly Action<ulong, bool> _onJoinedLobby;
     private readonly Action<ulong> _onCreatedLobby;
@@ -26,12 +26,15 @@ public class SteamworksLobbyAPI
         _onJoinedLobby = onJoinedLobby;
         _onUserJoinedLobby = onUserJoinedLobby;
         _onUserLeftLobby = onUserLeftLobby;
-        lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
-        joinRequested = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequested);
-        lobbyEnter = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
-        lobbyChatUpdate = Callback<LobbyChatUpdate_t>.Create(OnLobbyChatUpdate);
+        _lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
+        _joinRequested = Callback<GameLobbyJoinRequested_t>.Create(OnJoinRequested);
+        _lobbyEnter = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
+        _lobbyChatUpdate = Callback<LobbyChatUpdate_t>.Create(OnLobbyChatUpdate);
     }
 
+    /// <summary>
+    /// Detects change in the chatroom. Used to detect when player enter and exit the lobby.
+    /// </summary>
     private void OnLobbyChatUpdate(LobbyChatUpdate_t callback)
     {
         switch ((EChatMemberStateChange)callback.m_rgfChatMemberStateChange) {

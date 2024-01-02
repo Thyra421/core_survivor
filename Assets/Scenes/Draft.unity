@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaveButton: {fileID: 1253282450}
+  startButton: {fileID: 1315122112}
 --- !u!1 &1253282448
 GameObject:
   m_ObjectHideFlags: 0

@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f23b42b4bf9a0458429c1efbc2b6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   runInBackground: 1
   headlessStartMode: 1
   editorAutoStart: 0
@@ -1519,6 +1519,8 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
+  disconnectedFromServerPrefab: {fileID: 5964152520798055371, guid: 6513fa3be1312d040b0c8672f4dbe0cd,
+    type: 3}
 --- !u!114 &668668034
 MonoBehaviour:
   m_ObjectHideFlags: 0

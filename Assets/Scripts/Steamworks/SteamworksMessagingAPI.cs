@@ -3,7 +3,7 @@ using System.Text;
 using Steamworks;
 using UnityEngine;
 
-class SteamworksMessagingAPI
+public class SteamworksMessagingAPI
 {
     private readonly MessageRegistry _messageRegistry;
     private readonly Callback<LobbyChatMsg_t> _lobbyChatMsg;
@@ -11,12 +11,14 @@ class SteamworksMessagingAPI
 
     public SteamworksMessagingAPI(ulong lobbyId, MessageRegistry messageRegistry)
     {
+        if (!SteamManager.Initialized) throw new Exception("Steam is not open.");
+
         _messageRegistry = messageRegistry;
         _lobbyChatMsg = Callback<LobbyChatMsg_t>.Create(OnLobbyChatMessage);
         _lobbyId = new CSteamID(lobbyId);
     }
 
-    public void Send(MessageBase message)
+    public void Send(SteamMessage message)
     {
         string serializedMessage = JsonUtility.ToJson(message);
         byte[] bytes = Encoding.ASCII.GetBytes(serializedMessage);
@@ -37,7 +39,7 @@ class SteamworksMessagingAPI
 
         LobbyPlayerInfo playerInfo = SteamworksHelper.GetPlayerInfo(sender.m_SteamID);
 
-        string message = Encoding.ASCII.GetString(buffer, 0, i);
+        string message = Encoding.ASCII.GetString(buffer, 0, i - 1);
 
         ConsoleLogger.Steamworks($"Received {message} from {playerInfo.Name}");
 
