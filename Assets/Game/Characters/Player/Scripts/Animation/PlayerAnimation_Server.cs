@@ -32,7 +32,6 @@ public partial class PlayerAnimation
         return new Vector2(cX, cZ);
     }
 
-
     public override void OnStartServer()
     {
         base.OnStartServer();

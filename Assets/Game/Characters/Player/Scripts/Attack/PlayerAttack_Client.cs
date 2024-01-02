@@ -4,7 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerAnimation))]
 public partial class PlayerAttack
 {
-    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField]
+    private GameObject grenadePrefab;
+
+    [SerializeField]
+    private Transform handTransform;
+
+    [SerializeField]
+    private LayerMask whatIsGround;
+
     private PlayerAnimation _playerAnimation;
 
     [ClientRpc]
@@ -14,7 +22,13 @@ public partial class PlayerAttack
 
         if (!isOwned) return;
 
-        _cooldown = cooldownDuration;
+        Cooldown.Start();
+    }
+
+    [ClientRpc]
+    private void ClientThrow()
+    {
+        _playerAnimation.SetTrigger("Throw");
     }
 
     public override void OnStartClient()
@@ -26,18 +40,27 @@ public partial class PlayerAttack
     public void OnAttack()
     {
         if (!isClient || !isOwned) return;
+        if (!Cooldown.IsReady) return;
 
-        if (_cooldown > 0) return;
+        Vector3 targetPosition = Vector3.zero;
+        bool result = GameHelper.GetMousePositionToWorldPoint(whatIsGround, ref targetPosition);
 
-        Vector3 mousePosition = Input.mousePosition;
+        if (!result) return;
 
-        Ray ray = Camera.main!.ScreenPointToRay(mousePosition);
-
-        if (!Physics.Raycast(ray, out RaycastHit hit, 100, whatIsGround)) return;
-
-        Vector3 targetPosition = hit.point;
         targetPosition.y = 0;
-
         AttackCommand(targetPosition);
+    }
+
+    public void OnUltimate()
+    {
+        Grenade grenade = Instantiate(grenadePrefab, handTransform.position, Quaternion.identity)
+            .GetComponent<Grenade>();
+
+        Vector3 targetPosition = Vector3.zero;
+        bool result = GameHelper.GetMousePositionToWorldPoint(whatIsGround, ref targetPosition);
+
+        if (!result) return;
+
+        grenade.Initialize(targetPosition);
     }
 }

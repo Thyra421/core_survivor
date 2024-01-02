@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameHUDManager : Singleton<GameHUDManager>
 {
     [SerializeField] private ResourcesHUD resourcesHUD;
+    [SerializeField] private AbilitiesHUD abilitiesHUD;
     [SerializeField] private TMP_Text timerText;
 
     // ReSharper disable once UnusedMember.Local
@@ -15,7 +16,9 @@ public class GameHUDManager : Singleton<GameHUDManager>
 
     private void OnLocalPlayerChanged(Player player)
     {
-        if (player != null)
+        if (player != null) {
             resourcesHUD.Initialize(player);
+            abilitiesHUD.Initialize(player);
+        }
     }
 }

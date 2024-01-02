@@ -6,16 +6,31 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerAttack))]
 public partial class PlayerMovement
 {
-    [Header("Speed")] [SerializeField] private float movementSpeed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float deceleration;
+    [Header("Speed")]
+    [SerializeField]
+    private float movementSpeed;
 
-    [Header("Dash")] [SerializeField] private float dashDistance;
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashCooldownDuration;
-    [SerializeField] private float dashStaminaCostPerSecond;
-    [SerializeField] private float staminaRegenerationPerSecond;
+    [SerializeField]
+    private float rotationSpeed;
+
+    [SerializeField]
+    private float acceleration;
+
+    [SerializeField]
+    private float deceleration;
+
+    [Header("Dash")]
+    [SerializeField]
+    private float dashDistance;
+
+    [SerializeField]
+    private float dashSpeed;
+
+    [SerializeField]
+    private float dashStaminaCostPerSecond;
+
+    [SerializeField]
+    private float staminaRegenerationPerSecond;
 
     private CharacterController _characterController;
     private PlayerAttack _playerAttack;
@@ -24,7 +39,6 @@ public partial class PlayerMovement
     private Vector3 _momentum;
     private Vector3 _moveDirection;
     private bool _canMove = true;
-    private float _dashCooldown;
 
     public readonly Listenable<float> stamina = new(100);
 
@@ -56,7 +70,7 @@ public partial class PlayerMovement
             _currentSpeed = Mathf.Clamp(_currentSpeed + acceleration * Time.deltaTime, 0, movementSpeed);
             _momentum = _moveDirection * (_currentSpeed * Time.deltaTime);
         }
-        // player is not pressing movement keys. decrease movement progressivly
+        // player is not pressing movement keys. decrease movement progressively
         else {
             _currentSpeed = Mathf.Clamp(_currentSpeed - deceleration * Time.deltaTime, 0, movementSpeed);
             _momentum = _momentum.normalized * (_currentSpeed * Time.deltaTime);
@@ -87,7 +101,7 @@ public partial class PlayerMovement
     [Command]
     private void DashCommand()
     {
-        if (_dashCooldown > 0) return;
+        if (!DashCooldown.IsReady) return;
 
         Dash();
     }
@@ -104,7 +118,7 @@ public partial class PlayerMovement
 
         transform.rotation = Quaternion.LookRotation(targetPosition - transform.position);
 
-        _dashCooldown = dashCooldownDuration;
+        DashCooldown.Start();
         _canMove = false;
         _currentSpeed = dashSpeed;
         StartCoroutine(nameof(DashCoroutine));
@@ -142,7 +156,7 @@ public partial class PlayerMovement
         if (!_canMove) return;
 
         HandleMovementAndRotation();
-        _dashCooldown -= Time.deltaTime;
+        DashCooldown.Update();
         stamina.Value = Mathf.Clamp(stamina.Value + staminaRegenerationPerSecond * Time.deltaTime, 0, 100);
     }
 

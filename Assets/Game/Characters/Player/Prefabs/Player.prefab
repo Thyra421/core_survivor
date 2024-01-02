@@ -191,13 +191,13 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
+  dashCooldownDuration: 1
   movementSpeed: 6
   rotationSpeed: 20
   acceleration: 30
   deceleration: 70
   dashDistance: 5
   dashSpeed: 20
-  dashCooldownDuration: 1
   dashStaminaCostPerSecond: 50
   staminaRegenerationPerSecond: 3
 --- !u!114 &4991769375093246907
@@ -217,6 +217,9 @@ MonoBehaviour:
   syncInterval: 0
   attackDelay: 0.6
   cooldownDuration: 1.25
+  grenadePrefab: {fileID: 5274250965855777935, guid: 3e5a0bb9ac452e44b9b9cef3370cac3f,
+    type: 3}
+  handTransform: {fileID: 6084100760471332039}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
@@ -360,6 +363,12 @@ Transform:
 --- !u!4 &1722303007822614220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6457f97185c0a4448be2c335d9b2684f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032298205644157188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6084100760471332039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 6457f97185c0a4448be2c335d9b2684f,
     type: 3}
   m_PrefabInstance: {fileID: 1032298205644157188}
   m_PrefabAsset: {fileID: 0}
