@@ -42,6 +42,10 @@ public class SwordSlash : AbilityBase, ITargeted
         player.StartCoroutine(ResetIsCompletedCoroutine());
     }
 
+    public override void ClientEnd(string args) { }
+
+    public override void ServerEnd(string args) { }
+
     private IEnumerator ResetIsCompletedCoroutine()
     {
         yield return new WaitForSeconds(abilityDuration);

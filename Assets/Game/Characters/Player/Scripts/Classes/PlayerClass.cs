@@ -44,6 +44,25 @@ public abstract class PlayerClass : NetworkBehaviour
         Abilities[index].ServerUse(args);
     }
 
+    [Command]
+    protected void EndUseAbilityCommand(int index, string args)
+    {
+        EndUseAbilityServer(index, args);
+        EndUseAbilityClient(index, args);
+    }
+
+    [ClientRpc]
+    private void EndUseAbilityClient(int index, string args)
+    {
+        Abilities[index].ClientEnd(args);
+    }
+
+    [Server]
+    private void EndUseAbilityServer(int index, string args)
+    {
+        Abilities[index].ClientEnd(args);
+    }
+
     protected virtual void Update()
     {
         foreach (AbilityBase a in Abilities) {

@@ -22,4 +22,6 @@ public abstract class AbilityBase
 
     public abstract void ClientUse(string args);
     public abstract void ServerUse(string args);
+    public abstract void ClientEnd(string args);
+    public abstract void ServerEnd(string args);
 }

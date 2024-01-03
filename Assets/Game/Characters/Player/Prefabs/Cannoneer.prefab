@@ -449,19 +449,20 @@ MonoBehaviour:
       type: 3}
     bulletDamages: 15
     gunTip: {fileID: 7759220822339139433}
+    rig: {fileID: 2964083930280356593}
   flamethrower:
     abilityDuration: 0
     delay: 0
     cooldown:
-      duration: 0.2
+      duration: 0.4
     player: {fileID: 0}
     flames: {fileID: 5591315670759100024}
-    tickDamage: 20
+    tickDamage: 10
     gunTip: {fileID: 7759220822339139433}
     radius: 1.5
     distance: 5
+    rig: {fileID: 2964083930280356593}
   aim: {fileID: 7932012932917179829}
-  rig: {fileID: 2964083930280356593}
 --- !u!1 &3809806790891673640
 GameObject:
   m_ObjectHideFlags: 0

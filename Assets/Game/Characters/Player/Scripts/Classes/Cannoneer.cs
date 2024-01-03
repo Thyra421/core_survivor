@@ -1,6 +1,5 @@
 ﻿using Mirror;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 public class Cannoneer : PlayerClass, IRadioactivityUser
@@ -14,12 +13,10 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     [SerializeField]
     private Transform aim;
 
-    [SerializeField]
-    private Rig rig;
-
     private Player _player;
     private bool _isShooting;
     private bool _isFlaming;
+
     private Vector3? _target;
 
     public Radioactivity Radioactivity { get; } = new();
@@ -33,15 +30,15 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         Abilities = new AbilityBase[] { machineGunShoot, flamethrower };
     }
 
+    [Client]
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (!(isClient && isOwned)) return;
 
         if (context.canceled) {
-            EndMachineGunCommand();
+            EndUseAbilityCommand(0, "");
             _isShooting = false;
             _target = null;
-            rig.weight = 0;
 
             return;
         }
@@ -50,19 +47,18 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
         if (context.started) {
             _isShooting = true;
-            rig.weight = 1;
         }
     }
 
+    [Client]
     public void OnUltimate(InputAction.CallbackContext context)
     {
         if (!(isClient && isOwned)) return;
 
         if (context.canceled) {
-            EndFlamethrowerCommand();
+            EndUseAbilityCommand(1, "");
             _isFlaming = false;
             _target = null;
-            rig.weight = 0;
 
             return;
         }
@@ -71,29 +67,23 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
         if (context.started) {
             _isFlaming = true;
-            rig.weight = 1;
         }
     }
 
     [Command]
-    private void EndMachineGunCommand()
+    private void SetAimCommand(Vector3 target)
     {
-        machineGunShoot.ServerEnd();
-    }
-
-    [Command]
-    private void EndFlamethrowerCommand()
-    {
-        flamethrower.ServerEnd();
-        ClientEnd();
+        aim.position = target;
+        SetAimRpc(target);
     }
 
     [ClientRpc]
-    private void ClientEnd()
+    private void SetAimRpc(Vector3 target)
     {
-        flamethrower.ClientEnd();
+        aim.position = target;
     }
 
+    [Client]
     private void ShootingUpdate()
     {
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
@@ -101,13 +91,14 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         _target = targetPosition.Value;
         Vector3 aimPosition = _target.Value;
         aimPosition.y = 1.5f;
-        aim.transform.position = aimPosition;
+        SetAimCommand(aimPosition);
 
         if (!CanUseAbility(0)) return;
 
         UseAbilityCommand(0, machineGunShoot.Serialize(_target.Value));
     }
 
+    [Client]
     private void FlamethrowerUpdate()
     {
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
@@ -115,7 +106,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         _target = targetPosition.Value;
         Vector3 aimPosition = _target.Value;
         aimPosition.y = 1.5f;
-        aim.transform.position = aimPosition;
+        SetAimCommand(aimPosition);
 
         if (!CanUseAbility(1)) return;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using Mirror;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using Object = UnityEngine.Object;
 
 [Serializable]
@@ -14,6 +15,9 @@ public class MachineGunShoot : AbilityBase, ITargeted
 
     [SerializeField]
     private Transform gunTip;
+
+    [SerializeField]
+    private Rig rig;
 
     private static readonly int IsShootingId = Animator.StringToHash("IsShooting");
 
@@ -29,6 +33,7 @@ public class MachineGunShoot : AbilityBase, ITargeted
     {
         if (player.isOwned)
             Cooldown.Start();
+        rig.weight = 1;
     }
 
     public override void ServerUse(string args)
@@ -47,12 +52,22 @@ public class MachineGunShoot : AbilityBase, ITargeted
             Quaternion.LookRotation(shootDirection)).GetComponent<MachineGunBullet>();
         bullet.Initialize(bulletDamages);
         NetworkServer.Spawn(bullet.gameObject);
+
+        rig.weight = 1;
     }
 
-    public void ServerEnd()
+    public override void ClientEnd(string args)
+    {
+        IsCompleted = true;
+        Target = null;
+        rig.weight = 0;
+    }
+
+    public override void ServerEnd(string args)
     {
         player.Animation.SetBool(IsShootingId, false);
         IsCompleted = true;
         Target = null;
+        rig.weight = 0;
     }
 }

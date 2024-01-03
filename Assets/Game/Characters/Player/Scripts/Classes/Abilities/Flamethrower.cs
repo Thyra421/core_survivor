@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
-using Mirror;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityEngine.Animations.Rigging;
 
 [Serializable]
 public class Flamethrower : AbilityBase, ITargeted
@@ -22,6 +20,9 @@ public class Flamethrower : AbilityBase, ITargeted
     [SerializeField]
     private float distance;
 
+    [SerializeField]
+    private Rig rig;
+
     private static readonly int IsShootingId = Animator.StringToHash("IsShooting");
 
     public Vector3? Target { get; private set; }
@@ -37,6 +38,8 @@ public class Flamethrower : AbilityBase, ITargeted
         flames.Play();
         if (player.isOwned)
             Cooldown.Start();
+
+        rig.weight = 1;
     }
 
     public override void ServerUse(string args)
@@ -66,20 +69,23 @@ public class Flamethrower : AbilityBase, ITargeted
                     LayerManager.Current.WhatIsObstacle))
                 enemy.TakeDamage(tickDamage);
         }
+
+        rig.weight = 1;
     }
 
-    public void ServerEnd()
-    {
-        player.Animation.SetBool(IsShootingId, false);
-        IsCompleted = true;
-        Target = null;
-    }
-
-    public void ClientEnd()
+    public override void ClientEnd(string args)
     {
         flames.Stop();
+        IsCompleted = true;
+        Target = null;
+        rig.weight = 0;
+    }
+
+    public override void ServerEnd(string args)
+    {
         player.Animation.SetBool(IsShootingId, false);
         IsCompleted = true;
         Target = null;
+        rig.weight = 0;
     }
 }

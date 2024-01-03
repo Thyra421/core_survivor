@@ -16,7 +16,8 @@ public class MachineGunBullet : NetworkBehaviour
 
     private void Start()
     {
-        StartCoroutine(DestroyCoroutine());
+        if (isServer)
+            StartCoroutine(DestroyCoroutine());
     }
 
     private void Update()
