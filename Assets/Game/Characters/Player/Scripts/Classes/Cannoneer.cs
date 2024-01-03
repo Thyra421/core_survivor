@@ -1,11 +1,18 @@
 ﻿using Mirror;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 public class Cannoneer : PlayerClass, IRadioactivityUser
 {
     [SerializeField]
     private MachineGunShoot machineGunShoot;
+
+    [SerializeField]
+    private Transform aim;
+
+    [SerializeField]
+    private Rig rig;
 
     private Player _player;
     private bool _isShooting;
@@ -27,6 +34,8 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
             EndMachineGunCommand();
             _isShooting = false;
             _target = null;
+            rig.weight = 0;
+
             return;
         }
 
@@ -34,6 +43,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
         if (context.started) {
             _isShooting = true;
+            rig.weight = 1;
         }
     }
 
@@ -52,6 +62,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (targetPosition == null) return;
         _target = targetPosition.Value;
+        aim.transform.position = _target.Value;
 
         if (!CanUseAbility(0)) return;
 
