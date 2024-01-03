@@ -9,8 +9,10 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
     private Player _player;
     private bool _isShooting;
+    private Vector3? _target;
 
     public Radioactivity Radioactivity { get; } = new();
+    public override Vector3? Target => _target ?? base.Target;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         if (context.canceled) {
             EndMachineGunCommand();
             _isShooting = false;
+            _target = null;
             return;
         }
 
@@ -45,15 +48,16 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         base.Update();
 
         if (!_isShooting) return;
-
-        if (!CanUseAbility(0)) return;
-
+        
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
 
         if (targetPosition == null) return;
 
         Vector3 copy = targetPosition.Value;
         copy.y = 0;
+        _target = copy;
+
+        if (!CanUseAbility(0)) return;
 
         UseAbilityCommand(0, machineGunShoot.Serialize(copy));
     }

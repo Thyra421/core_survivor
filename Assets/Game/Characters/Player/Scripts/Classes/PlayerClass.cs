@@ -9,7 +9,7 @@ public abstract class PlayerClass : NetworkBehaviour
     public AbilityBase[] Abilities { get; protected set; }
     public bool IsBusy => Abilities.Any(a => !a.IsCompleted);
 
-    public Vector3? Target {
+    public virtual Vector3? Target {
         get {
             AbilityBase ability = Abilities.FirstOrDefault(a => !a.IsCompleted);
             return ability is ITargeted targeted ? targeted.Target : null;

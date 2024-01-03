@@ -9,6 +9,12 @@ public class MachineGunShoot : AbilityBase, ITargeted
     [SerializeField]
     private GameObject bulletPrefab;
 
+    [SerializeField]
+    private int bulletDamages;
+
+    [SerializeField]
+    private Transform gunTip;
+
     public Vector3? Target { get; private set; }
     public override bool IsChanneled => true;
 
@@ -31,8 +37,10 @@ public class MachineGunShoot : AbilityBase, ITargeted
         Cooldown.Start();
         IsCompleted = false;
 
-        GameObject bullet = Object.Instantiate(bulletPrefab, player.transform.position, player.transform.rotation);
-        NetworkServer.Spawn(bullet);
+        MachineGunBullet bullet = Object.Instantiate(bulletPrefab, gunTip.position,
+            Quaternion.LookRotation(Target.Value - player.transform.position)).GetComponent<MachineGunBullet>();
+        bullet.Initialize(bulletDamages);
+        NetworkServer.Spawn(bullet.gameObject);
     }
 
     public void End()

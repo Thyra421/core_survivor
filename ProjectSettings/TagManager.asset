@@ -15,8 +15,8 @@ TagManager:
   - MapBorder
   - Player
   - Ground
-  - 
-  - 
+  - Obstacle
+  - Projectile
   - 
   - 
   - 

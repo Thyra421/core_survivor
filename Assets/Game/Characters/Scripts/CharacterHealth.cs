@@ -13,7 +13,7 @@ public abstract partial class CharacterHealth : NetworkBehaviour, IDamageable
     public int Max => maxHealth;
     public Listenable<int> Current { get; } = new();
     public bool IsFullHealth => Current.Value == maxHealth;
-    public bool IsDead => Current.Value == 0;
+    public bool IsDead => Current.Value <= 0;
 
     private void CurrentHealthHook(int oldValue, int newValue)
     {

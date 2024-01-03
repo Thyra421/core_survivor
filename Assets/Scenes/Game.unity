@@ -177,6 +177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -265,6 +270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
@@ -355,6 +365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -443,6 +458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
@@ -740,7 +760,7 @@ GameObject:
   - component: {fileID: 188022648}
   - component: {fileID: 188022647}
   - component: {fileID: 188022646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,6 +1859,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1927,6 +1952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
@@ -2484,6 +2514,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2948,6 +2983,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3112,7 +3152,7 @@ GameObject:
   - component: {fileID: 1152827545}
   - component: {fileID: 1152827544}
   - component: {fileID: 1152827543}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3690,7 +3730,7 @@ GameObject:
   - component: {fileID: 1664736802}
   - component: {fileID: 1664736801}
   - component: {fileID: 1664736800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4018,7 +4058,7 @@ GameObject:
   - component: {fileID: 1783766392}
   - component: {fileID: 1783766391}
   - component: {fileID: 1783766390}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4128,6 +4168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
@@ -4409,6 +4454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
@@ -4738,6 +4788,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4826,6 +4881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273470571149448075, guid: 9131f65ef7ce1e04dade084d7b300f85,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5127358584301017355, guid: 9131f65ef7ce1e04dade084d7b300f85,
         type: 3}

@@ -21,10 +21,14 @@ public partial class EnemyMovement
     [Server]
     private void ServerUpdate()
     {
-        if (_enemy.IsDead) return;
+        if (_enemy.IsDead) {
+            if (!_navMeshAgent.isStopped)
+                _navMeshAgent.isStopped = true;
+            return;
+        }
 
         if (_enemy.Target == null) return;
-        
+
         _navMeshAgent.SetDestination(_enemy.Target!.position);
     }
 }
