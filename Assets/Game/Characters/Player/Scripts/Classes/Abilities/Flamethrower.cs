@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Mirror;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -7,7 +8,7 @@ using Object = UnityEngine.Object;
 public class Flamethrower : AbilityBase, ITargeted
 {
     [SerializeField]
-    private GameObject flames;
+    private ParticleSystem flames;
 
     [SerializeField]
     private int tickDamage;
@@ -33,7 +34,7 @@ public class Flamethrower : AbilityBase, ITargeted
 
     public override void ClientUse(string args)
     {
-        flames.SetActive(true);
+        flames.Play();
         if (player.isOwned)
             Cooldown.Start();
     }
@@ -58,7 +59,12 @@ public class Flamethrower : AbilityBase, ITargeted
         foreach (RaycastHit h in hits) {
             if (!h.transform.TryGetComponent(out EnemyHealth enemy)) continue;
 
-            enemy.TakeDamage(tickDamage);
+            // check that enemy is in line of sight
+            Vector3 enemyPosition = h.transform.position;
+            Ray enemyRay = new(gunTip.position, h.transform.position - gunTip.position);
+            if (!Physics.Raycast(enemyRay, Vector3.Distance(enemyPosition, gunTip.position),
+                    LayerManager.Current.WhatIsObstacle))
+                enemy.TakeDamage(tickDamage);
         }
     }
 
@@ -71,7 +77,7 @@ public class Flamethrower : AbilityBase, ITargeted
 
     public void ClientEnd()
     {
-        flames.SetActive(false);
+        flames.Stop();
         player.Animation.SetBool(IsShootingId, false);
         IsCompleted = true;
         Target = null;

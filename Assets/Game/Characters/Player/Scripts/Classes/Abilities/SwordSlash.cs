@@ -65,6 +65,11 @@ public class SwordSlash : AbilityBase, ITargeted
         foreach (Collider c in hits) {
             if (!c.transform.TryGetComponent(out EnemyHealth enemy)) continue;
 
+            // check that enemy is in line of sight
+            Vector3 enemyPosition = c.transform.position;
+            Ray enemyRay = new(player.transform.position, c.transform.position - player.transform.position);
+            if (Physics.Raycast(enemyRay, Vector3.Distance(enemyPosition, player.transform.position),
+                    LayerManager.Current.WhatIsObstacle)) continue;
             enemy.TakeDamage(damages);
             cpt++;
         }
