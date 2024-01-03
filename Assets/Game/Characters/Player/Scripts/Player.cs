@@ -2,18 +2,20 @@ using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerHealth))]
-[RequireComponent(typeof(PlayerAttack))]
+[RequireComponent(typeof(PlayerAnimation))]
 public partial class Player : NetworkBehaviour
 {
     public PlayerHealth Health { get; private set; }
     public PlayerMovement Movement { get; private set; }
-    public PlayerAttack Attack { get; private set; }
+    public PlayerAnimation Animation { get; private set; }
+    public PlayerClass Class { get; private set; }
 
     private void Awake()
     {
         Health = GetComponent<PlayerHealth>();
         Movement = GetComponent<PlayerMovement>();
-        Attack = GetComponent<PlayerAttack>();
+        Animation = GetComponent<PlayerAnimation>();
+        Class = GetComponent<PlayerClass>();
     }
 
     private void Start()

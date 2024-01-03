@@ -4,15 +4,11 @@ using UnityEngine;
 public partial class PlayerMovement : NetworkBehaviour
 {
     [Header("Dash")]
+
     [SerializeField]
-    private float dashCooldownDuration;
+    private Cooldown dashCooldown;
 
-    public Cooldown DashCooldown { get; private set; }
-
-    private void Awake()
-    {
-        DashCooldown = new Cooldown(dashCooldownDuration);
-    }
+    public Cooldown DashCooldown => dashCooldown;
 
     private void Update()
     {

@@ -13,14 +13,14 @@ GameObject:
   - component: {fileID: 567493899685233619}
   - component: {fileID: 2183171634901282264}
   - component: {fileID: 7195981715845733904}
+  - component: {fileID: 4089465659971166272}
   - component: {fileID: -8901895346111592576}
   - component: {fileID: 2226442038123810779}
-  - component: {fileID: 4991769375093246907}
-  - component: {fileID: 4089465659971166272}
   - component: {fileID: 700227115785870865}
   - component: {fileID: 7380339805357076848}
+  - component: {fileID: 7354546114040457154}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Demolisher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,6 +137,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &4089465659971166272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915076869988507186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbff90ccb678a374180e1962c00e0685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!114 &-8901895346111592576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +206,8 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
-  dashCooldownDuration: 1
+  dashCooldown:
+    duration: 2
   movementSpeed: 6
   rotationSpeed: 20
   acceleration: 30
@@ -200,47 +216,6 @@ MonoBehaviour:
   dashSpeed: 20
   dashStaminaCostPerSecond: 50
   staminaRegenerationPerSecond: 3
---- !u!114 &4991769375093246907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915076869988507186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3225099ef3e845bdaee2712e603c53a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  attackDelay: 0.6
-  cooldownDuration: 1.25
-  grenadePrefab: {fileID: 5274250965855777935, guid: 3e5a0bb9ac452e44b9b9cef3370cac3f,
-    type: 3}
-  handTransform: {fileID: 6084100760471332039}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 512
-  attackRadius: 1.5
-  attackDistance: 1.5
-  attackDuration: 1
---- !u!114 &4089465659971166272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915076869988507186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbff90ccb678a374180e1962c00e0685, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
 --- !u!114 &700227115785870865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +247,30 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &7354546114040457154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915076869988507186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce97dcd0cbc4f8593a80c5e2f3f1395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  swordSlash:
+    abilityDuration: 1
+    delay: 0.6
+    cooldown:
+      duration: 2
+    damages: 25
+    radius: 1.5
+    distance: 1.5
+    player: {fileID: 0}
 --- !u!1001 &1032298205644157188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,12 +362,6 @@ Transform:
 --- !u!4 &1722303007822614220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6457f97185c0a4448be2c335d9b2684f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1032298205644157188}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6084100760471332039 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 6457f97185c0a4448be2c335d9b2684f,
     type: 3}
   m_PrefabInstance: {fileID: 1032298205644157188}
   m_PrefabAsset: {fileID: 0}

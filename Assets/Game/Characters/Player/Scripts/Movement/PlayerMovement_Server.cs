@@ -3,7 +3,6 @@ using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(PlayerAttack))]
 public partial class PlayerMovement
 {
     [Header("Speed")]
@@ -32,8 +31,8 @@ public partial class PlayerMovement
     [SerializeField]
     private float staminaRegenerationPerSecond;
 
+    private PlayerClass _playerClass;
     private CharacterController _characterController;
-    private PlayerAttack _playerAttack;
     private Vector2 _currentInput;
     private float _currentSpeed;
     private Vector3 _momentum;
@@ -47,7 +46,7 @@ public partial class PlayerMovement
     public Vector3 MoveDirection => _moveDirection;
 
     public Vector3 LookDirection =>
-        _playerAttack.IsAttacking ? _playerAttack.AttackPoint - transform.position : MoveDirection;
+        _playerClass.Target != null ? _playerClass.Target.Value - transform.position : MoveDirection;
 
     #region Movement
 
@@ -101,7 +100,7 @@ public partial class PlayerMovement
     [Command]
     private void DashCommand()
     {
-        if (!DashCooldown.IsReady) return;
+        if (!DashCooldown.IsReady || _playerClass.IsBusy) return;
 
         Dash();
     }
@@ -164,6 +163,6 @@ public partial class PlayerMovement
     {
         base.OnStartServer();
         _characterController = GetComponent<CharacterController>();
-        _playerAttack = GetComponent<PlayerAttack>();
+        _playerClass = GetComponent<PlayerClass>();
     }
 }

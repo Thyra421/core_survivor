@@ -3,24 +3,28 @@ using UnityEngine.UI;
 
 public class AbilitiesHUD : MonoBehaviour
 {
-    [SerializeField] private Image ability1Image;
-    [SerializeField] private Image ability2Image;
-    [SerializeField] private Image ability3Image;
+    [SerializeField]
+    private Image ability1Image;
+
+    [SerializeField]
+    private Image ability2Image;
+
+    [SerializeField]
+    private Image ability3Image;
 
     public void Initialize(Player player)
     {
-        player.Attack.Cooldown.CurrentValue.OnValueChanged +=
-            _ => SetFilledAmount(ability1Image, player.Attack.Cooldown);
+        BindAbility(player.Class.Abilities[0], ability1Image);
+    }
 
-        player.Movement.DashCooldown.CurrentValue.OnValueChanged +=
-            _ => SetFilledAmount(ability2Image, player.Movement.DashCooldown);
-
-        player.Attack.Cooldown.CurrentValue.OnValueChanged +=
-            _ => SetFilledAmount(ability3Image, player.Attack.Cooldown);
+    private void BindAbility(AbilityBase ability, Image image)
+    {
+        ability.Cooldown.CurrentValue.OnValueChanged +=
+            _ => SetFilledAmount(image, ability.Cooldown);
     }
 
     private void SetFilledAmount(Image image, Cooldown cooldown)
     {
-        image.fillAmount = cooldown.CurrentValue.Value / cooldown.MaxValue;
+        image.fillAmount = cooldown.ProgressRatio;
     }
 }
