@@ -9,6 +9,9 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     private MachineGunShoot machineGunShoot;
 
     [SerializeField]
+    private Flamethrower flamethrower;
+
+    [SerializeField]
     private Transform aim;
 
     [SerializeField]
@@ -16,6 +19,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
     private Player _player;
     private bool _isShooting;
+    private bool _isFlaming;
     private Vector3? _target;
 
     public Radioactivity Radioactivity { get; } = new();
@@ -25,7 +29,8 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     {
         _player = GetComponent<Player>();
         machineGunShoot.player = _player;
-        Abilities = new AbilityBase[] { machineGunShoot };
+        flamethrower.player = _player;
+        Abilities = new AbilityBase[] { machineGunShoot, flamethrower };
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -47,18 +52,46 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         }
     }
 
+    public void OnUltimate(InputAction.CallbackContext context)
+    {
+        if (context.canceled) {
+            EndFlamethrowerCommand();
+            _isFlaming = false;
+            _target = null;
+            rig.weight = 0;
+
+            return;
+        }
+
+        if (!CanUseAbility(1)) return;
+
+        if (context.started) {
+            _isFlaming = true;
+            rig.weight = 1;
+        }
+    }
+
     [Command]
     private void EndMachineGunCommand()
     {
         machineGunShoot.ServerEnd();
     }
 
-    protected override void Update()
+    [Command]
+    private void EndFlamethrowerCommand()
     {
-        base.Update();
+        flamethrower.ServerEnd();
+        ClientEnd();
+    }
 
-        if (!_isShooting) return;
+    [ClientRpc]
+    private void ClientEnd()
+    {
+        flamethrower.ClientEnd();
+    }
 
+    private void ShootingUpdate()
+    {
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (targetPosition == null) return;
         _target = targetPosition.Value;
@@ -69,5 +102,27 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         if (!CanUseAbility(0)) return;
 
         UseAbilityCommand(0, machineGunShoot.Serialize(_target.Value));
+    }
+
+    private void FlamethrowerUpdate()
+    {
+        Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
+        if (targetPosition == null) return;
+        _target = targetPosition.Value;
+        Vector3 aimPosition = _target.Value;
+        aimPosition.y = 1.5f;
+        aim.transform.position = aimPosition;
+
+        if (!CanUseAbility(1)) return;
+
+        UseAbilityCommand(1, flamethrower.Serialize(_target.Value));
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (_isShooting) ShootingUpdate();
+        if (_isFlaming) FlamethrowerUpdate();
     }
 }
