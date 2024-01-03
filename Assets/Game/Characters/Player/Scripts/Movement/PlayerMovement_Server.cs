@@ -88,7 +88,10 @@ public partial class PlayerMovement
 
         if (LookDirection.magnitude <= 0) return;
 
-        Quaternion lookRotation = Quaternion.LookRotation(LookDirection);
+        Vector3 lookDirection = LookDirection.normalized;
+        lookDirection.y = 0;
+
+        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }

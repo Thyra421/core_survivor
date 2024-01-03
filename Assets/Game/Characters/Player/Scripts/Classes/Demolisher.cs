@@ -26,10 +26,7 @@ public class Demolisher : PlayerClass, IRadioactivityUser
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
 
         if (targetPosition == null) return;
-        
-        Vector3 copy = targetPosition.Value;
-        copy.y = 0;
 
-        UseAbilityCommand(0, swordSlash.Serialize(copy));
+        UseAbilityCommand(0, swordSlash.Serialize(targetPosition.Value));
     }
 }

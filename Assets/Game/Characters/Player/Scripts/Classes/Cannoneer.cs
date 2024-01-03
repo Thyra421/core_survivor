@@ -48,17 +48,13 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         base.Update();
 
         if (!_isShooting) return;
-        
+
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
-
         if (targetPosition == null) return;
-
-        Vector3 copy = targetPosition.Value;
-        copy.y = 0;
-        _target = copy;
+        _target = targetPosition.Value;
 
         if (!CanUseAbility(0)) return;
 
-        UseAbilityCommand(0, machineGunShoot.Serialize(copy));
+        UseAbilityCommand(0, machineGunShoot.Serialize(_target.Value));
     }
 }

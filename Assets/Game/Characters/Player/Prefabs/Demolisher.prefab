@@ -311,10 +311,10 @@ MonoBehaviour:
     delay: 0.6
     cooldown:
       duration: 2
+    player: {fileID: 0}
     damages: 25
     radius: 1.5
     distance: 1.5
-    player: {fileID: 0}
 --- !u!1001 &1032298205644157188
 PrefabInstance:
   m_ObjectHideFlags: 0

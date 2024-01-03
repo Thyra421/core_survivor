@@ -40,8 +40,11 @@ public class MachineGunShoot : AbilityBase, ITargeted
         IsCompleted = false;
         player.Animation.SetBool(IsShootingId, true);
 
+        Vector3 shootDirection = (Target.Value - gunTip.position).normalized;
+        shootDirection.y = 0;
+
         MachineGunBullet bullet = Object.Instantiate(bulletPrefab, gunTip.position,
-            Quaternion.LookRotation(Target.Value - player.transform.position)).GetComponent<MachineGunBullet>();
+            Quaternion.LookRotation(shootDirection)).GetComponent<MachineGunBullet>();
         bullet.Initialize(bulletDamages);
         NetworkServer.Spawn(bullet.gameObject);
     }
