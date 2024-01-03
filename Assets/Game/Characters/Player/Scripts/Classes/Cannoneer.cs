@@ -35,6 +35,8 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (!(isClient && isOwned)) return;
+
         if (context.canceled) {
             EndMachineGunCommand();
             _isShooting = false;
@@ -54,6 +56,8 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
     public void OnUltimate(InputAction.CallbackContext context)
     {
+        if (!(isClient && isOwned)) return;
+
         if (context.canceled) {
             EndFlamethrowerCommand();
             _isFlaming = false;
@@ -123,7 +127,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         base.Update();
 
         if (!(isClient && isOwned)) return;
-        
+
         if (_isShooting) ShootingUpdate();
         if (_isFlaming) FlamethrowerUpdate();
     }
