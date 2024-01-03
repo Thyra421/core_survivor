@@ -122,6 +122,8 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     {
         base.Update();
 
+        if (!(isClient && isOwned)) return;
+        
         if (_isShooting) ShootingUpdate();
         if (_isFlaming) FlamethrowerUpdate();
     }
