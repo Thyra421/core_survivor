@@ -62,7 +62,9 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (targetPosition == null) return;
         _target = targetPosition.Value;
-        aim.transform.position = _target.Value;
+        Vector3 aimPosition = _target.Value;
+        aimPosition.y = 1.5f;
+        aim.transform.position = aimPosition;
 
         if (!CanUseAbility(0)) return;
 
