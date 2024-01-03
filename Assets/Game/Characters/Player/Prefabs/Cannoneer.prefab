@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 2226442038123810779}
   - component: {fileID: 700227115785870865}
   - component: {fileID: 7380339805357076848}
-  - component: {fileID: 7354546114040457154}
+  - component: {fileID: -3274986322013393987}
   m_Layer: 0
-  m_Name: Demolisher
+  m_Name: Cannoneer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientStarted: 0
   sceneId: 0
-  _assetId: 970385093
+  _assetId: 320818805
   serverOnly: 0
   visible: 0
   hasSpawned: 0
@@ -196,8 +196,8 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7354546114040457154}
-        m_TargetAssemblyTypeName: Demolisher, Assembly-CSharp
+      - m_Target: {fileID: -3274986322013393987}
+        m_TargetAssemblyTypeName: Cannoneer, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -291,7 +291,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
---- !u!114 &7354546114040457154
+--- !u!114 &-3274986322013393987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,21 +300,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2915076869988507186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce97dcd0cbc4f8593a80c5e2f3f1395, type: 3}
+  m_Script: {fileID: 11500000, guid: 20f6928e405b46b185c0b5f821a8ab1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  swordSlash:
-    abilityDuration: 1
-    delay: 0.6
+  machineGunShoot:
+    abilityDuration: 0
+    delay: 0
     cooldown:
-      duration: 2
-    damages: 25
-    radius: 1.5
-    distance: 1.5
+      duration: 0.1
     player: {fileID: 0}
+    bulletPrefab: {fileID: 5274250965855777935, guid: 65ae479266e69bf43851ffef4c5435fa,
+      type: 3}
 --- !u!1001 &1032298205644157188
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,19 +7,20 @@ public partial class PlayerMovement
     #region Inputs
 
     [Client]
-    public void OnMovement(InputValue value)
+    public void OnMovement(InputAction.CallbackContext context)
     {
         if (!isClient || !isOwned) return;
 
-        Vector2 input = value.Get<Vector2>();
+        Vector2 input = context.ReadValue<Vector2>();
         MoveCommand(input);
     }
 
     [Client]
-    public void OnDash()
+    public void OnDash(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
         if (!isClient || !isOwned) return;
-        
+
         DashCommand();
     }
 

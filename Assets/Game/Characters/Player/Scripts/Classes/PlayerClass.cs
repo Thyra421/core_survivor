@@ -3,6 +3,7 @@ using Mirror;
 using UnityEngine;
 
 [DisallowMultipleComponent]
+[RequireComponent(typeof(Player))]
 public abstract class PlayerClass : NetworkBehaviour
 {
     public AbilityBase[] Abilities { get; protected set; }
@@ -17,6 +18,8 @@ public abstract class PlayerClass : NetworkBehaviour
 
     protected virtual bool CanUseAbility(int index)
     {
+        if (Abilities[index].IsChanneled)
+            return Abilities[index].Cooldown.IsReady;
         return !IsBusy && Abilities[index].Cooldown.IsReady;
     }
 
@@ -41,7 +44,7 @@ public abstract class PlayerClass : NetworkBehaviour
         Abilities[index].ServerUse(args);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         foreach (AbilityBase a in Abilities) {
             a.Cooldown.Update();

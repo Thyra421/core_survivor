@@ -14,31 +14,25 @@ public class SwordSlash : AbilityBase, ITargeted
     [SerializeField]
     private float distance = 1.5f;
 
-    [HideInInspector]
-    public Player player;
-
     public Vector3? Target { get; private set; }
-
-    private Vector3 AttackPosition =>
-        player.transform.position + player.transform.up + player.transform.forward * distance;
+    public override bool IsChanneled => false;
 
     public string Serialize(Vector3 target)
     {
-        return JsonUtility.ToJson(new MessageSwordSlash { target = target });
+        return JsonUtility.ToJson(new MessageTarget(target));
     }
 
     public override void ClientUse(string args)
     {
         player.Animation.SetTrigger("Attack");
 
-        if (!player.isOwned) return;
-
-        Cooldown.Start();
+        if (player.isOwned)
+            Cooldown.Start();
     }
 
     public override void ServerUse(string args)
     {
-        MessageSwordSlash message = JsonUtility.FromJson<MessageSwordSlash>(args);
+        MessageTarget message = JsonUtility.FromJson<MessageTarget>(args);
         Target = message.target;
 
         Cooldown.Start();
@@ -60,7 +54,9 @@ public class SwordSlash : AbilityBase, ITargeted
     {
         yield return new WaitForSeconds(delay);
 
-        Collider[] hits = Physics.OverlapSphere(AttackPosition, radius);
+        Vector3 attackPosition =
+            player.transform.position + player.transform.up + player.transform.forward * distance;
+        Collider[] hits = Physics.OverlapSphere(attackPosition, radius);
 
         if (hits.Length <= 0) yield return null;
 

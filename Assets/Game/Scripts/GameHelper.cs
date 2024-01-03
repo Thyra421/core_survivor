@@ -2,15 +2,14 @@
 
 public static class GameHelper
 {
-    public static bool GetMousePositionToWorldPoint(LayerMask whatIsAllowed, ref Vector3 position)
+    public static Vector3? GetMousePositionToWorldPoint(LayerMask whatIsAllowed)
     {
         Vector3 mousePosition = Input.mousePosition;
 
         Ray ray = Camera.main!.ScreenPointToRay(mousePosition);
 
-        if (!Physics.Raycast(ray, out RaycastHit hit, 100, whatIsAllowed)) return false;
+        if (!Physics.Raycast(ray, out RaycastHit hit, 100, whatIsAllowed)) return null;
 
-        position = hit.point;
-        return true;
+        return hit.point;
     }
 }

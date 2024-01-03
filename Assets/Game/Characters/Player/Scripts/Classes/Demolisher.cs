@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Search;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Player))]
 public class Demolisher : PlayerClass, IRadioactivityUser
 {
     [SerializeField]
@@ -17,17 +18,18 @@ public class Demolisher : PlayerClass, IRadioactivityUser
         Abilities = new AbilityBase[] { swordSlash };
     }
 
-    private void OnAttack()
+    public void OnAttack(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
         if (!isClient || !isOwned || !CanUseAbility(0)) return;
 
-        Vector3 targetPosition = Vector3.zero;
-        bool result = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround, ref targetPosition);
+        Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
 
-        if (!result) return;
+        if (targetPosition == null) return;
+        
+        Vector3 copy = targetPosition.Value;
+        copy.y = 0;
 
-        targetPosition.y = 0;
-
-        UseAbilityCommand(0, swordSlash.Serialize(targetPosition));
+        UseAbilityCommand(0, swordSlash.Serialize(copy));
     }
 }
