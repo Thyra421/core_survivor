@@ -10,6 +10,12 @@ public partial class PlayerAnimation
     private static readonly int SpeedRatioId = Animator.StringToHash("SpeedRatio");
 
     [Server]
+    public void SetBool(int id, bool value)
+    {
+        _animator.SetBool(id, value);
+    }
+
+    [Server]
     private void ServerUpdate()
     {
         Vector3 moveDirection = _playerMovement.MoveDirection.normalized;

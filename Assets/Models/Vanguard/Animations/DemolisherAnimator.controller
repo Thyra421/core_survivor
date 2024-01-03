@@ -118,7 +118,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7586806245000589784}
-    m_Position: {x: 400, y: 100, z: 0}
+    m_Position: {x: 340, y: 90, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -196,14 +196,14 @@ BlendTree:
   m_Name: MovementBlendTree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 684e95921e5933745846d52c9534b76d,
+    m_Motion: {fileID: -203655887218126122, guid: 1807b62a14a6a0c4789e41595c5fdb56,
       type: 3}
     m_Threshold: -90
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
-    m_CycleOffset: 0.5
+    m_CycleOffset: 0
     m_DirectBlendParameter: SpeedRatio
-    m_Mirror: 1
+    m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: c4efe0e9143b45744a7c7bdaea9a6a7f,
       type: 3}
@@ -244,7 +244,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VanguardAnimator
+  m_Name: DemolisherAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack

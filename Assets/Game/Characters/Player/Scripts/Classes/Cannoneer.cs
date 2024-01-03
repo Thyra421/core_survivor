@@ -40,7 +40,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     [Command]
     private void EndMachineGunCommand()
     {
-        machineGunShoot.End();
+        machineGunShoot.ServerEnd();
     }
 
     protected override void Update()
