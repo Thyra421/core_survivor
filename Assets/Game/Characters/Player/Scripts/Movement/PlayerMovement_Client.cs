@@ -21,7 +21,10 @@ public partial class PlayerMovement
         if (!context.started) return;
         if (!isClient || !isOwned) return;
 
-        DashCommand();
+        Vector3? target = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
+        if (target == null) return;
+        Vector3 direction = target.Value - transform.position;
+        DashCommand(direction);
     }
 
     #endregion

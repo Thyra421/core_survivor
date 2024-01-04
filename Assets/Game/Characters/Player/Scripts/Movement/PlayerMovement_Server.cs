@@ -101,24 +101,17 @@ public partial class PlayerMovement
     #region Dash
 
     [Command]
-    private void DashCommand()
+    private void DashCommand(Vector3 direction)
     {
         if (!DashCooldown.IsReady || _playerClass.IsBusy) return;
 
-        Dash();
+        Dash(direction);
     }
 
     [Server]
-    private void Dash()
+    private void Dash(Vector3 direction)
     {
-        Ray ray = Camera.main!.ScreenPointToRay(Input.mousePosition);
-
-        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-
-        Vector3 targetPosition = hit.point;
-        targetPosition.y = 0;
-
-        transform.rotation = Quaternion.LookRotation(targetPosition - transform.position);
+        transform.rotation = Quaternion.LookRotation(direction);
 
         DashCooldown.Start();
         _canMove = false;
