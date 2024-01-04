@@ -7,13 +7,14 @@ public partial class Network
     {
         int index = LobbyManager.Current.Players.FindIndex(p => p.Id == message.Id);
 
-        Player player = Instantiate(LobbyManager.Current.Players[index].Class == Class.cannoneer
+        GameObject newGameObject = Instantiate(LobbyManager.Current.Players[index].Class == Class.cannoneer
             ? cannoneerPrefab
-            : demolisherPrefab, GetStartPosition().position, Quaternion.identity).GetComponent<Player>();
+            : demolisherPrefab, GetStartPosition().position, Quaternion.identity);
+        
+        Player player = newGameObject.GetComponent<Player>();
+        player.index = index;
 
-        player.Index = index;
-
-        NetworkServer.AddPlayerForConnection(conn, player.gameObject);
+        NetworkServer.AddPlayerForConnection(conn, newGameObject);
     }
 
     public override void OnStartServer()

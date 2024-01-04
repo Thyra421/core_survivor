@@ -1,5 +1,6 @@
 using Mirror;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(PlayerHealth))]
 [RequireComponent(typeof(PlayerAnimation))]
@@ -12,7 +13,9 @@ public partial class Player : NetworkBehaviour
     public PlayerMovement Movement { get; private set; }
     public PlayerAnimation Animation { get; private set; }
     public PlayerClass Class { get; private set; }
-    public int Index { get; set; }
+
+    [HideInInspector]
+    public int index;
 
     private void Awake()
     {

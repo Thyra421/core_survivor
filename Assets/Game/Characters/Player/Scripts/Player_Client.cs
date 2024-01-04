@@ -16,6 +16,6 @@ public partial class Player
     {
         base.OnStartClient();
 
-        renderer.material = materials[Index];
+        renderer.material = materials[index];
     }
 }
