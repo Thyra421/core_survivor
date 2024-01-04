@@ -6,13 +6,13 @@ public partial class Network
     private void OnMessageSpawn(NetworkConnectionToClient conn, MessageSpawn message)
     {
         int index = LobbyManager.Current.Players.FindIndex(p => p.Id == message.Id);
+        Class @class = LobbyManager.Current.Players[index].Class;
 
-        GameObject newGameObject = Instantiate(LobbyManager.Current.Players[index].Class == Class.cannoneer
+        GameObject newGameObject = Instantiate(@class == Class.cannoneer
             ? cannoneerPrefab
             : demolisherPrefab, GetStartPosition().position, Quaternion.identity);
-        
-        Player player = newGameObject.GetComponent<Player>();
-        player.index = index;
+
+        newGameObject.GetComponent<Player>().index = index;
 
         NetworkServer.AddPlayerForConnection(conn, newGameObject);
     }

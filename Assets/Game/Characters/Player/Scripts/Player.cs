@@ -13,7 +13,14 @@ public partial class Player : NetworkBehaviour
     public PlayerAnimation Animation { get; private set; }
     public PlayerClass Class { get; private set; }
 
+    [HideInInspector]
+    [SyncVar(hook = nameof(IndexHook))]
     public int index;
+
+    private void IndexHook(int oldValue, int newValue)
+    {
+        index = newValue;
+    }
 
     private void Awake()
     {
