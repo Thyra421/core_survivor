@@ -12,7 +12,7 @@ public partial class Network
 
         Player player = Instantiate(LobbyManager.Current.Players[index].Class == Class.cannoneer
             ? cannoneerPrefab
-            : demolisherPrefab, GetStartPosition()).GetComponent<Player>();
+            : demolisherPrefab, GetStartPosition().position, Quaternion.identity).GetComponent<Player>();
         
         player.Renderer.material = materials[index];
 
