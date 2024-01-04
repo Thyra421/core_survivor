@@ -47,8 +47,8 @@ public abstract class PlayerClass : NetworkBehaviour
     [Command]
     protected void EndUseAbilityCommand(int index, string args)
     {
-        EndUseAbilityServer(index, args);
         EndUseAbilityClient(index, args);
+        EndUseAbilityServer(index, args);
     }
 
     [ClientRpc]
@@ -60,7 +60,7 @@ public abstract class PlayerClass : NetworkBehaviour
     [Server]
     private void EndUseAbilityServer(int index, string args)
     {
-        Abilities[index].ClientEnd(args);
+        Abilities[index].ServerEnd(args);
     }
 
     protected virtual void Update()

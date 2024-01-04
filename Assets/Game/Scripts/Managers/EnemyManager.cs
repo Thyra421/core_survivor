@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Mirror;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
@@ -37,5 +39,11 @@ public class EnemyManager : Singleton<EnemyManager>
         Vector3 randomPosition = new Vector3(x, 0f, z) + transform.position;
 
         return randomPosition;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, innerSpawnRadius);
+        Gizmos.DrawWireSphere(transform.position, outerSpawnRadius);
     }
 }
