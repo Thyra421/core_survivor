@@ -1,23 +1,41 @@
-﻿using System;
-using Mirror;
-using UnityEngine;
+﻿using Mirror;
 
 public partial class GameManager
 {
-    private float _timer;
+    private static readonly WavePattern[] WavePatterns = {
+        new() { walkers = 3, timer = 10 },
+        new() { walkers = 2, hunters = 1, timer = 15 },
+        new() { walkers = 5, timer = 10 },
+        new() { walkers = 3, hunters = 2, timer = 15 },
+        new() { walkers = 3, mutants = 1, timer = 20 },
+    };
+
+    private int _patternIndex;
+    private int _waveMultiplicator = 1;
 
     [Server]
     private void ServerUpdate()
     {
-        _timer -= Time.deltaTime;
+        if (timer.Value > 0) return;
 
-        if (_timer <= 0) {
-            StartCoroutine(EnemyManager.Current.SpawnWave(8));
-            
-            _timer = 12;
-        }
+        WavePattern pattern = WavePatterns[_patternIndex];
 
-        int currentSecond = (int)Math.Floor(_timer);
-        _timerSync = currentSecond;
+        EnemyManager.Current.SpawnWave(pattern, _waveMultiplicator);
+
+        timer.Value = pattern.timer;
+        SetTimerRpc(pattern.timer);
+        SetWaveRpc((_patternIndex + 1) * _waveMultiplicator);
+
+        _patternIndex = (_patternIndex + 1) % WavePatterns.Length;
+        if (_patternIndex == 0)
+            _waveMultiplicator++;
     }
+}
+
+public struct WavePattern
+{
+    public int walkers;
+    public int hunters;
+    public int mutants;
+    public int timer;
 }

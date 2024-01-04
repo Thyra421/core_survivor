@@ -1,33 +1,37 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Mirror;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject walkerPrefab;
+    [SerializeField] private GameObject hunterPrefab;
+    [SerializeField] private GameObject mutantPrefab;
     [SerializeField] private float innerSpawnRadius;
     [SerializeField] private float outerSpawnRadius;
 
     public ListenableList<Enemy> Enemies { get; } = new();
 
     [Server]
-    private void SpawnRandom()
+    private void SpawnRandom(GameObject prefab)
     {
-        GameObject newInstance = Instantiate(enemyPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+        GameObject newInstance = Instantiate(prefab, GetRandomSpawnPosition(), Quaternion.identity);
         NetworkServer.Spawn(newInstance);
     }
 
     [Server]
-    public IEnumerator SpawnWave(int amount)
+    public void SpawnWave(WavePattern wave, int multiplicator)
     {
-        for (int i = 0; i < amount; i++) {
-            SpawnRandom();
-            yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < wave.walkers * multiplicator; i++) {
+            SpawnRandom(walkerPrefab);
         }
-
-        yield return null;
+        for (int i = 0; i < wave.hunters * multiplicator; i++) {
+            SpawnRandom(hunterPrefab);
+        }
+        for (int i = 0; i < wave.mutants * multiplicator; i++) {
+            SpawnRandom(mutantPrefab);
+        }
     }
 
     private Vector3 GetRandomSpawnPosition()
