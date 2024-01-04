@@ -3,9 +3,6 @@ using UnityEngine;
 
 public partial class Network
 {
-    [SerializeField]
-    private Material[] materials;
-
     private void OnMessageSpawn(NetworkConnectionToClient conn, MessageSpawn message)
     {
         int index = LobbyManager.Current.Players.FindIndex(p => p.Id == message.Id);
@@ -13,8 +10,8 @@ public partial class Network
         Player player = Instantiate(LobbyManager.Current.Players[index].Class == Class.cannoneer
             ? cannoneerPrefab
             : demolisherPrefab, GetStartPosition().position, Quaternion.identity).GetComponent<Player>();
-        
-        player.Renderer.material = materials[index];
+
+        player.Index = index;
 
         NetworkServer.AddPlayerForConnection(conn, player.gameObject);
     }

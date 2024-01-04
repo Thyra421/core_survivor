@@ -12,8 +12,7 @@ public partial class Player : NetworkBehaviour
     public PlayerMovement Movement { get; private set; }
     public PlayerAnimation Animation { get; private set; }
     public PlayerClass Class { get; private set; }
-
-    public Renderer Renderer => renderer;
+    public int Index { get; set; }
 
     private void Awake()
     {

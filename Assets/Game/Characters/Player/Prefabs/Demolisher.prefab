@@ -153,6 +153,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   renderer: {fileID: 313326924256595545}
+  materials:
+  - {fileID: 2100000, guid: edba63ef3e4d143459dc69cdeae3bc57, type: 2}
+  - {fileID: 2100000, guid: 06acb4b24d930404f9f01bc1dc8a0a2c, type: 2}
+  - {fileID: 2100000, guid: 6e7ebc9a655c42946b95ab091b476d85, type: 2}
+  - {fileID: 2100000, guid: 7a867e14ed7fa7b40a888e36af4f9293, type: 2}
 --- !u!114 &-8901895346111592576
 MonoBehaviour:
   m_ObjectHideFlags: 0
