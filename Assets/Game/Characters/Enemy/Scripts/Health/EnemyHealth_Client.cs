@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public partial class EnemyHealth
 {
+    [SerializeField]
+    private GameObject minimapIndicator;
+    
     private EnemyAnimation _enemyAnimation;
     private CapsuleCollider _capsuleCollider;
 
@@ -20,5 +23,6 @@ public partial class EnemyHealth
     {
         _enemyAnimation.ClientSetTrigger("Die");
         _capsuleCollider.enabled = false;
+        minimapIndicator.SetActive(false);
     }
 }

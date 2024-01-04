@@ -1,8 +1,16 @@
-using System;
 using Mirror;
+using UnityEngine;
 
 public class DestructibleEnvironment : CharacterHealth
 {
+    [SerializeField]
+    private GameObject healthUIPrefab;
+
+    public override void OnStartClient()
+    {
+        Instantiate(healthUIPrefab, transform);
+    }
+
     [Server]
     public override void Die()
     {
