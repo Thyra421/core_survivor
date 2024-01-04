@@ -152,6 +152,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  renderer: {fileID: 313326924256595545}
 --- !u!114 &-8901895346111592576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +398,12 @@ PrefabInstance:
       addedObject: {fileID: 1221113030561637372}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6457f97185c0a4448be2c335d9b2684f, type: 3}
+--- !u!137 &313326924256595545 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8499879560893939875, guid: 6457f97185c0a4448be2c335d9b2684f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032298205644157188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &709823553491179247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6457f97185c0a4448be2c335d9b2684f,

@@ -5,6 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(FizzySteamworks))]
 public partial class Network : NetworkManager
 {
+    [SerializeField]
+    private GameObject cannoneerPrefab;
+
+    [SerializeField]
+    private GameObject demolisherPrefab;
+
     public override void Start()
     {
         networkAddress = LobbyManager.Current.NetworkAddress;
@@ -21,5 +27,15 @@ public partial class Network : NetworkManager
         if (LobbyManager.Current.IsHost) StopHost();
 
         else StopClient();
+    }
+}
+
+public struct MessageSpawn : NetworkMessage
+{
+    public ulong Id;
+
+    public MessageSpawn(ulong id)
+    {
+        Id = id;
     }
 }

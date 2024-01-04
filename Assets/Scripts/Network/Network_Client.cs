@@ -1,4 +1,5 @@
 using Mirror;
+using Steamworks;
 using UnityEngine;
 
 public partial class Network
@@ -21,6 +22,7 @@ public partial class Network
     {
         base.OnClientConnect();
         ConsoleLogger.Client("Connected to server");
+        NetworkClient.Send(new MessageSpawn(SteamUser.GetSteamID().m_SteamID));
     }
 
     public override void OnClientDisconnect()

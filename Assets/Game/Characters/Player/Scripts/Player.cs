@@ -5,10 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerAnimation))]
 public partial class Player : NetworkBehaviour
 {
+    [SerializeField]
+    private new Renderer renderer;
+
     public PlayerHealth Health { get; private set; }
     public PlayerMovement Movement { get; private set; }
     public PlayerAnimation Animation { get; private set; }
     public PlayerClass Class { get; private set; }
+
+    public Renderer Renderer => renderer;
 
     private void Awake()
     {

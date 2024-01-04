@@ -24635,9 +24635,8 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 2915076869988507186, guid: 5484a8f55a3c6d94885b3d9234e732b8,
-    type: 3}
-  autoCreatePlayer: 1
+  playerPrefab: {fileID: 0}
+  autoCreatePlayer: 0
   playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 8540328096831955503, guid: b77532773518a9146990f22e60d43ad9, type: 3}
@@ -24645,6 +24644,8 @@ MonoBehaviour:
   - {fileID: 8540328096831955503, guid: 6f3249bc025c39b4ab7f5b1eccbc9058, type: 3}
   - {fileID: 5274250965855777935, guid: 3e5a0bb9ac452e44b9b9cef3370cac3f, type: 3}
   - {fileID: 5274250965855777935, guid: 65ae479266e69bf43851ffef4c5435fa, type: 3}
+  - {fileID: 2915076869988507186, guid: 581c784e563580c44b24981ef5ec96ff, type: 3}
+  - {fileID: 2915076869988507186, guid: 5484a8f55a3c6d94885b3d9234e732b8, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -24660,8 +24661,17 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
+  cannoneerPrefab: {fileID: 2915076869988507186, guid: 5484a8f55a3c6d94885b3d9234e732b8,
+    type: 3}
+  demolisherPrefab: {fileID: 2915076869988507186, guid: 581c784e563580c44b24981ef5ec96ff,
+    type: 3}
   disconnectedFromServerPrefab: {fileID: 5964152520798055371, guid: 6513fa3be1312d040b0c8672f4dbe0cd,
     type: 3}
+  materials:
+  - {fileID: 2100000, guid: edba63ef3e4d143459dc69cdeae3bc57, type: 2}
+  - {fileID: 2100000, guid: 06acb4b24d930404f9f01bc1dc8a0a2c, type: 2}
+  - {fileID: 2100000, guid: 6e7ebc9a655c42946b95ab091b476d85, type: 2}
+  - {fileID: 2100000, guid: 7a867e14ed7fa7b40a888e36af4f9293, type: 2}
 --- !u!114 &668668034
 MonoBehaviour:
   m_ObjectHideFlags: 0

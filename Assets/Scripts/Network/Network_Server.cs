@@ -1,11 +1,29 @@
 using Mirror;
+using UnityEngine;
 
 public partial class Network
 {
+    [SerializeField]
+    private Material[] materials;
+
+    private void OnMessageSpawn(NetworkConnectionToClient conn, MessageSpawn message)
+    {
+        int index = LobbyManager.Current.Players.FindIndex(p => p.Id == message.Id);
+
+        Player player = Instantiate(LobbyManager.Current.Players[index].Class == Class.cannoneer
+            ? cannoneerPrefab
+            : demolisherPrefab, GetStartPosition()).GetComponent<Player>();
+        
+        player.Renderer.material = materials[index];
+
+        NetworkServer.AddPlayerForConnection(conn, player.gameObject);
+    }
+
     public override void OnStartServer()
     {
         base.OnStartServer();
         ConsoleLogger.Server("Started");
+        NetworkServer.RegisterHandler<MessageSpawn>(OnMessageSpawn);
     }
 
     public override void OnStopServer()
