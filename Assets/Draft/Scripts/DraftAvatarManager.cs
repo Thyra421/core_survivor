@@ -2,9 +2,17 @@ using UnityEngine;
 
 public class DraftAvatarManager : Singleton<DraftAvatarManager>
 {
-    [SerializeField] private Transform[] spots;
-    [SerializeField] private GameObject draftAvatarPrefab;
-    [SerializeField] private Material[] materials;
+    [SerializeField]
+    private Transform[] spots;
+
+    [SerializeField]
+    private GameObject cannoneerAvatarPrefab;
+
+    [SerializeField]
+    private GameObject demolisherAvatarPrefab;
+
+    [SerializeField]
+    private Material[] materials;
 
     protected override void Awake()
     {
@@ -28,7 +36,9 @@ public class DraftAvatarManager : Singleton<DraftAvatarManager>
 
             if (players.Count <= i) continue;
 
-            DraftAvatar avatar = Instantiate(draftAvatarPrefab, spots[i]).GetComponent<DraftAvatar>();
+            DraftAvatar avatar =
+                Instantiate(players[i].Class == Class.cannoneer ? cannoneerAvatarPrefab : demolisherAvatarPrefab,
+                    spots[i]).GetComponent<DraftAvatar>();
 
             avatar.Initialize(players[i].Name, materials[i]);
         }

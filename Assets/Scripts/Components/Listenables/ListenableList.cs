@@ -6,6 +6,11 @@ public class ListenableList<T> : List<T>
 {
     public event Action<ListenableList<T>> OnChanged;
 
+    public void NotifyListeners()
+    {
+        OnChanged?.Invoke(this);
+    }
+
     /// <summary>
     /// Add new value and notify listeners.
     /// </summary>
