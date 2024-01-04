@@ -6,14 +6,20 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyAnimation))]
 public partial class EnemyAttack
 {
-    [SerializeField] private float attackRange;
-    [SerializeField] private int attackDamage;
-    [SerializeField] private float attackCooldownDuration;
-    [SerializeField] private float attackDelay;
+    [SerializeField]
+    private float attackRange;
+
+    [SerializeField]
+    private int attackDamage;
+
+    [SerializeField]
+    private float attackDelay;
+
+    [SerializeField]
+    private Cooldown cooldown;
 
     private Enemy _enemy;
     private EnemyAnimation _enemyAnimation;
-    private float _cooldown;
 
     private bool IsTargetInRange => _enemy.Target != null &&
                                     Vector3.Distance(transform.position, _enemy.Target!.position) < attackRange;
@@ -35,10 +41,10 @@ public partial class EnemyAttack
     private void ServerUpdate()
     {
         if (_enemy.IsDead) return;
-        
-        _cooldown -= Time.deltaTime;
 
-        if (_cooldown <= 0 && IsTargetInRange)
+        cooldown.Update();
+
+        if (cooldown.IsReady && IsTargetInRange)
             Attack();
     }
 
@@ -47,7 +53,7 @@ public partial class EnemyAttack
     {
         _enemyAnimation.ServerSetTrigger("Attack");
         StartCoroutine(AttackCoroutine());
-        _cooldown = attackCooldownDuration;
+        cooldown.Start();
     }
 
     private IEnumerator AttackCoroutine()
