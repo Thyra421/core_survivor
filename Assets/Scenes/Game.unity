@@ -18046,6 +18046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  core: {fileID: 2075374745}
 --- !u!1001 &475015234
 PrefabInstance:
   m_ObjectHideFlags: 0
