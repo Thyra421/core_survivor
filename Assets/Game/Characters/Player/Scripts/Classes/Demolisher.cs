@@ -6,6 +6,9 @@ public class Demolisher : PlayerClass, IRadioactivityUser
     [SerializeField]
     private SwordSlash swordSlash;
 
+    [SerializeField]
+    private Blast blast;
+
     private Player _player;
 
     public Radioactivity Radioactivity { get; } = new();
@@ -14,7 +17,8 @@ public class Demolisher : PlayerClass, IRadioactivityUser
     {
         _player = GetComponent<Player>();
         swordSlash.player = _player;
-        Abilities = new AbilityBase[] { swordSlash };
+        blast.player = _player;
+        Abilities = new AbilityBase[] { swordSlash, blast };
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -27,5 +31,18 @@ public class Demolisher : PlayerClass, IRadioactivityUser
         if (targetPosition == null) return;
 
         UseAbilityCommand(0, swordSlash.Serialize(targetPosition.Value));
+    }
+    
+    
+    public void OnUltimate(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        if (!isClient || !isOwned || !CanUseAbility(1)) return;
+
+        Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
+
+        if (targetPosition == null) return;
+
+        UseAbilityCommand(1, blast.Serialize(targetPosition.Value));
     }
 }

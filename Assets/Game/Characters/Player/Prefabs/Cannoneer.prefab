@@ -465,7 +465,7 @@ MonoBehaviour:
       duration: 0.4
     player: {fileID: 0}
     flames: {fileID: 5591315670759100024}
-    tickDamage: 10
+    tickDamage: 20
     gunTip: {fileID: 7759220822339139433}
     radius: 1.5
     distance: 5

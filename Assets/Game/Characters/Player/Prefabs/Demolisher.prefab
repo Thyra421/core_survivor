@@ -318,7 +318,19 @@ MonoBehaviour:
     m_ActionId: 30aa470f-b84b-4b8d-9199-78aa01e6e093
     m_ActionName: Player/Dash[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7354546114040457154}
+        m_TargetAssemblyTypeName: Demolisher, Assembly-CSharp
+        m_MethodName: OnUltimate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 50df4485-73da-41dd-9065-257f64e2e1c3
     m_ActionName: Player/Ultimate[/Keyboard/1]
   m_NeverAutoSwitchControlSchemes: 0
@@ -406,6 +418,16 @@ MonoBehaviour:
     damages: 50
     radius: 1.5
     distance: 1.5
+  blast:
+    abilityDuration: 2
+    delay: 1.4
+    cooldown:
+      duration: 0
+    player: {fileID: 0}
+    handTransform: {fileID: 6084100760471332039}
+    grenadePrefab: {fileID: 5274250965855777935, guid: 3e5a0bb9ac452e44b9b9cef3370cac3f,
+      type: 3}
+    damages: 100
 --- !u!1001 &1032298205644157188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,6 +525,12 @@ Transform:
 --- !u!4 &1722303007822614220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6457f97185c0a4448be2c335d9b2684f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032298205644157188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6084100760471332039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 6457f97185c0a4448be2c335d9b2684f,
     type: 3}
   m_PrefabInstance: {fileID: 1032298205644157188}
   m_PrefabAsset: {fileID: 0}

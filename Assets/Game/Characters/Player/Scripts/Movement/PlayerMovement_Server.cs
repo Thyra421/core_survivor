@@ -93,7 +93,6 @@ public partial class PlayerMovement
 
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
 
-        Debug.Log("huha");
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 

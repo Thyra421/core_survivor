@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections;
+using Mirror;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 [Serializable]
-public class SwordSlash : AbilityBase, ITargeted
+public class Blast : AbilityBase, ITargeted
 {
     [SerializeField]
-    private int damages = 25;
+    private Transform handTransform;
 
     [SerializeField]
-    private float radius = 1.5f;
+    private GameObject grenadePrefab;
 
     [SerializeField]
-    private float distance = 1.5f;
+    private int damages = 100;
+
+    [SerializeField]
+    private float grenadeExplosionRadius = 3;
 
     public Vector3? Target { get; private set; }
     public override bool IsChanneled => false;
@@ -24,7 +29,7 @@ public class SwordSlash : AbilityBase, ITargeted
 
     public override void ClientUse(string args)
     {
-        player.Animation.SetTrigger("Attack");
+        player.Animation.SetTrigger("Throw");
 
         if (player.isOwned)
             Cooldown.Start();
@@ -38,7 +43,7 @@ public class SwordSlash : AbilityBase, ITargeted
         Cooldown.Start();
         IsCompleted = false;
 
-        player.StartCoroutine(ServerAttackCoroutine());
+        player.StartCoroutine(ServerAttackCoroutine(message.target));
         player.StartCoroutine(ResetIsCompletedCoroutine());
     }
 
@@ -54,31 +59,33 @@ public class SwordSlash : AbilityBase, ITargeted
         Target = null;
     }
 
-    private IEnumerator ServerAttackCoroutine()
+    private IEnumerator ServerAttackCoroutine(Vector3 target)
     {
         yield return new WaitForSeconds(delay);
 
-        Vector3 attackPosition =
-            player.transform.position + player.transform.up + player.transform.forward * distance;
-        Collider[] hits = Physics.OverlapSphere(attackPosition, radius);
+        Grenade grenade = Object.Instantiate(grenadePrefab, handTransform.position, Quaternion.identity)
+            .GetComponent<Grenade>();
 
-        if (hits.Length <= 0) yield return null;
+        grenade.Initialize(target, () => OnGrenadeExplode(target));
+        NetworkServer.Spawn(grenade.gameObject);
+    }
 
-        int cpt = 0;
+    private void OnGrenadeExplode(Vector3 target)
+    {
+        Collider[] hits = Physics.OverlapSphere(target, grenadeExplosionRadius);
+
+        if (hits.Length <= 0) return;
 
         foreach (Collider c in hits) {
             if (!c.transform.TryGetComponent(out EnemyHealth enemy)) continue;
 
             // check that enemy is in line of sight
             Vector3 enemyPosition = c.transform.position + Vector3.up;
-            Vector3 playerPosition = player.transform.position + Vector3.up;
-            Ray enemyRay = new(playerPosition, enemyPosition - playerPosition);
-            if (Physics.Raycast(enemyRay, Vector3.Distance(enemyPosition, playerPosition),
+            Vector3 grenadePosition = target + Vector3.up;
+            Ray enemyRay = new(grenadePosition, enemyPosition - grenadePosition);
+            if (Physics.Raycast(enemyRay, Vector3.Distance(enemyPosition, grenadePosition),
                     LayerManager.Current.WhatIsObstacle)) continue;
             enemy.TakeDamage(damages);
-            cpt++;
         }
-
-        ((IRadioactivityUser)player.Class).Radioactivity.Increase(cpt * 2);
     }
 }
