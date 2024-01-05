@@ -67,7 +67,7 @@ public class SteamworksLobbyAPI
 
         ulong lobbyId = callback.m_ulSteamIDLobby;
         string networkAddress = SteamUser.GetSteamID().ToString();
-        string name = $"Lobby de {SteamFriends.GetPersonaName()}";
+        string name = $"Salon de {SteamFriends.GetPersonaName()}";
 
         SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), SteamworksConsts.HostAddressKey, networkAddress);
         SteamMatchmaking.SetLobbyData(new CSteamID(lobbyId), SteamworksConsts.LobbyNameKey, name);

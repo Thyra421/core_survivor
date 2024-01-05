@@ -2,7 +2,6 @@ using JetBrains.Annotations;
 using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(EnemyHealth))]
 public partial class Enemy
@@ -57,6 +56,8 @@ public partial class Enemy
     private bool FindCore()
     {
         NavMeshPath path = new();
+
+        if (EnvironmentManager.Current.Core == null) return false;
 
         if (!navMeshAgent.CalculatePath(EnvironmentManager.Current.Core.position, path))
             return false;
