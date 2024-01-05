@@ -151,6 +151,7 @@ public partial class PlayerMovement
         HandleMovementAndRotation();
         dashCooldown.Update();
         stamina.Value = Mathf.Clamp(stamina.Value + staminaRegenerationPerSecond * Time.deltaTime, 0, 100);
+        SetStaminaRpc(stamina.Value);
     }
 
     public override void OnStartServer()
