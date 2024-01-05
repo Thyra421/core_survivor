@@ -17,11 +17,12 @@ public abstract class InstantAbility : AbilityBase
     public virtual void ClientUse()
     {
         IsCompleted = false;
+        player.StartCoroutine(ResetIsCompletedCoroutine());
     }
 
     public virtual void ServerUse()
     {
-        IsCompleted = true;
+        IsCompleted = false;
         player.StartCoroutine(ResetIsCompletedCoroutine());
         player.Class.Radioactivity.Decrease(cost);
     }
