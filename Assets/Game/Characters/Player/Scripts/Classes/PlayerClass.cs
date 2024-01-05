@@ -7,8 +7,8 @@ using UnityEngine;
 public abstract class PlayerClass : NetworkBehaviour
 {
     public AbilityBase[] Abilities { get; protected set; }
+    public Radioactivity Radioactivity { get; private set; }
     public bool IsBusy => Abilities.Any(a => !a.IsCompleted);
-    public Radioactivity Radioactivity { get; } = new();
 
     public virtual Vector3? Target {
         get {
@@ -17,15 +17,15 @@ public abstract class PlayerClass : NetworkBehaviour
         }
     }
 
-    public virtual bool CanUseAbility(int index)
+    protected bool CanUseAbility(int index)
     {
         if (Abilities[index].IsChanneled)
             return Abilities[index].Cooldown.IsReady;
         return !IsBusy && Abilities[index].Cooldown.IsReady;
     }
-    
+
     [ClientRpc]
-    public void SyncRadioactivityRpc(int value)
+    private void SyncRadioactivityRpc(int value)
     {
         Radioactivity.Current.Value = value;
     }
@@ -56,6 +56,11 @@ public abstract class PlayerClass : NetworkBehaviour
     private void EndUseAbilityRpc(int index, string args)
     {
         Abilities[index].ClientEnd(args);
+    }
+
+    protected virtual void Awake()
+    {
+        Radioactivity = new Radioactivity(SyncRadioactivityRpc);
     }
 
     protected virtual void Update()

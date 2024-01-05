@@ -11,14 +11,6 @@ public class Demolisher : PlayerClass
 
     private Player _player;
 
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-        swordSlash.player = _player;
-        blast.player = _player;
-        Abilities = new AbilityBase[] { swordSlash, blast };
-    }
-
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (!context.started) return;
@@ -30,8 +22,8 @@ public class Demolisher : PlayerClass
 
         UseAbilityCommand(0, swordSlash.Serialize(targetPosition.Value));
     }
-    
-    
+
+
     public void OnUltimate(InputAction.CallbackContext context)
     {
         if (!context.started) return;
@@ -42,5 +34,14 @@ public class Demolisher : PlayerClass
         if (targetPosition == null) return;
 
         UseAbilityCommand(1, blast.Serialize(targetPosition.Value));
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _player = GetComponent<Player>();
+        swordSlash.player = _player;
+        blast.player = _player;
+        Abilities = new AbilityBase[] { swordSlash, blast };
     }
 }

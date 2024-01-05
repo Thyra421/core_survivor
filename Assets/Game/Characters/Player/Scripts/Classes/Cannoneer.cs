@@ -21,14 +21,6 @@ public class Cannoneer : PlayerClass
 
     public override Vector3? Target => _target ?? base.Target;
 
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-        machineGunShoot.player = _player;
-        flamethrower.player = _player;
-        Abilities = new AbilityBase[] { machineGunShoot, flamethrower };
-    }
-
     [Client]
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -89,7 +81,7 @@ public class Cannoneer : PlayerClass
         _target = null;
         ResetTargetRpc();
     }
-    
+
     [ClientRpc]
     private void ResetTargetRpc()
     {
@@ -132,5 +124,14 @@ public class Cannoneer : PlayerClass
 
         if (_isShooting) ShootingUpdate();
         if (_isFlaming) FlamethrowerUpdate();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _player = GetComponent<Player>();
+        machineGunShoot.player = _player;
+        flamethrower.player = _player;
+        Abilities = new AbilityBase[] { machineGunShoot, flamethrower };
     }
 }

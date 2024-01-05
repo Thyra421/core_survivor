@@ -7,23 +7,34 @@ public class Radioactivity
     public bool IsFull => Current.Value == MaxValue;
     public bool IsEmpty => Current.Value == 0;
 
+    private readonly Action<int> _onChanged;
+
+    public Radioactivity(Action<int> onChanged)
+    {
+        _onChanged = onChanged;
+    }
+
     public void Increase(int amount)
     {
         Current.Value = Math.Clamp(Current.Value + amount, 0, MaxValue);
+        _onChanged(Current.Value);
     }
 
     public void Decrease(int amount)
     {
         Current.Value = Math.Clamp(Current.Value - amount, 0, MaxValue);
+        _onChanged(Current.Value);
     }
 
     public void Empty()
     {
         Current.Value = 0;
+        _onChanged(Current.Value);
     }
 
     public void Fill()
     {
         Current.Value = MaxValue;
+        _onChanged(Current.Value);
     }
 }

@@ -80,6 +80,5 @@ public class SwordSlash : AbilityBase, ITargeted
         }
 
         player.Class.Radioactivity.Increase(cpt * 2);
-        player.Class.SyncRadioactivityRpc(player.Class.Radioactivity.Current.Value);
     }
 }
