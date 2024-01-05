@@ -91,7 +91,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         ResetTargetRpc();
     }
     
-    [Command]
+    [ClientRpc]
     private void ResetTargetRpc()
     {
         _target = null;
