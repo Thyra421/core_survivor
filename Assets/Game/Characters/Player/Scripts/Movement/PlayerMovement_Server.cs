@@ -50,6 +50,12 @@ public partial class PlayerMovement
 
     #region Movement
 
+    [ClientRpc]
+    private void SetStaminaRpc(float value)
+    {
+        stamina.Value = value;
+    }
+
     [Command]
     private void MoveCommand(Vector2 input)
     {
@@ -128,7 +134,9 @@ public partial class PlayerMovement
         while (Vector3.Distance(transform.position, originalPosition) < dashDistance && timeout > 0 &&
                stamina.Value > 0) {
             _characterController.Move(transform.forward * dashSpeed * Time.deltaTime);
-            stamina.Value = Mathf.Clamp(stamina.Value - dashStaminaCostPerSecond * Time.deltaTime, 0, 100);
+            float staminaValue = Mathf.Clamp(stamina.Value - dashStaminaCostPerSecond * Time.deltaTime, 0, 100);
+            stamina.Value = staminaValue;
+            SetStaminaRpc(staminaValue);
             timeout -= Time.deltaTime;
             yield return null;
         }
@@ -137,7 +145,7 @@ public partial class PlayerMovement
         yield return null;
     }
 
-    #endregion 
+    #endregion
 
     [Server]
     private void ServerUpdate()
