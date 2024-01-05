@@ -34,22 +34,24 @@ public partial class Enemy
     [Server]
     private void FindBestTarget()
     {
-        bool hasFoundTarget;
-
-        switch (targetPreference) {
-            case EnemyTargetPreference.core:
-                hasFoundTarget = FindCore() || FindClosest();
-                break;
-            case EnemyTargetPreference.player:
-                hasFoundTarget = FindBestPlayer() || FindClosest();
-                break;
-            case EnemyTargetPreference.environment:
-                hasFoundTarget = FindBestEnvironment() || FindClosest();
-                break;
-            case EnemyTargetPreference.closest:
-                hasFoundTarget = FindClosest();
-                break;
-        }
+        Default();
+        
+        // bool hasFoundTarget;
+        //
+        // switch (targetPreference) {
+        //     case EnemyTargetPreference.core:
+        //         hasFoundTarget = FindCore() || FindClosest();
+        //         break;
+        //     case EnemyTargetPreference.player:
+        //         hasFoundTarget = FindBestPlayer() || FindClosest();
+        //         break;
+        //     case EnemyTargetPreference.environment:
+        //         hasFoundTarget = FindBestEnvironment() || FindClosest();
+        //         break;
+        //     case EnemyTargetPreference.closest:
+        //         hasFoundTarget = FindClosest();
+        //         break;
+        // }
     }
 
     [Server]
@@ -137,6 +139,39 @@ public partial class Enemy
             NavMeshPath path = new();
 
             if (distance > shortestDistance || !navMeshAgent.CalculatePath(p.transform.position, path)) continue;
+
+            shortestDistance = distance;
+            target = p.transform;
+        }
+
+        if (target == null)
+            return false;
+
+        Target = target;
+        return true;
+    }
+
+    [Server]
+    private bool Default()
+    {
+        if (PlayerManager.Current.Players.Count == 0) return false;
+
+        Transform target = null;
+        float shortestDistance = float.PositiveInfinity;
+
+        foreach (DestructibleEnvironment e in EnvironmentManager.Current.Environments) {
+            float distance = Vector3.Distance(transform.position, e.transform.position);
+
+            if (distance > shortestDistance) continue;
+
+            shortestDistance = distance;
+            target = e.transform;
+        }
+
+        foreach (Player p in PlayerManager.Current.Players) {
+            float distance = Vector3.Distance(transform.position, p.transform.position);
+
+            if (distance > shortestDistance) continue;
 
             shortestDistance = distance;
             target = p.transform;

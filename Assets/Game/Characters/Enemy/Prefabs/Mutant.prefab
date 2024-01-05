@@ -233,7 +233,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  targetPreference: 3
+  targetPreference: 0
   navMeshAgent: {fileID: 4374053883746527478}
 --- !u!114 &2792601185414812806
 MonoBehaviour:
