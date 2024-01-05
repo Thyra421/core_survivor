@@ -275,6 +275,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   renderer: {fileID: 313326924256595545}
+  index: 0
   materials:
   - {fileID: 2100000, guid: edba63ef3e4d143459dc69cdeae3bc57, type: 2}
   - {fileID: 2100000, guid: 06acb4b24d930404f9f01bc1dc8a0a2c, type: 2}
@@ -813,7 +814,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 50, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 4, y: 0.1, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8909178101419320175}

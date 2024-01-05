@@ -71,16 +71,17 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     }
 
     [Command]
-    private void SetAimCommand(Vector3 target)
+    private void SetAimAndTargetCommand(Vector3 aimPosition, Vector3 targetPosition)
     {
-        aim.position = target;
-        SetAimRpc(target);
+        aim.position = aimPosition;
+        SetAimRpc(aimPosition, targetPosition);
     }
 
     [ClientRpc]
-    private void SetAimRpc(Vector3 target)
+    private void SetAimRpc(Vector3 aimPosition, Vector3 targetPosition)
     {
-        aim.position = target;
+        aim.position = aimPosition;
+        _target = targetPosition;
     }
 
     [Client]
@@ -88,14 +89,13 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     {
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (targetPosition == null) return;
-        _target = targetPosition.Value;
-        Vector3 aimPosition = _target.Value;
+        Vector3 aimPosition = targetPosition.Value;
         aimPosition.y = 1.5f;
-        SetAimCommand(aimPosition);
+        SetAimAndTargetCommand(aimPosition, targetPosition.Value);
 
         if (!CanUseAbility(0)) return;
 
-        UseAbilityCommand(0, machineGunShoot.Serialize(_target.Value));
+        UseAbilityCommand(0, machineGunShoot.Serialize(targetPosition.Value));
     }
 
     [Client]
@@ -103,14 +103,13 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     {
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (targetPosition == null) return;
-        _target = targetPosition.Value;
-        Vector3 aimPosition = _target.Value;
+        Vector3 aimPosition = targetPosition.Value;
         aimPosition.y = 1.5f;
-        SetAimCommand(aimPosition);
+        SetAimAndTargetCommand(aimPosition, targetPosition.Value);
 
         if (!CanUseAbility(1)) return;
 
-        UseAbilityCommand(1, flamethrower.Serialize(_target.Value));
+        UseAbilityCommand(1, flamethrower.Serialize(targetPosition.Value));
     }
 
     protected override void Update()
