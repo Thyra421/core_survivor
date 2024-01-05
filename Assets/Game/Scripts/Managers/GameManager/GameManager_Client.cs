@@ -2,7 +2,7 @@
 
 public partial class GameManager
 {
-    public readonly Listenable<int> currentWave = new();
+    public readonly Listenable<int> currentWave = new(1);
 
     [ClientRpc]
     private void SetTimerRpc(float duration)

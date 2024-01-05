@@ -24,7 +24,7 @@ public partial class GameManager
 
         timer.Value = pattern.timer;
         SetTimerRpc(pattern.timer);
-        SetWaveRpc((_patternIndex + 1) * _waveMultiplicator);
+        SetWaveRpc(_patternIndex + 1 + WavePatterns.Length * (_waveMultiplicator - 1));
 
         _patternIndex = (_patternIndex + 1) % WavePatterns.Length;
         if (_patternIndex == 0)
