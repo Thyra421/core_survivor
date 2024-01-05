@@ -62,7 +62,7 @@ public partial class EnemyAttack
 
         if (!IsTargetInRange) yield break;
 
-        IDamageable damageable = _enemy.Target.GetComponent<IDamageable>();
+        IDamageable damageable = _enemy.Target!.GetComponent<IDamageable>();
         damageable.TakeDamage(attackDamage);
     }
 }

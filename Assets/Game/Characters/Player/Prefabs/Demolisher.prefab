@@ -354,7 +354,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   dashCooldown:
-    duration: 2
+    duration: 1.2
   movementSpeed: 6
   rotationSpeed: 20
   acceleration: 30
@@ -413,7 +413,7 @@ MonoBehaviour:
     abilityDuration: 1
     delay: 0.6
     cooldown:
-      duration: 2
+      duration: 1.5
     player: {fileID: 0}
     damages: 50
     radius: 1.5
@@ -428,6 +428,7 @@ MonoBehaviour:
     grenadePrefab: {fileID: 5274250965855777935, guid: 3e5a0bb9ac452e44b9b9cef3370cac3f,
       type: 3}
     damages: 100
+    grenadeExplosionRadius: 3
 --- !u!1001 &1032298205644157188
 PrefabInstance:
   m_ObjectHideFlags: 0

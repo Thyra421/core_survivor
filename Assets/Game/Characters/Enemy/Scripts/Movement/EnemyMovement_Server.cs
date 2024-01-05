@@ -29,6 +29,12 @@ public partial class EnemyMovement
 
         if (_enemy.Target == null) return;
 
+        if (Vector3.Distance(transform.position, _enemy.Target!.position) < _navMeshAgent.stoppingDistance) {
+            Vector3 lookDirection = _enemy.Target!.position - transform.position;
+            lookDirection.y = 0;
+            transform.rotation = Quaternion.LookRotation(lookDirection);
+        }
+
         _navMeshAgent.SetDestination(_enemy.Target!.position);
     }
 }

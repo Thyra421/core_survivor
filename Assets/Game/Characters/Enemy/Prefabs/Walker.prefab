@@ -324,7 +324,7 @@ MonoBehaviour:
   attackDamage: 10
   attackDelay: 1
   cooldown:
-    duration: 2.5
+    duration: 3
 --- !u!1001 &298154969717134907
 PrefabInstance:
   m_ObjectHideFlags: 0
