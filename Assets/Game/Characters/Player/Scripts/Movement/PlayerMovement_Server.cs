@@ -117,7 +117,7 @@ public partial class PlayerMovement
     [Server]
     private void Dash(Vector3 direction)
     {
-        transform.rotation = Quaternion.LookRotation(direction);
+        // transform.rotation = Quaternion.LookRotation(direction);
 
         dashCooldown.Start();
         _canMove = false;
