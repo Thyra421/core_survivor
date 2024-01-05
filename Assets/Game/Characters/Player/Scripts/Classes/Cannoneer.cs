@@ -38,7 +38,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         if (context.canceled) {
             EndUseAbilityCommand(0, "");
             _isShooting = false;
-            _target = null;
+            ResetTargetCommand();
 
             return;
         }
@@ -58,7 +58,7 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
         if (context.canceled) {
             EndUseAbilityCommand(1, "");
             _isFlaming = false;
-            _target = null;
+            ResetTargetCommand();
 
             return;
         }
@@ -82,6 +82,19 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
     {
         aim.position = aimPosition;
         _target = targetPosition;
+    }
+
+    [Command]
+    private void ResetTargetCommand()
+    {
+        _target = null;
+        ResetTargetRpc();
+    }
+    
+    [Command]
+    private void ResetTargetRpc()
+    {
+        _target = null;
     }
 
     [Client]
