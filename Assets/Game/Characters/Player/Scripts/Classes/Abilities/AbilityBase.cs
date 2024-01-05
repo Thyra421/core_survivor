@@ -5,23 +5,23 @@ using UnityEngine;
 public abstract class AbilityBase
 {
     [SerializeField]
-    protected float abilityDuration;
-
-    [SerializeField]
-    protected float delay;
-
-    [SerializeField]
     private Cooldown cooldown;
+
+    [SerializeField]
+    protected int cost;
+
+    [SerializeField]
+    protected int damages;
 
     [HideInInspector]
     public Player player;
 
     public Cooldown Cooldown => cooldown;
-    public bool IsCompleted { get; protected set; } = true;
-    public abstract bool IsChanneled { get; }
+    public virtual bool CanUse => Cooldown.IsReady && player.Class.Radioactivity.Current.Value >= cost;
+    public abstract bool IsInProgress { get; }
 
-    public abstract void ClientUse(string args);
-    public abstract void ServerUse(string args);
-    public abstract void ClientEnd(string args);
-    public abstract void ServerEnd(string args);
+    public virtual void Update()
+    {
+        cooldown.Update();
+    }
 }

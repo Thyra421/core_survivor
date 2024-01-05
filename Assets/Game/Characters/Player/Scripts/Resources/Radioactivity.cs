@@ -6,8 +6,7 @@ public class Radioactivity
     public Listenable<int> Current { get; } = new();
     public bool IsFull => Current.Value == MaxValue;
     public bool IsEmpty => Current.Value == 0;
-
-    private readonly Action<int> _onChanged;
+    private Action<int> _onChanged;
 
     public Radioactivity(Action<int> onChanged)
     {

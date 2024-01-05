@@ -40,13 +40,9 @@ public partial class PlayerMovement
     private bool _canMove = true;
 
     public readonly Listenable<float> stamina = new(100);
-
     public float SpeedRatio => _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
-
     public Vector3 MoveDirection => _moveDirection;
-
-    public Vector3 LookDirection =>
-        _playerClass.Target != null ? _playerClass.Target.Value - transform.position : MoveDirection;
+    public Vector3 LookDirection => _playerClass.IsBusy ? _playerClass.Target - transform.position : MoveDirection;
 
     #region Movement
 

@@ -20,9 +20,9 @@ public class Demolisher : PlayerClass
 
         if (targetPosition == null) return;
 
-        UseAbilityCommand(0, swordSlash.Serialize(targetPosition.Value));
+        SetTargetCommand(targetPosition!.Value);
+        UseAbilityCommand(0);
     }
-
 
     public void OnUltimate(InputAction.CallbackContext context)
     {
@@ -33,7 +33,8 @@ public class Demolisher : PlayerClass
 
         if (targetPosition == null) return;
 
-        UseAbilityCommand(1, blast.Serialize(targetPosition.Value));
+        SetTargetCommand(targetPosition!.Value);
+        UseAbilityCommand(1);
     }
 
     protected override void Awake()

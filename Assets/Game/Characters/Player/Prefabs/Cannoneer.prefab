@@ -254,8 +254,8 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.25
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -448,24 +448,27 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   machineGunShoot:
-    abilityDuration: 0
-    delay: 0
     cooldown:
-      duration: 0.15
+      duration: 0
+    cost: 0
+    damages: 15
     player: {fileID: 0}
+    interval:
+      duration: 0.2
     bulletPrefab: {fileID: 5274250965855777935, guid: 65ae479266e69bf43851ffef4c5435fa,
       type: 3}
-    bulletDamages: 15
     gunTip: {fileID: 7759220822339139433}
     rig: {fileID: 2964083930280356593}
+    radioactivityPerHit: 2
   flamethrower:
-    abilityDuration: 0
-    delay: 0
     cooldown:
-      duration: 0.4
+      duration: 0
+    cost: 10
+    damages: 20
     player: {fileID: 0}
+    interval:
+      duration: 0.4
     flames: {fileID: 5591315670759100024}
-    tickDamage: 20
     gunTip: {fileID: 7759220822339139433}
     radius: 1.5
     distance: 5

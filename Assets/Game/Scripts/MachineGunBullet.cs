@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Mirror;
 using UnityEngine;
@@ -7,11 +8,11 @@ public class MachineGunBullet : NetworkBehaviour
     [SerializeField]
     private float speed;
 
-    private int _damages;
+    private Action<EnemyHealth> _onHit;
 
-    public void Initialize(int damages)
+    public void Initialize(Action<EnemyHealth> onHit)
     {
-        _damages = damages;
+        _onHit = onHit;
     }
 
     private void Start()
@@ -32,7 +33,7 @@ public class MachineGunBullet : NetworkBehaviour
         if (!isServer) return;
 
         if (other.TryGetComponent(out EnemyHealth enemyHealth))
-            enemyHealth.TakeDamage(_damages);
+            _onHit(enemyHealth);
 
         StopAllCoroutines();
         NetworkServer.Destroy(gameObject);

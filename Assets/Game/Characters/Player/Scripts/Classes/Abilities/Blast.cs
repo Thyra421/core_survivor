@@ -5,7 +5,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 [Serializable]
-public class Blast : AbilityBase, ITargeted
+public class Blast : InstantAbility
 {
     [SerializeField]
     private Transform handTransform;
@@ -14,49 +14,19 @@ public class Blast : AbilityBase, ITargeted
     private GameObject grenadePrefab;
 
     [SerializeField]
-    private int damages = 100;
-
-    [SerializeField]
     private float grenadeExplosionRadius = 3;
 
-    public Vector3? Target { get; private set; }
-    public override bool IsChanneled => false;
-
-    public string Serialize(Vector3 target)
+    public override void ClientUse()
     {
-        return JsonUtility.ToJson(new MessageTarget(target));
-    }
-
-    public override void ClientUse(string args)
-    {
+        base.ClientUse();
         player.Animation.SetTrigger("Throw");
-
-        if (player.isOwned)
-            Cooldown.Start();
-    }
-
-    public override void ServerUse(string args)
-    {
-        MessageTarget message = JsonUtility.FromJson<MessageTarget>(args);
-        Target = message.target;
-
         Cooldown.Start();
-        IsCompleted = false;
-
-        player.StartCoroutine(ServerAttackCoroutine(message.target));
-        player.StartCoroutine(ResetIsCompletedCoroutine());
     }
 
-    public override void ClientEnd(string args) { }
-
-    public override void ServerEnd(string args) { }
-
-    private IEnumerator ResetIsCompletedCoroutine()
+    public override void ServerUse()
     {
-        yield return new WaitForSeconds(abilityDuration);
-
-        IsCompleted = true;
-        Target = null;
+        base.ServerUse();
+        player.StartCoroutine(ServerAttackCoroutine(player.Class.Target));
     }
 
     private IEnumerator ServerAttackCoroutine(Vector3 target)

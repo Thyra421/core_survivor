@@ -14,12 +14,6 @@ public class Cannoneer : PlayerClass
     private Transform aim;
 
     private Player _player;
-    private bool _isShooting;
-    private bool _isFlaming;
-
-    private Vector3? _target;
-
-    public override Vector3? Target => _target ?? base.Target;
 
     [Client]
     public void OnAttack(InputAction.CallbackContext context)
@@ -27,17 +21,14 @@ public class Cannoneer : PlayerClass
         if (!(isClient && isOwned)) return;
 
         if (context.canceled) {
-            EndUseAbilityCommand(0, "");
-            _isShooting = false;
-            ResetTargetCommand();
-
+            StopUsingAbilityCommand(0);
             return;
         }
 
         if (!CanUseAbility(0)) return;
 
         if (context.started) {
-            _isShooting = true;
+            StartUsingAbilityCommand(0);
         }
     }
 
@@ -47,74 +38,44 @@ public class Cannoneer : PlayerClass
         if (!(isClient && isOwned)) return;
 
         if (context.canceled) {
-            EndUseAbilityCommand(1, "");
-            _isFlaming = false;
-            ResetTargetCommand();
-
+            StopUsingAbilityCommand(1);
             return;
         }
 
         if (!CanUseAbility(1)) return;
 
         if (context.started) {
-            _isFlaming = true;
+            StartUsingAbilityCommand(1);
         }
     }
 
-    [Command]
-    private void SetAimAndTargetCommand(Vector3 aimPosition, Vector3 targetPosition)
-    {
-        aim.position = aimPosition;
-        SetAimRpc(aimPosition, targetPosition);
-    }
-
-    [ClientRpc]
-    private void SetAimRpc(Vector3 aimPosition, Vector3 targetPosition)
-    {
-        aim.position = aimPosition;
-        _target = targetPosition;
-    }
-
-    [Command]
-    private void ResetTargetCommand()
-    {
-        _target = null;
-        ResetTargetRpc();
-    }
-
-    [ClientRpc]
-    private void ResetTargetRpc()
-    {
-        _target = null;
-    }
+    #region Aim
 
     [Client]
-    private void ShootingUpdate()
+    private void Aim()
     {
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (targetPosition == null) return;
         Vector3 aimPosition = targetPosition.Value;
         aimPosition.y = 1.5f;
-        SetAimAndTargetCommand(aimPosition, targetPosition.Value);
-
-        if (!CanUseAbility(0)) return;
-
-        UseAbilityCommand(0, machineGunShoot.Serialize(targetPosition.Value));
+        SetAimCommand(aimPosition);
+        SetTargetCommand(targetPosition.Value);
     }
 
-    [Client]
-    private void FlamethrowerUpdate()
+    [Command]
+    private void SetAimCommand(Vector3 aimPosition)
     {
-        Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
-        if (targetPosition == null) return;
-        Vector3 aimPosition = targetPosition.Value;
-        aimPosition.y = 1.5f;
-        SetAimAndTargetCommand(aimPosition, targetPosition.Value);
-
-        if (!CanUseAbility(1)) return;
-
-        UseAbilityCommand(1, flamethrower.Serialize(targetPosition.Value));
+        aim.position = aimPosition;
+        SetAimRpc(aimPosition);
     }
+
+    [ClientRpc]
+    private void SetAimRpc(Vector3 aimPosition)
+    {
+        aim.position = aimPosition;
+    }
+
+    #endregion
 
     protected override void Update()
     {
@@ -122,8 +83,8 @@ public class Cannoneer : PlayerClass
 
         if (!(isClient && isOwned)) return;
 
-        if (_isShooting) ShootingUpdate();
-        if (_isFlaming) FlamethrowerUpdate();
+        if (flamethrower.IsUsing || machineGunShoot.IsUsing)
+            Aim();
     }
 
     protected override void Awake()

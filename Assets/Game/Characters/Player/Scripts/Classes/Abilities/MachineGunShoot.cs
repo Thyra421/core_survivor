@@ -5,13 +5,10 @@ using UnityEngine.Animations.Rigging;
 using Object = UnityEngine.Object;
 
 [Serializable]
-public class MachineGunShoot : AbilityBase, ITargeted
+public class MachineGunShoot : ProgressiveAbility
 {
     [SerializeField]
     private GameObject bulletPrefab;
-
-    [SerializeField]
-    private int bulletDamages;
 
     [SerializeField]
     private Transform gunTip;
@@ -19,55 +16,52 @@ public class MachineGunShoot : AbilityBase, ITargeted
     [SerializeField]
     private Rig rig;
 
+    [SerializeField]
+    private int radioactivityPerHit;
+
     private static readonly int IsShootingId = Animator.StringToHash("IsShooting");
 
-    public Vector3? Target { get; private set; }
-    public override bool IsChanneled => true;
-
-    public string Serialize(Vector3 target)
+    public override void ClientStartUsing()
     {
-        return JsonUtility.ToJson(new MessageTarget(target));
-    }
-
-    public override void ClientUse(string args)
-    {
-        if (player.isOwned)
-            Cooldown.Start();
+        base.ClientStartUsing();
         rig.weight = 1;
     }
 
-    public override void ServerUse(string args)
+    public override void ServerStartUsing()
     {
-        MessageTarget message = JsonUtility.FromJson<MessageTarget>(args);
-        Target = message.target;
-
-        Cooldown.Start();
-        IsCompleted = false;
+        base.ServerStartUsing();
         player.Animation.SetBool(IsShootingId, true);
+        rig.weight = 1;
+    }
 
-        Vector3 shootDirection = (Target.Value - gunTip.position).normalized;
+    protected override void ServerUsing()
+    {
+        base.ServerUsing();
+        Vector3 shootDirection = (player.Class.Target - gunTip.position).normalized;
         shootDirection.y = 0;
 
         MachineGunBullet bullet = Object.Instantiate(bulletPrefab, gunTip.position,
             Quaternion.LookRotation(shootDirection)).GetComponent<MachineGunBullet>();
-        bullet.Initialize(bulletDamages);
+        bullet.Initialize(OnBulletHit);
         NetworkServer.Spawn(bullet.gameObject);
-
-        rig.weight = 1;
     }
 
-    public override void ClientEnd(string args)
+    private void OnBulletHit(EnemyHealth enemyHealth)
     {
-        IsCompleted = true;
-        Target = null;
+        enemyHealth.TakeDamage(damages);
+        player.Class.Radioactivity.Increase(radioactivityPerHit);
+    }
+
+    public override void ClientStopUsing()
+    {
+        base.ClientStopUsing();
         rig.weight = 0;
     }
 
-    public override void ServerEnd(string args)
+    public override void ServerStopUsing()
     {
+        base.ServerStopUsing();
         player.Animation.SetBool(IsShootingId, false);
-        IsCompleted = true;
-        Target = null;
         rig.weight = 0;
     }
 }

@@ -3,55 +3,27 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class SwordSlash : AbilityBase, ITargeted
+public class SwordSlash : InstantAbility
 {
-    [SerializeField]
-    private int damages = 25;
-
     [SerializeField]
     private float radius = 1.5f;
 
     [SerializeField]
     private float distance = 1.5f;
 
-    public Vector3? Target { get; private set; }
-    public override bool IsChanneled => false;
+    [SerializeField]
+    private int radioactivityPerHit;
 
-    public string Serialize(Vector3 target)
+    public override void ClientUse()
     {
-        return JsonUtility.ToJson(new MessageTarget(target));
-    }
-
-    public override void ClientUse(string args)
-    {
+        base.ClientUse();
         player.Animation.SetTrigger("Attack");
-
-        if (player.isOwned)
-            Cooldown.Start();
     }
 
-    public override void ServerUse(string args)
+    public override void ServerUse()
     {
-        MessageTarget message = JsonUtility.FromJson<MessageTarget>(args);
-        Target = message.target;
-
-        Cooldown.Start();
-        IsCompleted = false;
-
+        base.ServerUse();
         player.StartCoroutine(ServerAttackCoroutine());
-        player.StartCoroutine(ResetIsCompletedCoroutine());
-    }
-
-    public override void ClientEnd(string args) { }
-
-    public override void ServerEnd(string args) { }
-
-    private IEnumerator ResetIsCompletedCoroutine()
-    {
-        yield return new WaitForSeconds(abilityDuration);
-
-        IsCompleted = true;
-        Target = null;
     }
 
     private IEnumerator ServerAttackCoroutine()
@@ -79,6 +51,6 @@ public class SwordSlash : AbilityBase, ITargeted
             cpt++;
         }
 
-        player.Class.Radioactivity.Increase(cpt * 2);
+        player.Class.Radioactivity.Increase(cpt * radioactivityPerHit);
     }
 }
