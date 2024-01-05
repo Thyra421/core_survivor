@@ -93,6 +93,7 @@ public partial class PlayerMovement
 
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
 
+        Debug.Log("huha");
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 
@@ -103,7 +104,7 @@ public partial class PlayerMovement
     [Command]
     private void DashCommand(Vector3 direction)
     {
-        if (!DashCooldown.IsReady || _playerClass.IsBusy) return;
+        if (!dashCooldown.IsReady || _playerClass.IsBusy) return;
 
         Dash(direction);
     }
@@ -113,16 +114,10 @@ public partial class PlayerMovement
     {
         transform.rotation = Quaternion.LookRotation(direction);
 
-        DashCooldown.Start();
+        dashCooldown.Start();
         _canMove = false;
         _currentSpeed = dashSpeed;
         StartCoroutine(nameof(DashCoroutine));
-    }
-
-    [Server]
-    private void OnFinishDash()
-    {
-        _canMove = true;
     }
 
     [Server]
@@ -139,11 +134,11 @@ public partial class PlayerMovement
             yield return null;
         }
 
-        OnFinishDash();
+        _canMove = true;
         yield return null;
     }
 
-    #endregion
+    #endregion 
 
     [Server]
     private void ServerUpdate()
@@ -151,7 +146,7 @@ public partial class PlayerMovement
         if (!_canMove) return;
 
         HandleMovementAndRotation();
-        DashCooldown.Update();
+        dashCooldown.Update();
         stamina.Value = Mathf.Clamp(stamina.Value + staminaRegenerationPerSecond * Time.deltaTime, 0, 100);
     }
 

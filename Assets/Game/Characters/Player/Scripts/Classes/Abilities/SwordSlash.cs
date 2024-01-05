@@ -70,9 +70,10 @@ public class SwordSlash : AbilityBase, ITargeted
             if (!c.transform.TryGetComponent(out EnemyHealth enemy)) continue;
 
             // check that enemy is in line of sight
-            Vector3 enemyPosition = c.transform.position;
-            Ray enemyRay = new(player.transform.position, c.transform.position - player.transform.position);
-            if (Physics.Raycast(enemyRay, Vector3.Distance(enemyPosition, player.transform.position),
+            Vector3 enemyPosition = c.transform.position + Vector3.up;
+            Vector3 playerPosition = player.transform.position + Vector3.up;
+            Ray enemyRay = new(playerPosition, enemyPosition - playerPosition);
+            if (Physics.Raycast(enemyRay, Vector3.Distance(enemyPosition, playerPosition),
                     LayerManager.Current.WhatIsObstacle)) continue;
             enemy.TakeDamage(damages);
             cpt++;

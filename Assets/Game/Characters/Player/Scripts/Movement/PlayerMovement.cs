@@ -8,8 +8,6 @@ public partial class PlayerMovement : NetworkBehaviour
     [SerializeField]
     private Cooldown dashCooldown;
 
-    public Cooldown DashCooldown => dashCooldown;
-
     private void Update()
     {
         if (isServer)
