@@ -21,9 +21,9 @@ public class Grenade : NetworkBehaviour
     private Action _onExplode;
 
     [ClientRpc]
-    private void ExplodeRpc()
+    private void ExplodeRpc(Vector3 position)
     {
-        Instantiate(explosionPrefab, _destination, quaternion.identity);
+        Instantiate(explosionPrefab, position, quaternion.identity);
     }
 
     private void Update()
@@ -39,7 +39,7 @@ public class Grenade : NetworkBehaviour
         _hasExploded = true;
 
         _onExplode();
-        ExplodeRpc();
+        ExplodeRpc(_destination);
         // delay destruction to let time to explode
         StartCoroutine(DelayedDestroyCoroutine());
     }
