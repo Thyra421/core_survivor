@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Cannoneer : PlayerClass, IRadioactivityUser
+public class Cannoneer : PlayerClass
 {
     [SerializeField]
     private MachineGunShoot machineGunShoot;
@@ -19,7 +19,6 @@ public class Cannoneer : PlayerClass, IRadioactivityUser
 
     private Vector3? _target;
 
-    public Radioactivity Radioactivity { get; } = new();
     public override Vector3? Target => _target ?? base.Target;
 
     private void Awake()

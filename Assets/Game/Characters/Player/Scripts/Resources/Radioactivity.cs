@@ -2,29 +2,28 @@
 
 public class Radioactivity
 {
-    private const int MAX_VALUE = 100;
-
-    public Listenable<int> Value { get; } = new();
-    public bool IsFull => Value.Value == MAX_VALUE;
-    public bool IsEmpty => Value.Value == 0;
+    public const int MaxValue = 100;
+    public Listenable<int> Current { get; } = new();
+    public bool IsFull => Current.Value == MaxValue;
+    public bool IsEmpty => Current.Value == 0;
 
     public void Increase(int amount)
     {
-        Value.Value = Math.Clamp(Value.Value + amount, 0, MAX_VALUE);
+        Current.Value = Math.Clamp(Current.Value + amount, 0, MaxValue);
     }
 
     public void Decrease(int amount)
     {
-        Value.Value = Math.Clamp(Value.Value - amount, 0, MAX_VALUE);
+        Current.Value = Math.Clamp(Current.Value - amount, 0, MaxValue);
     }
 
     public void Empty()
     {
-        Value.Value = 0;
+        Current.Value = 0;
     }
 
     public void Fill()
     {
-        Value.Value = MAX_VALUE;
+        Current.Value = MaxValue;
     }
 }

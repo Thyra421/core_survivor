@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Demolisher : PlayerClass, IRadioactivityUser
+public class Demolisher : PlayerClass
 {
     [SerializeField]
     private SwordSlash swordSlash;
@@ -10,8 +10,6 @@ public class Demolisher : PlayerClass, IRadioactivityUser
     private Blast blast;
 
     private Player _player;
-
-    public Radioactivity Radioactivity { get; } = new();
 
     private void Awake()
     {

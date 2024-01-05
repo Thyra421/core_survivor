@@ -8,6 +8,7 @@ public abstract class PlayerClass : NetworkBehaviour
 {
     public AbilityBase[] Abilities { get; protected set; }
     public bool IsBusy => Abilities.Any(a => !a.IsCompleted);
+    public Radioactivity Radioactivity { get; } = new();
 
     public virtual Vector3? Target {
         get {
@@ -16,11 +17,17 @@ public abstract class PlayerClass : NetworkBehaviour
         }
     }
 
-    protected virtual bool CanUseAbility(int index)
+    public virtual bool CanUseAbility(int index)
     {
         if (Abilities[index].IsChanneled)
             return Abilities[index].Cooldown.IsReady;
         return !IsBusy && Abilities[index].Cooldown.IsReady;
+    }
+    
+    [ClientRpc]
+    public void SyncRadioactivityRpc(int value)
+    {
+        Radioactivity.Current.Value = value;
     }
 
     [Command]
@@ -28,39 +35,27 @@ public abstract class PlayerClass : NetworkBehaviour
     {
         if (!CanUseAbility(index)) return;
 
-        UseAbilityClient(index, args);
-        UseAbilityServer(index, args);
+        UseAbilityRpc(index, args);
+        Abilities[index].ServerUse(args);
     }
 
     [ClientRpc]
-    private void UseAbilityClient(int index, string args)
+    private void UseAbilityRpc(int index, string args)
     {
         Abilities[index].ClientUse(args);
-    }
-
-    [Server]
-    private void UseAbilityServer(int index, string args)
-    {
-        Abilities[index].ServerUse(args);
     }
 
     [Command]
     protected void EndUseAbilityCommand(int index, string args)
     {
-        EndUseAbilityClient(index, args);
-        EndUseAbilityServer(index, args);
+        EndUseAbilityRpc(index, args);
+        Abilities[index].ServerEnd(args);
     }
 
     [ClientRpc]
-    private void EndUseAbilityClient(int index, string args)
+    private void EndUseAbilityRpc(int index, string args)
     {
         Abilities[index].ClientEnd(args);
-    }
-
-    [Server]
-    private void EndUseAbilityServer(int index, string args)
-    {
-        Abilities[index].ServerEnd(args);
     }
 
     protected virtual void Update()

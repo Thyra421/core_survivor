@@ -20,9 +20,7 @@ public class ResourcesHUD : MonoBehaviour
         staminaSlider.maxValue = 100;
         staminaSlider.BindValue(player.Movement.stamina);
 
-        if (player.Class is IRadioactivityUser radioactivityUser) {
-            radioactivitySlider.maxValue = 100;
-            radioactivitySlider.BindValue(radioactivityUser.Radioactivity.Value);
-        }
+        radioactivitySlider.maxValue = Radioactivity.MaxValue;
+        radioactivitySlider.BindValue(player.Class.Radioactivity.Current);
     }
 }
