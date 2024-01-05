@@ -53,6 +53,8 @@ public abstract class ProgressiveAbility : AbilityBase
 
         if (!(IsUsing && CanUse)) return;
 
+        if (!player.isServer) return;
+        
         ServerUsing();
         ClientUsing();
     }
