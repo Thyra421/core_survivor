@@ -143,7 +143,7 @@ public abstract class PlayerClass : NetworkBehaviour
     }
 
     #endregion
-
+    
     protected virtual void Awake()
     {
         Radioactivity = new Radioactivity(OnRadioactivityChanged);
