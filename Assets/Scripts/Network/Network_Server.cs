@@ -34,6 +34,8 @@ public partial class Network
     {
         base.OnServerConnect(conn);
         ConsoleLogger.Server("Client connects");
+        PlayerManager.Current.PlayersAlive.Value++;
+        PlayerManager.Current.SetPlayersAliveRpc(PlayerManager.Current.PlayersAlive.Value);
     }
 
     public override void OnServerDisconnect(NetworkConnectionToClient conn)

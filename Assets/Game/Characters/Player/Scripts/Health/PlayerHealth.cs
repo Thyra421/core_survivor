@@ -13,6 +13,8 @@ public class PlayerHealth : CharacterHealth
     public override void Die()
     {
         DieRpc();
+        PlayerManager.Current.PlayersAlive.Value--;
+        PlayerManager.Current.SetPlayersAliveRpc(PlayerManager.Current.PlayersAlive.Value);
     }
 
     [ClientRpc]
