@@ -171,7 +171,7 @@ public partial class Enemy
         foreach (Player p in PlayerManager.Current.Players) {
             float distance = Vector3.Distance(transform.position, p.transform.position);
 
-            if (distance > shortestDistance) continue;
+            if (distance > shortestDistance || p.IsDead) continue;
 
             shortestDistance = distance;
             target = p.transform;

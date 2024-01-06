@@ -31,7 +31,7 @@ public partial class PlayerMovement
     [SerializeField]
     private float staminaRegenerationPerSecond;
 
-    private PlayerClass _playerClass;
+    private Player _player;
     private CharacterController _characterController;
     private Vector2 _currentInput;
     private float _currentSpeed;
@@ -42,7 +42,7 @@ public partial class PlayerMovement
     public readonly Listenable<float> stamina = new(100);
     public float SpeedRatio => _currentSpeed == 0 ? 0 : _currentSpeed / movementSpeed;
     public Vector3 MoveDirection => _moveDirection;
-    public Vector3 LookDirection => _playerClass.IsBusy ? _playerClass.Target - transform.position : MoveDirection;
+    public Vector3 LookDirection => _player.Class.IsBusy ? _player.Class.Target - transform.position : MoveDirection;
 
     #region Movement
 
@@ -105,7 +105,7 @@ public partial class PlayerMovement
     [Command]
     private void DashCommand(Vector3 direction)
     {
-        if (!dashCooldown.IsReady || _playerClass.IsBusy) return;
+        if (!dashCooldown.IsReady || _player.Class.IsBusy) return;
 
         Dash(direction);
     }
@@ -158,6 +158,6 @@ public partial class PlayerMovement
     {
         base.OnStartServer();
         _characterController = GetComponent<CharacterController>();
-        _playerClass = GetComponent<PlayerClass>();
+        _player = GetComponent<Player>();
     }
 }

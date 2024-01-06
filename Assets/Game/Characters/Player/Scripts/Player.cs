@@ -13,6 +13,8 @@ public partial class Player : NetworkBehaviour
     public PlayerAnimation Animation { get; private set; }
     public PlayerClass Class { get; private set; }
 
+    public bool IsDead => Health.IsDead;
+
     [HideInInspector]
     [SyncVar(hook = nameof(IndexHook))]
     public int index;

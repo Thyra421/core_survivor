@@ -54,7 +54,12 @@ public abstract class ProgressiveAbility : AbilityBase
         if (!(IsUsing && CanUse)) return;
 
         if (!player.isServer) return;
-        
+
+        if (player.IsDead) {
+            player.Class.ForceStopUsingAbility(this);
+            return;
+        }
+
         ServerUsing();
         ClientUsing();
     }

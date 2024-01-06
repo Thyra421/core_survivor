@@ -19,6 +19,7 @@ public class Cannoneer : PlayerClass
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (!(isClient && isOwned)) return;
+        if (_player.IsDead) return;
 
         if (context.canceled) {
             StopUsingAbilityCommand(0);
@@ -36,6 +37,7 @@ public class Cannoneer : PlayerClass
     public void OnUltimate(InputAction.CallbackContext context)
     {
         if (!(isClient && isOwned)) return;
+        if (_player.IsDead) return;
 
         if (context.canceled) {
             StopUsingAbilityCommand(1);
@@ -83,7 +85,7 @@ public class Cannoneer : PlayerClass
 
         if (!(isClient && isOwned)) return;
 
-        if (flamethrower.IsUsing || machineGunShoot.IsUsing)
+        if ((flamethrower.IsUsing || machineGunShoot.IsUsing) && !_player.IsDead)
             Aim();
     }
 

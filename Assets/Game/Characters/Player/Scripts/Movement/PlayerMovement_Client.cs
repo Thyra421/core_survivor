@@ -10,6 +10,7 @@ public partial class PlayerMovement
     public void OnMovement(InputAction.CallbackContext context)
     {
         if (!isClient || !isOwned) return;
+        if (_player.IsDead) return;
 
         Vector2 input = context.ReadValue<Vector2>();
         MoveCommand(input);
@@ -20,6 +21,7 @@ public partial class PlayerMovement
     {
         if (!context.started) return;
         if (!isClient || !isOwned) return;
+        if (_player.IsDead) return;
 
         Vector3? target = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
         if (target == null) return;

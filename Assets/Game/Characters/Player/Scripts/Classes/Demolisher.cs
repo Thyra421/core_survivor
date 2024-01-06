@@ -15,6 +15,7 @@ public class Demolisher : PlayerClass
     {
         if (!context.started) return;
         if (!isClient || !isOwned || !CanUseAbility(0)) return;
+        if (_player.IsDead) return;
 
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
 
@@ -28,6 +29,7 @@ public class Demolisher : PlayerClass
     {
         if (!context.started) return;
         if (!isClient || !isOwned || !CanUseAbility(1)) return;
+        if (_player.IsDead) return;
 
         Vector3? targetPosition = GameHelper.GetMousePositionToWorldPoint(LayerManager.Current.WhatIsGround);
 
