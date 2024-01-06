@@ -6,6 +6,9 @@ public class DestructibleEnvironment : CharacterHealth
     [SerializeField]
     private GameObject healthUIPrefab;
 
+    [SerializeField]
+    private bool isCore;
+
     public override void OnStartClient()
     {
         Instantiate(healthUIPrefab, transform);
@@ -24,6 +27,8 @@ public class DestructibleEnvironment : CharacterHealth
 
     private void OnDestroy()
     {
+        if (isCore)
+            GameManager.Current.GameOver("Le noyau a été détruit !");
         EnvironmentManager.Current.Environments.Remove(this);
     }
 }

@@ -410,26 +410,27 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   swordSlash:
-    abilityDuration: 1
-    delay: 0.6
     cooldown:
       duration: 1.5
-    player: {fileID: 0}
+    cost: 0
     damages: 50
+    player: {fileID: 0}
+    abilityDuration: 1
+    delay: 0.6
     radius: 1.5
     distance: 1.5
     radioactivityPerHit: 4
   blast:
-    abilityDuration: 2
-    delay: 1.4
     cooldown:
       duration: 0
+    cost: 20
+    damages: 100
     player: {fileID: 0}
+    abilityDuration: 2
+    delay: 1.4
     handTransform: {fileID: 6084100760471332039}
     grenadePrefab: {fileID: 5274250965855777935, guid: 3e5a0bb9ac452e44b9b9cef3370cac3f,
       type: 3}
-    damages: 100
-    cost: 20
     grenadeExplosionRadius: 3
 --- !u!1001 &1032298205644157188
 PrefabInstance:

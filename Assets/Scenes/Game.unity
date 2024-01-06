@@ -235,6 +235,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2964271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +709,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &18970160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,6 +856,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &19981684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,6 +1276,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &30860302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,6 +1490,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &40389249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,6 +1632,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &40649817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,6 +2083,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &45888500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2429,6 +2436,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &48784147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,6 +2613,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &52387604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2802,6 +2811,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &54822659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3015,6 +3025,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &61015621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,6 +3375,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &74156340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3792,6 +3804,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &87505410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4153,6 +4166,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &91798064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4497,6 +4511,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &101906475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4702,6 +4717,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &106581410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5772,6 +5788,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &150349886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6004,6 +6021,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &154334529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6407,6 +6425,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &159016020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6754,6 +6773,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &174156190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6900,6 +6920,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &174835033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7402,6 +7423,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &183966368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8353,6 +8375,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &225158313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8628,6 +8651,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &236187387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8975,6 +8999,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &251277648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9121,6 +9146,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &252503492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9398,6 +9424,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &260984491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9578,6 +9605,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &261362377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9848,6 +9876,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &264117282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10192,6 +10221,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &265290821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10689,6 +10719,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &275044090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10908,6 +10939,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &278303203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11118,6 +11150,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &291676724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11465,6 +11498,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &296019781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12234,6 +12268,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &325950591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12531,6 +12566,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &330868851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13232,6 +13268,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &342277675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13593,6 +13630,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &352364107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14253,6 +14291,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &372144320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14399,6 +14438,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &372695242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14740,6 +14780,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &380714593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14915,6 +14956,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &382509264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15134,6 +15176,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &388186769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15222,6 +15265,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &390162868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15436,6 +15480,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &396749189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15718,6 +15763,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &399963903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16042,6 +16088,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &404730864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16436,6 +16483,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &416199723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16852,6 +16900,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &428231928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17062,6 +17111,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &432144639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17352,6 +17402,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &435662440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17595,6 +17646,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &447592093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17872,6 +17924,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &453016761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18258,6 +18311,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &456058684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18476,6 +18530,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &459862220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19063,6 +19118,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &475761012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19416,6 +19472,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &490073404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19629,6 +19686,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &501790651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19775,6 +19833,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &501880467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20131,6 +20190,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &516755028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20606,6 +20666,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &527712466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21018,6 +21079,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &546985887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21164,6 +21226,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &549356909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21780,6 +21843,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &566339045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22461,6 +22525,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &592661828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22674,6 +22739,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &596748478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22820,6 +22886,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &600107098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23634,6 +23701,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &617547315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24054,6 +24122,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &626026694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24508,6 +24577,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &634913693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24942,6 +25012,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &645317783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25072,6 +25143,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &651007799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25870,6 +25942,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &670978865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26014,6 +26087,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &675779734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26376,6 +26450,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &687429310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26589,6 +26664,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &690804970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27374,6 +27450,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &709288385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27732,6 +27809,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &727672629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28084,6 +28162,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &736930663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28225,6 +28304,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &742731915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28499,6 +28579,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &759087787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28704,6 +28785,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &765839545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28984,6 +29066,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &770067955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29197,6 +29280,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &771003527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29535,6 +29619,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &778504179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30875,6 +30960,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &833754812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31069,6 +31155,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &834786010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31446,6 +31533,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &850899013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31921,6 +32009,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &866898483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32141,6 +32230,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &872357226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32354,6 +32444,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &876263869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32631,6 +32722,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &880708690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32975,6 +33067,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &890490234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33924,6 +34017,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &930769764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34070,6 +34164,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &933654961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35015,6 +35110,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &956368068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35161,6 +35257,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &958040510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35373,6 +35470,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &961285472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35801,6 +35899,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &985039447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36153,6 +36252,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &996818126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36333,6 +36433,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1000983587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36527,6 +36628,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1003314249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36631,6 +36733,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1005494927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36906,6 +37009,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1015953741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37010,6 +37114,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1016153007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37359,6 +37464,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1033607314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37572,6 +37678,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1035856350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37722,6 +37829,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1037588700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37939,6 +38047,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1043811818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38085,6 +38194,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1044961237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38440,6 +38550,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1051617595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38793,6 +38904,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1059009305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39297,6 +39409,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1068395725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39655,6 +39768,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1073531259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39865,6 +39979,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1075441208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40078,6 +40193,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1079063306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40498,6 +40614,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1081756495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40787,6 +40904,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1087657968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40997,6 +41115,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1089589682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41625,6 +41744,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1115218382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41771,6 +41891,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1115414295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41912,6 +42033,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1116731327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42237,6 +42359,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1130167597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42918,6 +43041,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1154738037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43094,6 +43218,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1162754291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43320,6 +43445,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1171361929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43533,6 +43659,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1173637352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43683,6 +43810,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1176507144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43829,6 +43957,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1177095347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44834,6 +44963,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1209113262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44975,6 +45105,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1209877990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45146,6 +45277,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1213837491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45234,6 +45366,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1215009843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45364,6 +45497,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1215033066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45468,6 +45602,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1217591019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45598,6 +45733,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1226066319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45739,6 +45875,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1226765414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46021,6 +46158,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1236078683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46657,6 +46795,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1251589118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47005,6 +47144,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1272554526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47500,6 +47640,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1289524668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47646,6 +47787,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1295340534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47950,6 +48092,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1303550466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48080,6 +48223,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1303650390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48329,6 +48473,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1308059340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48547,6 +48692,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1309570389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49000,6 +49146,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1325945848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49243,6 +49390,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1330503888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49520,6 +49668,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1340906321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49772,6 +49921,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1351010085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49985,6 +50135,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1356236006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50262,6 +50413,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1366449077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50433,6 +50585,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1368247353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50699,6 +50852,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1379785234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50845,6 +50999,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1380735630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51196,6 +51351,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1397097363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51409,6 +51565,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1405906263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51647,6 +51804,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1410204985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52685,6 +52843,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1436786730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52831,6 +52990,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1437136582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53247,6 +53407,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1452202561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53469,6 +53630,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1454848465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53615,6 +53777,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1459613680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54296,6 +54459,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1469580709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54657,6 +54821,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1477584444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55009,6 +55174,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1489554506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55575,6 +55741,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1513836740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55705,6 +55872,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1523215586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56101,6 +56269,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1533274348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56520,6 +56689,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1542788718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56864,6 +57034,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1556630868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57613,6 +57784,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1571772027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57784,6 +57956,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1577263413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58162,6 +58335,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1586885842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58308,6 +58482,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1588199021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58548,6 +58723,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1591576169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59957,6 +60133,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1639557720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60241,6 +60418,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1644298290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60569,6 +60747,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1654447435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60787,6 +60966,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1656432039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61472,6 +61652,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1668133727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63050,6 +63231,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1723182021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63267,6 +63449,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1728486742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63413,6 +63596,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1731870594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63648,6 +63832,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1742122414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63865,6 +64050,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1747147623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64276,6 +64462,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1754225749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64558,6 +64745,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1760928820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65113,6 +65301,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1774842187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65395,6 +65584,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1777422378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65541,6 +65731,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1780501273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65754,6 +65945,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1781573537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66163,6 +66355,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1795476726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66508,6 +66701,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1806500048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66649,6 +66843,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1808178278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66862,6 +67057,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1813093200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67446,6 +67642,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1828225288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67659,6 +67856,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1833689648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68075,6 +68273,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1847198153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68360,6 +68559,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1854431617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68570,6 +68770,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1855457908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68716,6 +68917,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1856137940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68929,6 +69131,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1867032176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69266,6 +69469,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1889104306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69474,6 +69678,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1892833548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70750,6 +70955,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1935331912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71427,6 +71633,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1960041504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71707,6 +71914,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1970526407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71878,6 +72086,7 @@ MonoBehaviour:
   maxHealth: 120
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1972264096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72008,6 +72217,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &1981690091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72864,6 +73074,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2013333951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73010,6 +73221,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2015970347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73209,6 +73421,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2017401138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73355,6 +73568,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2020492855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73841,6 +74055,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2041264706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74130,6 +74345,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  gameOverPrefab: {fileID: 2906008307930199459, guid: 1620c2b216565af4e8a41959dd17c466,
+    type: 3}
 --- !u!114 &2050615858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74260,6 +74477,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2055109217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74896,6 +75114,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2062236229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75037,6 +75256,7 @@ MonoBehaviour:
   maxHealth: 60
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2065588522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75364,6 +75584,7 @@ MonoBehaviour:
   maxHealth: 500
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 1
 --- !u!114 &2075374748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75692,6 +75913,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2085969339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76597,6 +76819,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2114043541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76950,6 +77173,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2118392900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77372,6 +77596,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2133356129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77661,6 +77886,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2138509615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77807,6 +78033,7 @@ MonoBehaviour:
   maxHealth: 150
   healthUIPrefab: {fileID: 8891539504772701550, guid: c12f1590c31cf2345a2bd6db737fd4d6,
     type: 3}
+  isCore: 0
 --- !u!114 &2139143391
 MonoBehaviour:
   m_ObjectHideFlags: 0

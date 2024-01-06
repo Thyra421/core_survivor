@@ -14,6 +14,12 @@ public partial class GameManager
     private int _waveMultiplicator = 1;
 
     [Server]
+    public void GameOver(string reason)
+    {
+        GameOverRpc(reason);
+    }
+
+    [Server]
     private void ServerUpdate()
     {
         if (timer.Value > 0) return;

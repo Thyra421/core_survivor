@@ -11,9 +11,18 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     public Listenable<int> PlayersAlive { get; } = new();
 
     [ClientRpc]
-    public void SetPlayersAliveRpc(int value)
+    private void SetPlayersAliveRpc(int value)
     {
         PlayersAlive.Value = value;
+    }
+
+    [Server]
+    public void PlayerDie()
+    {
+        PlayersAlive.Value--;
+        SetPlayersAliveRpc(PlayersAlive.Value);
+        if (PlayersAlive.Value == 0)
+            GameManager.Current.GameOver("Tous les joueurs sont morts !");
     }
 
     protected override void Awake()
