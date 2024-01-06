@@ -25792,6 +25792,9 @@ MonoBehaviour:
     type: 3}
   demolisherPrefab: {fileID: 2915076869988507186, guid: 581c784e563580c44b24981ef5ec96ff,
     type: 3}
+  enableOnStart:
+  - {fileID: 2050615855}
+  - {fileID: 1138577198}
   disconnectedFromServerPrefab: {fileID: 5964152520798055371, guid: 6513fa3be1312d040b0c8672f4dbe0cd,
     type: 3}
 --- !u!114 &668668034

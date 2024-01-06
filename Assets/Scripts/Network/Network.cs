@@ -11,6 +11,9 @@ public partial class Network : NetworkManager
     [SerializeField]
     private GameObject demolisherPrefab;
 
+    [SerializeField]
+    private GameObject[] enableOnStart;
+
     public override void Start()
     {
         networkAddress = LobbyManager.Current.NetworkAddress;
@@ -18,6 +21,10 @@ public partial class Network : NetworkManager
         if (LobbyManager.Current.IsHost) StartHost();
 
         else StartClient();
+
+        foreach (GameObject o in enableOnStart) {
+            o.SetActive(true);
+        }
 
         MessageBroadcaster.Broadcast("GameStarted");
     }
