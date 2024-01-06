@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Mirror;
 using UnityEngine;
 
@@ -158,6 +159,10 @@ public partial class PlayerMovement
     {
         base.OnStartServer();
         _characterController = GetComponent<CharacterController>();
+    }
+
+    private void Awake()
+    {
         _player = GetComponent<Player>();
     }
 }
