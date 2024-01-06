@@ -18,6 +18,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
     protected override void Awake()
     {
+        base.Awake();
         Players.OnChanged += players => PlayersAlive.Value = players.Count;
     }
 }
