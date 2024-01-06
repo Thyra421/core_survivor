@@ -14,10 +14,14 @@ public class SwordSlash : InstantAbility
     [SerializeField]
     private int radioactivityPerHit;
 
+    [SerializeField]
+    private AudioSource audio;
+
     public override void ClientUse()
     {
         base.ClientUse();
         player.Animation.SetTrigger("Attack");
+        audio.Play();
     }
 
     public override void ServerUse()

@@ -122,6 +122,7 @@ MonoBehaviour:
   speed: 3
   explosionPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
+  explosionClip: {fileID: 8300000, guid: 9e822efe77aa5eb40bf046ecc0319db6, type: 3}
 --- !u!114 &3463244485338390962
 MonoBehaviour:
   m_ObjectHideFlags: 0

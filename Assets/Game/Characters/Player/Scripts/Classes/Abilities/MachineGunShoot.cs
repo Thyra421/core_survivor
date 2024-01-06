@@ -19,6 +19,9 @@ public class MachineGunShoot : ProgressiveAbility
     [SerializeField]
     private int radioactivityPerHit;
 
+    [SerializeField]
+    private AudioSource audio;
+
     private static readonly int IsShootingId = Animator.StringToHash("IsShooting");
 
     public override void ClientStartUsing()
@@ -32,6 +35,12 @@ public class MachineGunShoot : ProgressiveAbility
         base.ServerStartUsing();
         player.Animation.SetBool(IsShootingId, true);
         rig.weight = 1;
+    }
+
+    protected override void ClientUsing()
+    {
+        base.ClientUsing();
+        audio.Play();
     }
 
     protected override void ServerUsing()

@@ -14,6 +14,9 @@ public class Grenade : NetworkBehaviour
     [SerializeField]
     private GameObject explosionPrefab;
 
+    [SerializeField]
+    private AudioClip explosionClip;
+
     private Vector3 _destination;
     private Vector3 _origin;
     private float _t;
@@ -24,6 +27,7 @@ public class Grenade : NetworkBehaviour
     private void ExplodeRpc(Vector3 position)
     {
         Instantiate(explosionPrefab, position, quaternion.identity);
+        AudioManager.Current.SpawnAudioSource(explosionClip, position);
     }
 
     private void Update()

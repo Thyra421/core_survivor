@@ -19,6 +19,9 @@ public class Flamethrower : ProgressiveAbility
 
     [SerializeField]
     private Rig rig;
+    
+    [SerializeField]
+    private AudioSource audio;
 
     private static readonly int IsShootingId = Animator.StringToHash("IsShooting");
 
@@ -32,6 +35,7 @@ public class Flamethrower : ProgressiveAbility
         base.ClientStartUsing();
         flames.Play();
         rig.weight = 1;
+        audio.Play();
     }
 
     public override void ServerStartUsing()
@@ -69,6 +73,7 @@ public class Flamethrower : ProgressiveAbility
         base.ClientStopUsing();
         flames.Stop();
         rig.weight = 0;
+        audio.Stop();
     }
 
     public override void ServerStopUsing()
