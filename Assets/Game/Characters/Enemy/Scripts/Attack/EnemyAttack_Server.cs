@@ -18,6 +18,9 @@ public partial class EnemyAttack
     [SerializeField]
     private Cooldown cooldown;
 
+    [SerializeField]
+    private AudioSource audio;
+
     private Enemy _enemy;
     private EnemyAnimation _enemyAnimation;
 
@@ -56,6 +59,12 @@ public partial class EnemyAttack
         cooldown.Start();
     }
 
+    [ClientRpc]
+    private void ClientAttack()
+    {
+        audio.Play();
+    }
+
     private IEnumerator AttackCoroutine()
     {
         yield return new WaitForSeconds(attackDelay);
@@ -64,5 +73,6 @@ public partial class EnemyAttack
 
         IDamageable damageable = _enemy.Target!.GetComponent<IDamageable>();
         damageable.TakeDamage(attackDamage);
+        ClientAttack();
     }
 }
